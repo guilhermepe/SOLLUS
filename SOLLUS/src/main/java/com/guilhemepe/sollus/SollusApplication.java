@@ -1,4 +1,4 @@
-package com.guiper.sollus;
+package com.guilhemepe.sollus;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

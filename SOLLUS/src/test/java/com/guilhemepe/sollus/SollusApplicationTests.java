@@ -1,4 +1,4 @@
-package com.guiper.sollus;
+package com.guilhemepe.sollus;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
