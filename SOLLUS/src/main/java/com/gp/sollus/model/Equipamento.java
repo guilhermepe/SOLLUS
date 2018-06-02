@@ -27,6 +27,7 @@ public class Equipamento implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private long contasId;
+    @Column(columnDefinition="char(50)")
     private String nome;
     private long ip;
     private int habilitado;
@@ -51,7 +52,7 @@ public class Equipamento implements Serializable {
     @Column (name="datahoraultimaleitura")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataHoraUltimaLeitura;
-    @Column (name="fotoequipamento")
+    @Column (name="fotoequipamento",columnDefinition="char(200)")
     private String fotoEquipamento;
     @Column (name="idmodelo")
     private int idModelo;
@@ -82,16 +83,17 @@ public class Equipamento implements Serializable {
     private Date dataCriacao;    
     @Column (name="enderecoagente")
     private String enderecoAgente;
+    @Column(columnDefinition="char(255)")
     private String descricao;
     @Column (name="keepalive")
     private int keepAlive;
     @Column (name="apagarlogs")
     private int apagarLogs;
-    @Column (name="hexfirmware")
+    @Column (name="hexfirmware",columnDefinition="char(255)")
     private String hexFirmware;
-    @Column (name="versaofirmware")
+    @Column (name="versaofirmware",columnDefinition="char(15)")
     private String versaoFirmware;
-    @Column (name="versaohardware")
+    @Column (name="versaohardware",columnDefinition="char(15)")
     private String versaoHardware;
 
     public long getId() {
