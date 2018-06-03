@@ -25,69 +25,77 @@ public class Equipamento implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition="BIGINT")
     private long id;
+    @Column(columnDefinition="BIGINT")
     private long contasId;
     @Column(columnDefinition="char(50)")
     private String nome;
+    @Column(columnDefinition="char(100)")
     private long ip;
+    @Column(columnDefinition="tinyint")
     private int habilitado;
-    @Column(name="idlocal")
+    @Column(name="idlocal",columnDefinition="BIGINT")
     private long idLocal;    
-    @Column(name="idservidor")
+    @Column(name="idservidor",columnDefinition="tinyint")
     private long idServidor;   
-    @Column(name="emailalarmeeq")
+    @Column(name="emailalarmeeq",columnDefinition="tinyint")
     private String emailAlarmeEq;
     @Column(name="tempoalarmeeq")
-    private String tempoAlarmeEq;    
+    private int tempoAlarmeEq;
+    @Column(columnDefinition="char(35)")    
     private String login;
+    @Column(columnDefinition="char(15)")
     private String senha;
     private float latitude;
     private float longitude;
+    @Column(columnDefinition="tinyint")
     private int excluido;
+    @Column(columnDefinition="char(35)")
     private String numeroserie;
-    @Column(name="alarmesms")
+    @Column(name="alarmesms",columnDefinition="tinyint")
     private int alarmeSms;
-    @Column(name="alarmehabilitado")
+    @Column(name="alarmehabilitado",columnDefinition="tinyint")
     private int alarmeHabilitado;
     @Column (name="datahoraultimaleitura")
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dataHoraUltimaLeitura;
     @Column (name="fotoequipamento",columnDefinition="char(200)")
     private String fotoEquipamento;
-    @Column (name="idmodelo")
+    @Column (name="idmodelo",columnDefinition = "SMALLINT")
     private int idModelo;
-    @Column (name="idprotocolo")
+    @Column (name="idprotocolo",columnDefinition = "SMALLINT")
     private int idProtocolo;
-    @Column (name="portatcp")
+    @Column (name="portatcp",columnDefinition = "SMALLINT")
     private int portaTcp;
-    @Column (name="idstatus")
+    @Column (name="idstatus",columnDefinition="tinyint")
     private int idStatus;
-    @Column (name="idtipoconexao")
+    @Column (name="idtipoconexao",columnDefinition="tinyint")
     private int idTipoConexao;
-    @Column (name="timeoutLeitura")
+    @Column (name="timeoutLeitura",columnDefinition="BIGINT")
     private int timeOutLeitura;
-    @Column (name="timeoutConexao")
+    @Column (name="timeoutConexao",columnDefinition="BIGINT")
     private int timeOutConexao;
     @Column (name="intervaloleitura")
-    private long intervaloLeitura;
-    @Column (name="numRetentativas")
+    private int intervaloLeitura;
+    @Column (name="numRetentativas",columnDefinition="tinyint")
     private int numRetentivas;
     @Column (name="dataHora")
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dataHora;
     @Column (name="dataInstalacao")
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dataInstalacao;
     @Column (name="dataCriacao")
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dataCriacao;    
     @Column (name="enderecoagente")
     private String enderecoAgente;
     @Column(columnDefinition="char(255)")
     private String descricao;
-    @Column (name="keepalive")
+    @Column (name="keepalive",columnDefinition="tinyint")
     private int keepAlive;
-    @Column (name="apagarlogs")
+    @Column (name="apagarlogs",columnDefinition="tinyint")
     private int apagarLogs;
     @Column (name="hexfirmware",columnDefinition="char(255)")
     private String hexFirmware;
@@ -160,11 +168,11 @@ public class Equipamento implements Serializable {
         this.emailAlarmeEq = emailAlarmeEq;
     }
 
-    public String getTempoAlarmeEq() {
+    public int getTempoAlarmeEq() {
         return tempoAlarmeEq;
     }
 
-    public void setTempoAlarmeEq(String tempoAlarmeEq) {
+    public void setTempoAlarmeEq(int tempoAlarmeEq) {
         this.tempoAlarmeEq = tempoAlarmeEq;
     }
 
@@ -308,7 +316,7 @@ public class Equipamento implements Serializable {
         return intervaloLeitura;
     }
 
-    public void setIntervaloLeitura(long intervaloLeitura) {
+    public void setIntervaloLeitura(int intervaloLeitura) {
         this.intervaloLeitura = intervaloLeitura;
     }
 

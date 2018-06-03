@@ -6,6 +6,7 @@
 package com.gp.sollus.model;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,9 @@ public class StatusEquipamento implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition="tinyint")
     private long id;
+    @Column(columnDefinition="CHAR(15)")
     private String status;
 
     public long getId() {

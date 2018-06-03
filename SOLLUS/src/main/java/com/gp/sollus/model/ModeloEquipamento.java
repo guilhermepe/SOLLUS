@@ -6,6 +6,7 @@
 package com.gp.sollus.model;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,9 @@ public class ModeloEquipamento implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(columnDefinition="SMALLINT")
+    private int id;
+    @Column(columnDefinition="CHAR(25)")
     private String nome;
 
     public long getId() {
@@ -34,7 +37,7 @@ public class ModeloEquipamento implements Serializable {
         return nome;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

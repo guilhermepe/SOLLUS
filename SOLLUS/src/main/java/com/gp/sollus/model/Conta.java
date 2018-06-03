@@ -24,19 +24,27 @@ public class Conta implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(columnDefinition="char(50)")
     private String nome;
+    @Column(columnDefinition="char(50)")
     private String responsavel;
+    @Column(columnDefinition="char(80)")
     private String email;
+    @Column(columnDefinition="char(18)")
     private String telefone;
-    private String habilitado;
+    @Column(columnDefinition="tinyint")
+    private int habilitado;
+    @Column(columnDefinition="char(100)")
     private String img;
-    private String habilitaImg;
+    @Column(name="habilitaimg",columnDefinition="tinyint")
+    private int habilitaImg;
+    @Column(name="visaocontas",columnDefinition="char(50)")
     private String visaoContas;
-    @Column(name="logo_topo_esq")
+    @Column(name="logo_topo_esq",columnDefinition="char(100)")
     private String logoTopoEsq;
-    @Column(name="logo_topo_dir")
+    @Column(name="logo_topo_dir",columnDefinition="char(100)")
     private String logoTopoDir;
-    @Column(name="logo_rodape")
+    @Column(name="logo_rodape",columnDefinition="char(100)")
     private String logoRodape;
     
     public void setId(long id) {
@@ -59,7 +67,7 @@ public class Conta implements Serializable {
         this.telefone = telefone;
     }
 
-    public void setHabilitado(String habilitado) {
+    public void setHabilitado(int habilitado) {
         this.habilitado = habilitado;
     }
 
@@ -67,7 +75,7 @@ public class Conta implements Serializable {
         this.img = img;
     }
 
-    public void setHabilitaImg(String habilitaImg) {
+    public void setHabilitaImg(int habilitaImg) {
         this.habilitaImg = habilitaImg;
     }
 
@@ -107,7 +115,7 @@ public class Conta implements Serializable {
         return telefone;
     }
 
-    public String getHabilitado() {
+    public int getHabilitado() {
         return habilitado;
     }
 
@@ -115,7 +123,7 @@ public class Conta implements Serializable {
         return img;
     }
 
-    public String getHabilitaImg() {
+    public int getHabilitaImg() {
         return habilitaImg;
     }
 
