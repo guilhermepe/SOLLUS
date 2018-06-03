@@ -1,10 +1,28 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
-    <p>Get your greeting <a href="/greeting">here</a></p>
-</body>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Walkthrough</title>
+        <script
+            id="sap-ui-bootstrap"
+            src="openui5/sap-ui-core.js"
+            data-sap-ui-theme="sap_belize"
+            data-sap-ui-libs="sap.m"
+            data-sap-ui-compatVersion="edge"
+            data-sap-ui-preload="async"
+            data-sap-ui-resourceroots='{
+            "sap.ui.demo.wt": "./"
+            }' >
+        </script>
+        <script>
+            sap.ui.getCore().attachInit(function () {
+                sap.ui.xmlview({
+                    viewName: "sap.ui.demo.wt.view.App"
+                }).placeAt("content");
+            });
+        </script>
+    </head>
+    <body class="sapUiBody" id="content">
+    </body>
 </html>
