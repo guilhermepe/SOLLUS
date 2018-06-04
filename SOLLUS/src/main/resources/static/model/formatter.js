@@ -11,9 +11,9 @@ sap.ui.define([
 			srcImageValue : function (bIsPhone) {
 				var sImageSrc = "";
 				if (bIsPhone === false) {
-					sImageSrc = "./images/homeImage.jpg";
+					sImageSrc = "./images/home_image.png";
 				} else {
-					sImageSrc = "./images/homeImage_small.jpg";
+					sImageSrc = "./images/home_image_small.png";
 				}
 				return sImageSrc;
 			}
