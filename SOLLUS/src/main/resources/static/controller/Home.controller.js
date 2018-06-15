@@ -1,21 +1,14 @@
 sap.ui.define([
-		'sap/ui/demo/toolpageapp/controller/BaseController',
-		'sap/ui/model/json/JSONModel',
-		'sap/ui/Device',
-		'sap/ui/demo/toolpageapp/model/formatter'
-	], function (BaseController, JSONModel, Device, formatter) {
-		"use strict";
-		return BaseController.extend("sap.ui.demo.toolpageapp.controller.Home", {
-			formatter: formatter,
+  "sap/ui/core/mvc/Controller"
+], function(Controller) {
+  "use strict";
+  return Controller.extend("Sollus.controller.Home", {
+		onInit: function() {},
 
-			onInit: function () {
-				var oViewModel = new JSONModel({
-					isPhone : Device.system.phone
-				});
-				this.setModel(oViewModel, "view");
-				Device.media.attachHandler(function (oDevice) {
-					this.getModel("view").setProperty("/isPhone", oDevice.name === "Phone");
-				}.bind(this));
-			}
-		});
+    onButtonPress: function (oEvent) {
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			this.getView().getParent().removeAllContent();
+			oRouter.navTo("routed", false);
+    }
+  });
 });
