@@ -1,4 +1,4 @@
-<mvc:View controllerName="Sollus.controller.Routed" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" height="100%" displayBlock="true">
+<mvc:View controllerName="Testing.controller.Routed" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" height="100%" displayBlock="true">
 	<Page title="A route?!">
 		<headerContent>
 			<Button text="to home" press="onButtonPress" />

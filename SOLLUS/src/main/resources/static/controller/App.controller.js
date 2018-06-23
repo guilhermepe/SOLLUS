@@ -5,9 +5,9 @@ sap.ui.define([
 	'sap/m/MessageToast'
 ], function(Controller, JSONModel, Fragment, MessageToast) {
   "use strict";
-  return Controller.extend("Sollus.controller.App", {
+  return Controller.extend("Testing.controller.App", {
 		onInit: function() {
-			var oData = {userName: "Fulano de Outro"};
+			var oData = {userName: "Nome do usuário"};
 			var oModel = new JSONModel();
 			oModel.setData(oData);
 			this.getView().setModel(oModel);
@@ -36,7 +36,7 @@ sap.ui.define([
 			var oButton = oEvent.getSource();
 			if (!this._menu) {
 				this._menu = sap.ui.xmlfragment(
-					"Sollus.view.UserItem",
+					"Testing.view.UserItem",
 					this
 				);
 				this.getView().addDependent(this._menu);

@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="Sollus.controller.App"
+	controllerName="Testing.controller.App"
 	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" 
@@ -7,7 +7,7 @@
 	xmlns:u="sap.ui.unified"
 	class="sapUiSizeCompact"
 	displayBlock="true">
-	<u:Shell id="appShell" icon="./images/logo.png">
+	<u:Shell id="appShell" icon="logo.png">
 		<u:headItems>
 			<u:ShellHeadItem tooltip="Menu" icon="sap-icon://menu2" press="handlePressConfiguration" />
 			<u:ShellHeadItem tooltip="Home" icon="sap-icon://home" visible="true" press="handlePressHome" />
