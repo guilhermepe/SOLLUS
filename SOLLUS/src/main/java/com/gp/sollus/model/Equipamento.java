@@ -1,0 +1,411 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.gp.sollus.model;
+
+import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+
+/**
+ *
+ * @author guiper
+ */
+@Entity
+@Table (name="equipamento")
+public class Equipamento implements Serializable {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition="BIGINT")
+    private long id;
+    @Column(columnDefinition="BIGINT")
+    private long contasId;
+    @Column(columnDefinition="char(50)")
+    private String nome;
+    @Column(columnDefinition="char(100)")
+    private long ip;
+    @Column(columnDefinition="tinyint")
+    private int habilitado;
+    @Column(name="idlocal",columnDefinition="BIGINT")
+    private long idLocal;    
+    @Column(name="idservidor",columnDefinition="tinyint")
+    private long idServidor;   
+    @Column(name="emailalarmeeq",columnDefinition="tinyint")
+    private String emailAlarmeEq;
+    @Column(name="tempoalarmeeq")
+    private int tempoAlarmeEq;
+    @Column(columnDefinition="char(35)")    
+    private String login;
+    @Column(columnDefinition="char(15)")
+    private String senha;
+    private float latitude;
+    private float longitude;
+    @Column(columnDefinition="tinyint")
+    private int excluido;
+    @Column(columnDefinition="char(35)")
+    private String numeroserie;
+    @Column(name="alarmesms",columnDefinition="tinyint")
+    private int alarmeSms;
+    @Column(name="alarmehabilitado",columnDefinition="tinyint")
+    private int alarmeHabilitado;
+    @Column (name="datahoraultimaleitura")
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date dataHoraUltimaLeitura;
+    @Column (name="fotoequipamento",columnDefinition="char(200)")
+    private String fotoEquipamento;
+    @Column (name="idmodelo",columnDefinition = "SMALLINT")
+    private int idModelo;
+    @Column (name="idprotocolo",columnDefinition = "SMALLINT")
+    private int idProtocolo;
+    @Column (name="portatcp",columnDefinition = "SMALLINT")
+    private int portaTcp;
+    @Column (name="idstatus",columnDefinition="tinyint")
+    private int idStatus;
+    @Column (name="idtipoconexao",columnDefinition="tinyint")
+    private int idTipoConexao;
+    @Column (name="timeoutLeitura",columnDefinition="BIGINT")
+    private int timeOutLeitura;
+    @Column (name="timeoutConexao",columnDefinition="BIGINT")
+    private int timeOutConexao;
+    @Column (name="intervaloleitura")
+    private int intervaloLeitura;
+    @Column (name="numRetentativas",columnDefinition="tinyint")
+    private int numRetentivas;
+    @Column (name="dataHora")
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date dataHora;
+    @Column (name="dataInstalacao")
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date dataInstalacao;
+    @Column (name="dataCriacao")
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date dataCriacao;    
+    @Column (name="enderecoagente")
+    private String enderecoAgente;
+    @Column(columnDefinition="char(255)")
+    private String descricao;
+    @Column (name="keepalive",columnDefinition="tinyint")
+    private int keepAlive;
+    @Column (name="apagarlogs",columnDefinition="tinyint")
+    private int apagarLogs;
+    @Column (name="hexfirmware",columnDefinition="char(255)")
+    private String hexFirmware;
+    @Column (name="versaofirmware",columnDefinition="char(15)")
+    private String versaoFirmware;
+    @Column (name="versaohardware",columnDefinition="char(15)")
+    private String versaoHardware;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getContasId() {
+        return contasId;
+    }
+
+    public void setContasId(long contasId) {
+        this.contasId = contasId;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public long getIp() {
+        return ip;
+    }
+
+    public void setIp(long ip) {
+        this.ip = ip;
+    }
+
+    public int getHabilitado() {
+        return habilitado;
+    }
+
+    public void setHabilitado(int habilitado) {
+        this.habilitado = habilitado;
+    }
+
+    public long getIdLocal() {
+        return idLocal;
+    }
+
+    public void setIdLocal(long idLocal) {
+        this.idLocal = idLocal;
+    }
+
+    public long getIdServidor() {
+        return idServidor;
+    }
+
+    public void setIdServidor(long idServidor) {
+        this.idServidor = idServidor;
+    }
+
+    public String getEmailAlarmeEq() {
+        return emailAlarmeEq;
+    }
+
+    public void setEmailAlarmeEq(String emailAlarmeEq) {
+        this.emailAlarmeEq = emailAlarmeEq;
+    }
+
+    public int getTempoAlarmeEq() {
+        return tempoAlarmeEq;
+    }
+
+    public void setTempoAlarmeEq(int tempoAlarmeEq) {
+        this.tempoAlarmeEq = tempoAlarmeEq;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public float getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(float latitude) {
+        this.latitude = latitude;
+    }
+
+    public float getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(float longitude) {
+        this.longitude = longitude;
+    }
+
+    public int getExcluido() {
+        return excluido;
+    }
+
+    public void setExcluido(int excluido) {
+        this.excluido = excluido;
+    }
+
+    public String getNumeroSerie() {
+        return numeroserie;
+    }
+
+    public void setNumeroSerie(String numeroserie) {
+        this.numeroserie = numeroserie;
+    }
+
+    public int getAlarmeSms() {
+        return alarmeSms;
+    }
+
+    public void setAlarmeSms(int alarmeSms) {
+        this.alarmeSms = alarmeSms;
+    }
+
+    public int getAlarmeHabilitado() {
+        return alarmeHabilitado;
+    }
+
+    public void setAlarmeHabilitado(int alarmeHabilitado) {
+        this.alarmeHabilitado = alarmeHabilitado;
+    }
+
+    public Date getDataHoraUltimaLeitura() {
+        return dataHoraUltimaLeitura;
+    }
+
+    public void setDataHoraUltimaLeitura(Date dataHoraUltimaLeitura) {
+        this.dataHoraUltimaLeitura = dataHoraUltimaLeitura;
+    }
+
+    public String getFotoEquipamento() {
+        return fotoEquipamento;
+    }
+
+    public void setFotoEquipamento(String fotoEquipamento) {
+        this.fotoEquipamento = fotoEquipamento;
+    }
+
+    public int getIdModelo() {
+        return idModelo;
+    }
+
+    public void setIdModelo(int idModelo) {
+        this.idModelo = idModelo;
+    }
+
+    public int getIdProtocolo() {
+        return idProtocolo;
+    }
+
+    public void setIdProtocolo(int idProtocolo) {
+        this.idProtocolo = idProtocolo;
+    }
+
+    public int getPortaTcp() {
+        return portaTcp;
+    }
+
+    public void setPortaTcp(int portaTcp) {
+        this.portaTcp = portaTcp;
+    }
+
+    public int getIdStatus() {
+        return idStatus;
+    }
+
+    public void setIdStatus(int idStatus) {
+        this.idStatus = idStatus;
+    }
+
+    public int getIdTipoConexao() {
+        return idTipoConexao;
+    }
+
+    public void setIdTipoConexao(int idTipoConexao) {
+        this.idTipoConexao = idTipoConexao;
+    }
+
+    public int getTimeOutLeitura() {
+        return timeOutLeitura;
+    }
+
+    public void setTimeOutLeitura(int timeOutLeitura) {
+        this.timeOutLeitura = timeOutLeitura;
+    }
+
+    public int getTimeOutConexao() {
+        return timeOutConexao;
+    }
+
+    public void setTimeOutConexao(int timeOutConexao) {
+        this.timeOutConexao = timeOutConexao;
+    }
+
+    public long getIntervaloLeitura() {
+        return intervaloLeitura;
+    }
+
+    public void setIntervaloLeitura(int intervaloLeitura) {
+        this.intervaloLeitura = intervaloLeitura;
+    }
+
+    public int getNumRetentivas() {
+        return numRetentivas;
+    }
+
+    public void setNumRetentivas(int numRetentivas) {
+        this.numRetentivas = numRetentivas;
+    }
+
+    public Date getDataHora() {
+        return dataHora;
+    }
+
+    public void setDataHora(Date dataHora) {
+        this.dataHora = dataHora;
+    }
+
+    public Date getDataInstalacao() {
+        return dataInstalacao;
+    }
+
+    public void setDataInstalacao(Date dataInstalacao) {
+        this.dataInstalacao = dataInstalacao;
+    }
+
+    public Date getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(Date dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+
+    public String getEnderecoAgente() {
+        return enderecoAgente;
+    }
+
+    public void setEnderecoAgente(String enderecoAgente) {
+        this.enderecoAgente = enderecoAgente;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public int getKeepAlive() {
+        return keepAlive;
+    }
+
+    public void setKeepAlive(int keepAlive) {
+        this.keepAlive = keepAlive;
+    }
+
+    public int getApagarLogs() {
+        return apagarLogs;
+    }
+
+    public void setApagarLogs(int apagarLogs) {
+        this.apagarLogs = apagarLogs;
+    }
+
+    public String getHexFirmware() {
+        return hexFirmware;
+    }
+
+    public void setHexFirmware(String hexFirmware) {
+        this.hexFirmware = hexFirmware;
+    }
+
+    public String getVersaoFirmware() {
+        return versaoFirmware;
+    }
+
+    public void setVersaoFirmware(String versaoFirmware) {
+        this.versaoFirmware = versaoFirmware;
+    }
+
+    public String getVersaoHardware() {
+        return versaoHardware;
+    }
+
+    public void setVersaoHardware(String versaoHardware) {
+        this.versaoHardware = versaoHardware;
+    }
+    
+}

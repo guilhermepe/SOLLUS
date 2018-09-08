@@ -1,0 +1,76 @@
+<mvc:View controllerName="Testing.controller.ManageUsers" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" height="100%" displayBlock="true">
+	<Page title="A route?!">
+		<headerContent>
+			<Button text="to home" press="onButtonPress" />
+		</headerContent>
+		<content>
+			<VBox class="sapUiSmallMargin">
+				<f:Form id="FormToolbar" editable="true" ariaLabelledBy="Title1">
+					<f:toolbar>
+						<Toolbar id="TB1">
+							<Title id="Title1" text="Gerenciar Usuários" level="H4" titleStyle="H4"/>
+							<ToolbarSpacer />
+							<Button icon="sap-icon://settings"/>
+							<Button icon="sap-icon://drop-down-list" />
+						</Toolbar>
+					</f:toolbar>
+					<f:layout>
+						<f:ResponsiveGridLayout singleContainerFullSize="true"/>
+					</f:layout>
+					<f:formContainers>
+						<f:FormContainer>
+							<f:formElements>
+								<f:FormElement label="Id">
+									<f:fields>
+										<Input id="id" value="1" enabled="true" editable="false"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="Nome">
+									<f:fields>
+										<Input id="nome" value="Fulano de Tal"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="Email">
+									<f:fields>
+										<Input id="email" value="fulano@de.tal"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="Login">
+									<f:fields>
+										<Input id="login" value="fulano"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="Senha">
+									<f:fields>
+										<Input id="senha" value="1234567890" type="Password"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="Grupo">
+									<f:fields>
+										<Select id="grupo" width="100%" selectedKey="{chave}">
+											<items>
+												<core:Item text="Selecionar" key=""/>
+												<core:Item text="Administrador" key="ADM"/>
+												<core:Item text="Usuário" key="USR"/>
+												<core:Item text="Visitante" key="VST"/>
+											</items>
+										</Select>
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+					</f:formContainers>
+				</f:Form>
+			</VBox>
+		</content>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button icon="sap-icon://accept" type="Accept" tooltip="Salvar"/>
+				<Button icon="sap-icon://cancel" type="Reject"/>
+				<Button icon="sap-icon://add-document"/>
+				<Button icon="sap-icon://action"/>
+			</Toolbar>
+		</footer>
+  </Page>
+</mvc:View>

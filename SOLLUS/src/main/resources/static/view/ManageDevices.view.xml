@@ -1,0 +1,69 @@
+<mvc:View controllerName="Testing.controller.ManageUsers" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" height="100%" displayBlock="true">
+	<Page title="Equipamentos">
+		<headerContent>
+			<Button text="to home" press="onButtonPress" />
+		</headerContent>
+		<content>
+			<VBox class="sapUiSmallMargin">
+				<f:Form id="FormToolbar" editable="true" ariaLabelledBy="Title1">
+					<f:toolbar>
+						<Toolbar id="TB1">
+							<Title id="Title1" text="Alterar equipamento" level="H4" titleStyle="H4"/>
+							<ToolbarSpacer />
+							<Button icon="sap-icon://settings"/>
+							<Button icon="sap-icon://drop-down-list" />
+						</Toolbar>
+					</f:toolbar>
+					<f:layout>
+						<f:ResponsiveGridLayout singleContainerFullSize="true"/>
+					</f:layout>
+					<f:formContainers>
+						<f:FormContainer>
+							<f:formElements>
+								<f:FormElement label="Id">
+									<f:fields>
+										<Input id="id" value="1" enabled="true" editable="false"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="Identificação">
+									<f:fields>
+										<Input id="nome" value="Bistrô do Alá,7698,100,004356"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="Modelo">
+									<f:fields>
+										<Input id="modelo" value="Datalogger low power"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="Serial">
+									<f:fields>
+										<Input id="seriall" value="A43F67"/>
+									</f:fields>
+								</f:FormElement>								
+								<f:FormElement label="Situação">
+									<f:fields>
+										<Select id="grupo" width="100%" selectedKey="{chave}">
+											<items>
+												<core:Item text="Selecionar" key=""/>
+												<core:Item text="Ativo" key="ADM"/>
+												<core:Item text="Inativo" key="USR"/>
+												<core:Item text="Manutenção" key="VST"/>
+											</items>
+										</Select>
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+					</f:formContainers>
+				</f:Form>
+			</VBox>
+		</content>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button icon="sap-icon://accept" type="Accept" tooltip="Salvar"/>
+				<Button icon="sap-icon://cancel" type="Reject" tooltip="Cancelar"/>				
+			</Toolbar>
+		</footer>
+  </Page>
+</mvc:View>

@@ -1,0 +1,10 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" 
+ controllerName="Testing.controller.Home" displayBlock="true">
+  <Page title="Home">
+    <headerContent>
+            <Button text="to route" press="onButtonPress" />
+        </headerContent>
+    <content>
+    </content>
+  </Page>
+</mvc:View>

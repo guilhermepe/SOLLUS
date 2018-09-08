@@ -1,0 +1,43 @@
+<mvc:View
+	controllerName="Testing.controller.App"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" 
+  xmlns:t="sap.tnt"
+	xmlns:u="sap.ui.unified"
+	class="sapUiSizeCompact"
+	displayBlock="true">
+	<u:Shell id="appShell" icon="logo.png">
+		<u:headItems>
+			<u:ShellHeadItem tooltip="Menu" icon="sap-icon://menu2" press="handlePressConfiguration" />
+			<u:ShellHeadItem tooltip="Home" icon="sap-icon://home" visible="true" press="handlePressHome" />
+		</u:headItems>
+		<u:user>
+			<u:ShellHeadUserItem id="openMenu" image="sap-icon://person-placeholder" username="{/userName}" press="handleUserItemPressed" />
+		</u:user>
+		<u:paneContent>
+			<t:NavigationList id="navigationList">				
+					<t:NavigationListItem text="Usuários" icon="sap-icon://user-edit" expanded="false">
+						<t:NavigationListItem id="NewUser" text="Novo Usuário" select="handleNavigationListItemPressed"/>
+						<t:NavigationListItem id="ManageUsers" text="Gestão de Usuários" select="handleNavigationListItemPressed"/>
+					</t:NavigationListItem>
+					<t:NavigationListItem text="Equipamentos" icon="sap-icon://blank-tag" expanded="false">
+						<t:NavigationListItem id="NewDevice" text="Novo Equipamento" select="handleNavigationListItemPressed"/>
+						<t:NavigationListItem id="ManageDevices" text="Gestão de Equipamentos" select="handleNavigationListItemPressed"/>
+					</t:NavigationListItem>
+					<t:NavigationListItem text="Conta" icon="sap-icon://batch-payments" expanded="false">
+						<t:NavigationListItem id="NewAccount" text="Nova Conta" select="handleNavigationListItemPressed"/>
+						<t:NavigationListItem id="ManageAccounts" text="Gestão de Contas" select="handleNavigationListItemPressed"/>
+					</t:NavigationListItem>
+					<t:NavigationListItem text="Relatórios" icon="sap-icon://appointment" expanded="false">
+						<t:NavigationListItem id="NewReport" text="Novo Relatório" select="handleNavigationListItemPressed"/>
+						<t:NavigationListItem id="ManageReports" text="Gerar Relatório" select="handleNavigationListItemPressed"/>
+					</t:NavigationListItem>					
+					<t:NavigationListItem text="Leituras" icon="sap-icon://activity-2" expanded="false">
+						<t:NavigationListItem id="QueryReadings" text="Consultar Leituras" select="handleNavigationListItemPressed"/>
+						<t:NavigationListItem id="QueryHistory" text="Consultar Histórico" select="handleNavigationListItemPressed"/>
+					</t:NavigationListItem>
+			</t:NavigationList>
+		</u:paneContent>
+	</u:Shell>
+</mvc:View>
