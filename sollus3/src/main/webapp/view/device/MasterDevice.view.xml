@@ -7,13 +7,20 @@
 		showHeader="false">
 		<List
 			id="masterDeviceList"
-			items="{side>/masterSettings}"
-			mode="SingleSelectMaster"
-			selectionChange="onMasterPressed">
-			<StandardListItem
-				title="{side>title}"
-				type="Navigation"
-				selected="{= ${device>/system/phone} ? false : ${side>selected}}"/>
+			items="{/Equipamentos}">
+			<headerToolbar>
+				<Toolbar>
+					<Title text="Equipamentos"/>
+					<ToolbarSpacer/>
+					<SearchField width="50%" search="onFilterProducts"/>
+				</Toolbar>
+			</headerToolbar>			
+			<items>
+				<ObjectListItem
+					title="{Nome}"
+					number="{Numeroserie}"
+					intro="{DataHoraUltimaLeitura}" />
+			</items>
 		</List>
 	</Page>
 </mvc:View>
