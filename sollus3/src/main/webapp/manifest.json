@@ -8,6 +8,15 @@
 		"description": "{{appDescription}}",
 		"applicationVersion": {
 			"version": "1.0.0"
+		},
+		"dataSources": {
+			"odata": {
+				"uri": "odata.svc/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			}
 		}
 	},
 	"sap.ui": {
@@ -58,6 +67,13 @@
 			"customer": {
 				"type": "sap.ui.model.json.JSONModel",
 				"uri": "model/customers.json"
+			},
+			"": {
+				"dataSource": "odata",
+				"settings": {
+					"defaultBindingMode": "TwoWay",
+					"json": true
+				}
 			}
 		},
 		"routing": {
