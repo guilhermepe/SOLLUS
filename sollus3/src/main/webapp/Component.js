@@ -1,32 +1,43 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
-	"sap/ui/Device",
-	"com/guiper/model/models"
-], function(UIComponent, Device, models) {
+	"com/guiper/sollus/model/models",
+	"sap/ui/model/resource/ResourceModel"
+], function (UIComponent, models) {
 	"use strict";
-
-	return UIComponent.extend("com.guiper.Component", {
-
+	return UIComponent.extend("com.guiper.sollus.Component", {
 		metadata: {
 			manifest: "json"
 		},
-
-		/**
-		 * The component is initialized by UI5 automatically during the startup of the app and calls the init method once.
-		 * @public
-		 * @override
-		 */
-		init: function() {
-			// call the base component's init function
+		init: function () {
+			// call the init function of the parent
 			UIComponent.prototype.init.apply(this, arguments);
 
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
 
-            // create the views based on the url/hash
-            this.getRouter().initialize();
-		
+			// create the views based on the url/hash
+			this.getRouter().initialize();
+		},
+
+		myNavBack: function () {
+			var oHistory = sap.ui.core.routing.History.getInstance();
+			var oPrevHash = oHistory.getPreviousHash();
+			if (oPrevHash !== undefined) {
+				window.history.go(-1);
+			} else {
+				this.getRouter().navTo("masterSettings", {}, true);
+			}
+		},
+
+		getContentDensityClass: function () {
+			if (!this._sContentDensityClass) {
+				if (!sap.ui.Device.support.touch){
+					this._sContentDensityClass = "sapUiSizeCompact";
+				} else {
+					this._sContentDensityClass = "sapUiSizeCozy";
+				}
+			}
+			return this._sContentDensityClass;
 		}
 	});
-
 });
