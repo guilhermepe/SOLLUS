@@ -1,5 +1,5 @@
 <mvc:View
-    controllerName="com.penninkhof.odata.controller.Main"
+    controllerName="com.guiper.controller.Main"
     xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
     xmlns:smartTable="sap.ui.comp.smarttable"

@@ -4,7 +4,7 @@ sap.ui.define([
 ], function (Controller, History) {
 	"use strict";
 
-	return Controller.extend("com.penninkhof.odata.controller.BaseController", {
+	return Controller.extend("com.guiper.controller.BaseController", {
 
 		getRouter : function () {
 			return sap.ui.core.UIComponent.getRouterFor(this);

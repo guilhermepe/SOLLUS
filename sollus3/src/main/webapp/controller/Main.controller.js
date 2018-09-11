@@ -1,11 +1,11 @@
 sap.ui.define([
-	"com/penninkhof/odata/controller/BaseController",
+	"com/guiper/controller/BaseController",
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator"
 ], function(Controller, Filter, FilterOperator) {
 	"use strict";
 
-	return Controller.extend("com.penninkhof.odata.controller.Main", {
+	return Controller.extend("com.guiper.controller.Main", {
 
 		onInit: function() {
 			this.ui = new sap.ui.model.json.JSONModel({count: 0});

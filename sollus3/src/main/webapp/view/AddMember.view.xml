@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="com.penninkhof.odata.controller.AddMember"
+	controllerName="com.guiper.controller.AddMember"
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form"

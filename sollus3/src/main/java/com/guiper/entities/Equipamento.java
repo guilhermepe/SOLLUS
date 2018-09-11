@@ -108,7 +108,7 @@ public class Equipamento implements Serializable {
         this.nome = nome;
     }
     
-    
+    //Ascessors
 
     public long getId() {
         return id;
