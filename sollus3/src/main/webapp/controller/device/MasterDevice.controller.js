@@ -1,14 +1,16 @@
 sap.ui.define([
 	'com/guiper/sollus/controller/BaseController',
 	'sap/m/MessageToast',
-	'sap/ui/model/json/JSONModel'
-], function (BaseController, MessageToast, JSONModel) {
+	'sap/ui/model/json/JSONModel',
+	'sap/ui/model/Filter',
+	'sap/ui/model/FilterOperator'
+], function (BaseController, MessageToast, JSONModel, Filter, FilterOperator) {
 	"use strict";
-	return BaseController.extend("com.guiper.sollus.controller.device.MasterSettings", {
+	return BaseController.extend("com.guiper.sollus.controller.settings.MasterSettings", {
 
 		onInit: function () {
 			var oViewModel = new JSONModel({
-					currentUser: "Administrador",
+					currentUser: "Administrator",
 					lastLogin: new Date(Date.now() - 86400000)
 				});
 
@@ -42,6 +44,22 @@ sap.ui.define([
 		},
 		onNavButtonPress: function  () {
 			this.getOwnerComponent().myNavBack();
+		},
+		onFilterDevices : function (oEvent) {
+
+			// build filter array
+			var aFilter = [], sQuery = oEvent.getParameter("query"),
+				// retrieve list control
+				oList = this.getView().byId("masterDeviceList"),
+				// get binding for aggregation 'items'
+				oBinding = oList.getBinding("items");
+
+			if (sQuery) {
+				aFilter.push(new Filter("Nome", FilterOperator.Contains, sQuery));
+			}
+			// apply filter. an empty filter array simply removes the filter
+			// which will make all entries visible again
+			oBinding.filter(aFilter);
 		}
 	});
 });

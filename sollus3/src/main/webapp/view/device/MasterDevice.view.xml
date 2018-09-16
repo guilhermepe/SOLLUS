@@ -18,7 +18,6 @@
 			<items>
 				<ObjectListItem
 					title="{Nome}"
-
 					intro="{
 						parts:	[
 							'i18n>lastSeen',
