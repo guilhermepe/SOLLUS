@@ -18,6 +18,8 @@
 			<items>
 				<ObjectListItem
 					title="{Nome}"
+					type="{= ${Nome} ? 'Active' : 'Inactive'}"
+					press="onSelectionChange"
 					intro="{
 						parts:	[
 							'i18n>lastSeen',
@@ -27,10 +29,10 @@
 										relativeScale:'auto'}
 										}],
 						formatter: 'jQuery.sap.formatMessage'							
-						}"
-															
+						}"															
 					 />
 			</items>
+			
 		</List>
 	</Page>
 </mvc:View>

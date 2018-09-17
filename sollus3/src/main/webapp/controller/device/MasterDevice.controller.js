@@ -17,22 +17,51 @@ sap.ui.define([
 			this.setModel(oViewModel, "view");
 		},
 
-		onMasterPressed: function (oEvent) {
-			var oContext = oEvent.getParameter("listItem").getBindingContext("side");
-			var sPath = oContext.getPath() + "/selected";
-			oContext.getModel().setProperty(sPath, true);
-			var sSelectedMasterElement = oContext.getProperty("title");
-			var sKey = oContext.getProperty("key");
-			switch (sSelectedMasterElement) {
-				case "System Settings": {
-					this.getRouter().navTo(sKey);
-					break;
-				}
-				default: {
-					MessageToast.show(sSelectedMasterElement + " was pressed");
-					break;
-				}
-			}
+		/**
+		 * Event handler for the list selection event
+		 * @param {sap.ui.base.Event} oEvent the list selectionChange event
+		 * @public
+		 */
+		onSelectionChange : function (oEvent) {
+			// get the list item, either from the listItem parameter or from the event's source itself (will depend on the device-dependent mode).
+			this._showDetail(oEvent.getParameter("listItem") || oEvent.getSource());
+			
+		},
+
+		/**
+		 * If the master route was hit (empty hash) we have to set
+		 * the hash to to the first item in the list as soon as the
+		 * listLoading is done and the first item in the list is known
+		 * @private
+		 */
+		_onMasterMatched :  function() {
+			this.getOwnerComponent().oListSelector.oWhenListLoadingIsDone.then(
+				function (mParams) {
+					if (mParams.list.getMode() === "None") {
+						return;
+					}
+					var sObjectId = mParams.firstListitem.getBindingContext().getProperty("OrderID");
+					this.getRouter().navTo("object", {objectId : sObjectId}, true);
+				}.bind(this),
+				function (mParams) {
+					if (mParams.error) {
+						return;
+					}
+					this.getRouter().getTargets().display("detailNoObjectsAvailable");
+				}.bind(this)
+			);
+		},
+
+		/**
+		 * Shows the selected item on the detail page
+		 * @param {sap.m.ObjectListItem} oItem selected Item
+		 * @private
+		 */
+		_showDetail : function (oItem) {			
+			console.log(oItem.getBindingContext().sPath);
+			this.getRouter().navTo("object", {
+			objectId : oItem.getBindingContext().sPath
+			}, bReplace);
 		},
 
 		onSavePressed: function () {
@@ -59,7 +88,7 @@ sap.ui.define([
 			}
 			// apply filter. an empty filter array simply removes the filter
 			// which will make all entries visible again
-			oBinding.filter(aFilter);
+			oBinding.filter(aFilter);			
 		}
 	});
 });

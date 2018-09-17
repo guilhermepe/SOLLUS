@@ -6,7 +6,7 @@
 	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc">
 	<m:Page
-		title="{i18n>systemSettingsTitle}"
+		title="{i18n>deviceSettingsTitle}"
 		showHeader="{device>/system/phone}"
 		showNavButton="{device>/system/phone}"
 		navButtonPress="onNavButtonPress">
@@ -14,8 +14,7 @@
 			id="objectPageLayout">
 			<headerTitle>
 				<ObjectPageHeader
-					objectTitle="{i18n>systemSettingsTitle}"
-					objectSubtitle="{i18n>systemSettingsDescriptionTitle}">
+					objectTitle="{i18n>deviceSettingsTitle}">
 					<actions>
 						<ObjectPageHeaderActionButton
 							id="save"
@@ -35,7 +34,7 @@
 				<m:MessageStrip
 					text="{
 						parts: [
-							'i18n>systemSettingsLastLoginTitle',
+							'i18n>deviceName',
 							'view>/currentUser',
 							'view>/lastLogin'
 						],
