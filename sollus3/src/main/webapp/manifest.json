@@ -116,6 +116,14 @@
 					"pattern": "Statistics",
 					"name": "statistics",
 					"target": "statistics"
+				},
+				{
+					"pattern": "detailDevice/{Id}",
+					"name": "detailDevice",
+					"target": [
+						"detailDevice",
+						"masterDevice"
+					]
 				}
 			],
 			"targets": {

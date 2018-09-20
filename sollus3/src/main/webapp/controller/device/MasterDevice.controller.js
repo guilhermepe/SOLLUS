@@ -6,7 +6,7 @@ sap.ui.define([
 	'sap/ui/model/FilterOperator'
 ], function (BaseController, MessageToast, JSONModel, Filter, FilterOperator) {
 	"use strict";
-	return BaseController.extend("com.guiper.sollus.controller.settings.MasterSettings", {
+	return BaseController.extend("com.guiper.sollus.controller.device.MasterDevice", {
 
 		onInit: function () {
 			var oViewModel = new JSONModel({
@@ -40,8 +40,8 @@ sap.ui.define([
 					if (mParams.list.getMode() === "None") {
 						return;
 					}
-					var sObjectId = mParams.firstListitem.getBindingContext().getProperty("OrderID");
-					this.getRouter().navTo("object", {objectId : sObjectId}, true);
+					var sObjectId = mParams.firstListitem.getBindingContext().getProperty("Id");
+					this.getRouter().navTo("detailDevice", {objectId : sObjectId}, true);
 				}.bind(this),
 				function (mParams) {
 					if (mParams.error) {
@@ -58,10 +58,8 @@ sap.ui.define([
 		 * @private
 		 */
 		_showDetail : function (oItem) {			
-			console.log(oItem.getBindingContext().sPath);
-			this.getRouter().navTo("object", {
-			objectId : oItem.getBindingContext().sPath
-			}, bReplace);
+			console.log(oItem.getBindingContext().getProperty("Id"));			
+			this.getRouter().navTo("detailDevice",{Id:oItem.getBindingContext().getProperty("Id")}, true);
 		},
 
 		onSavePressed: function () {
@@ -88,7 +86,9 @@ sap.ui.define([
 			}
 			// apply filter. an empty filter array simply removes the filter
 			// which will make all entries visible again
-			oBinding.filter(aFilter);			
+			oBinding.filter(aFilter);
+			
+			this._onMasterMatched();
 		}
 	});
 });
