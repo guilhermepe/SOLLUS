@@ -2,8 +2,9 @@
 sap.ui.define([
     'com/guiper/sollus/controller/BaseController',
     'sap/m/MessageToast',
+    'sap/m/MessageBox',
     'sap/ui/model/json/JSONModel'
-], function (BaseController, JSONModel) {
+], function (BaseController, MessageBox, JSONModel) {
     "use strict";
 
     return BaseController.extend("com.guiper.sollus.controller.device.DetailDevice", {
@@ -68,9 +69,7 @@ sap.ui.define([
          * 
          */
         _onObjectMatched: function (oEvent,oController) {
-            console.log("_onObjectMatched",oEvent);                      
             var sObjectId = oEvent.getParameter("arguments").Id; 
-            console.log(sObjectId);
             oController.getView().getModel().metadataLoaded().then(function () {
                 var sObjectPath = oController.getView().getModel().createKey("Equipamentos", {
                     Id: sObjectId
@@ -87,8 +86,6 @@ sap.ui.define([
          * @private
          */
         _bindView: function (sObjectPath) {
-
-            console.log("_bindView");
             // Set busy indicator during view binding
             var oViewModel = this.getModel("detailDevice");
 
@@ -110,10 +107,8 @@ sap.ui.define([
         },
 
         _onBindingChange: function () {
-            console.log("_onBindingChange");
-
-            var oView = this.getView(),
-                oElementBinding = oView.getElementBinding();
+            var oView = this.getView();
+            var oElementBinding = oView.getElementBinding();
 
             // No data for the binding
             if (!oElementBinding.getBoundContext()) {
@@ -134,7 +129,7 @@ sap.ui.define([
                 sObjectName = oObject.Name,
                 oViewModel = this.getModel("detailDevice");
 
-            this.getOwnerComponent().oListSelector.selectAListItem(sPath);
+            //this.getOwnerComponent().oListSelector.selectAListItem(sPath);
 
             oViewModel.setProperty("/shareSendEmailSubject",
                 oResourceBundle.getText("shareSendEmailObjectSubject", [sObjectId]));
@@ -143,7 +138,6 @@ sap.ui.define([
         },
 
         _onMetadataLoaded: function () {
-            console.log("_onMetadataLoaded")
             // Store original busy indicator delay for the detail view
             var iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay();
                 this.oViewModel = this.getModel("detailDevice");
@@ -172,7 +166,19 @@ sap.ui.define([
             } else {
                 this.getRouter().navTo("master", {}, true);
             }
-        }
+        },
+
+        onSavePressed: function(event) {
+            console.log(this);
+			this.getView().getModel().submitChanges({
+				success: function() {
+					MessageBox.success.show();					
+				},
+				error: function(error) {
+					MessageBox.error.show();
+				}
+			});
+		}
 
     });
 

@@ -70,7 +70,7 @@
 												id="firstNameInput"
 												type="Text"
 												width="100%"
-												value="Antônio"/>
+												value="{Descricao}"/>
 											<m:Label
 												labelFor="lastNameInput"
 												text="{i18n>ownerLastName}"/>
