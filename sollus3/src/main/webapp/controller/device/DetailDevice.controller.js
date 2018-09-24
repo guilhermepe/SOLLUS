@@ -4,7 +4,7 @@ sap.ui.define([
     'sap/m/MessageToast',
     'sap/m/MessageBox',
     'sap/ui/model/json/JSONModel'
-], function (BaseController, MessageBox, JSONModel) {
+], function (BaseController, MessageToast,MessageBox, JSONModel) {
     "use strict";
 
     return BaseController.extend("com.guiper.sollus.controller.device.DetailDevice", {
@@ -34,6 +34,8 @@ sap.ui.define([
             this.getRouter().getRoute("detailDevice").attachPatternMatched(this,this._onObjectMatched);
 
             this.getOwnerComponent().getModel().metadataLoaded().then(this._onMetadataLoaded.bind(this));
+
+            console.log(this.getView().byId("deviceModelInput").setProperty("selectedItemId",41));
         },
 
         /* =========================================================== */
@@ -43,7 +45,7 @@ sap.ui.define([
         /**
          * Event handler when the share by E-Mail button has been clicked
          * @public
-         */
+       
         onShareEmailPress: function () {
             var oViewModel = this._getModel("detailDevice");
 
@@ -53,6 +55,8 @@ sap.ui.define([
                 oViewModel.getProperty("/shareSendEmailMessage")
             );
         },
+
+        */
 
 
 
@@ -119,7 +123,7 @@ sap.ui.define([
                 //this.getOwnerComponent().oListSelector.clearMasterListSelection();
                 return;
             } else {
-                console.log(oElementBinding);
+                //console.log(oElementBinding);
             }
 
             var sPath = oElementBinding.getPath(),
@@ -129,12 +133,13 @@ sap.ui.define([
                 sObjectName = oObject.Name,
                 oViewModel = this.getModel("detailDevice");
 
-            //this.getOwnerComponent().oListSelector.selectAListItem(sPath);
+            /*this.getOwnerComponent().oListSelector.selectAListItem(sPath);
 
             oViewModel.setProperty("/shareSendEmailSubject",
                 oResourceBundle.getText("shareSendEmailObjectSubject", [sObjectId]));
             oViewModel.setProperty("/shareSendEmailMessage",
                 oResourceBundle.getText("shareSendEmailObjectMessage", [sObjectName, sObjectId, location.href]));
+                */
         },
 
         _onMetadataLoaded: function () {
@@ -168,16 +173,25 @@ sap.ui.define([
             }
         },
 
-        onSavePressed: function(event) {
-            console.log(this);
+        onSavePressed: function(event) {            
 			this.getView().getModel().submitChanges({
 				success: function() {
-					MessageBox.success.show();					
+                    MessageToast.show("Alterações Salvas");
+					//MessageBox.success.show();					
 				},
 				error: function(error) {
-					MessageBox.error.show();
+					MessageToast.show("Não foi possível salvar");
 				}
 			});
+        }, 
+        
+        onCancelPressed: function(event) {		
+            this.getView().getModel().refresh(true);
+            MessageToast.show("Alterações descartadas");            
+			
+        },
+        handleLoadItems: function(oControlEvent) {
+			oControlEvent.getSource().getBinding("items").resume();
 		}
 
     });

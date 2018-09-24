@@ -50,13 +50,13 @@
 				<ObjectPageSection>
 				<subSections>
 					<ObjectPageSubSection
-						id="shopOwnerId"
-						title="{i18n>shopOwnerTitle}">
+						id="generalSettingsId"
+						title="{i18n>generalSettingsTitle}">
 						<blocks>
 							<ObjectPageLazyLoader
-								id="shopOwnerLazyLoader">
+								id="generalSettingsLazyLoader">
 								<f:SimpleForm
-									title="{i18n>editOwnerDetailTitle}"
+									title="{i18n>generalSettingsDetailTitle}"
 									columnsL="2"
 									columnsM="2"
 									editable="true"
@@ -64,13 +64,13 @@
 									<f:content>
 										<core:Title text="{i18n>ownerAddress}"/>
 											<m:Label
-												text="{i18n>ownerFirstName}"
-												labelFor="firstNameInput"/>
+												text="{i18n>deviceName}"
+												labelFor="deviceNameInput"/>
 											<m:Input
-												id="firstNameInput"
+												id="deviceNameInput"
 												type="Text"
 												width="100%"
-												value="{Descricao}"/>
+												value="{Nome}"/>
 											<m:Label
 												labelFor="lastNameInput"
 												text="{i18n>ownerLastName}"/>
@@ -80,13 +80,20 @@
 												width="100%"
 												value="Nunes"/>
 											<m:Label
-												labelFor="addressStreetInput"
+												labelFor="deviceModelInput"
 												text="{i18n>ownerStreet}"/>
-											<m:Input
-												id="addressStreetInput"
-												type="Text"
-												width="100%"
-												value="Midtown Street 23"/>
+											<m:ComboBox
+												id="deviceModelInput"
+												selectedKey="{IdModelo}"
+												items="{
+													path: '/ModeloEquipamentos',
+													sorter: { path: 'Nome' },
+													suspended: false													
+												}"												
+												>												
+												<core:ListItem key="{Id}" text="{Nome}"/>
+												
+											</m:ComboBox>												
 											<m:Label
 												labelFor="addressTownInput"
 												text="{i18n>ownerZipCode}"/>
@@ -138,13 +145,13 @@
 				<ObjectPageSection>
 					<subSections>
 						<ObjectPageSubSection
-							id="shopConfigurationId"
-							title="{i18n>shopConfigurationTitle}">
+							id="portsConfigurationId"
+							title="{i18n>portsConfigurationTitle}">
 							<blocks>
 								<ObjectPageLazyLoader
-									id="shopConfigurationLazyLoader">
+									id="portsConfigurationLazyLoader">
 									<f:SimpleForm
-										title="{i18n>editSystemConfigurationTitle}"
+										title="{i18n>editPortsConfigurationTitle}"
 										columnsL="2"
 										columnsM="2"
 										editable="true"
@@ -198,6 +205,78 @@
 												<m:Input
 													type="Email"
 													id="storeMailInput"
+													width="100%"
+													value="info@myshop.com"/>
+										</f:content>
+									</f:SimpleForm>
+								</ObjectPageLazyLoader>
+							</blocks>
+						</ObjectPageSubSection>
+					</subSections>
+				</ObjectPageSection>
+				<ObjectPageSection>
+					<subSections>
+						<ObjectPageSubSection
+							id="alarmsConfigurationId"
+							title="{i18n>alarmsConfigurationTitle}">
+							<blocks>
+								<ObjectPageLazyLoader
+									id="alarmsConfigurationLazyLoader">
+									<f:SimpleForm
+										title="{i18n>editAlarmsConfigurationTitle}"
+										columnsL="2"
+										columnsM="2"
+										editable="true"
+										layout="ResponsiveGridLayout" >
+										<f:content>
+											<core:Title text="{i18n>storeSettings}" />
+												<m:Label
+													labelFor="storeNameInput2"
+													text="{i18n>storeName}"/>
+												<m:Input
+													id="storeNameInput2"
+													type="Text"
+													width="100%"
+													value="My Shop"/>
+												<m:Label
+													labelFor="storeDefaultLanguageInput2"
+													text="{i18n>storeDefaultLanguage}"/>
+												<m:Input
+													id="storeDefaultLanguageInput2"
+													type="Text"
+													width="100%"
+													value="English"/>
+												<m:Label
+													labelFor="storeCodeInput2"
+													text="{i18n>storeCode}"/>
+												<m:Input
+													id="storeCodeInput2"
+													type="Text"
+													width="100%"
+													value="R2D2-C3P0"/>
+											<core:Title text="{i18n>StoreContact}" />
+												<m:Label
+													labelFor="storeWebsiteInput2"
+													text="{i18n>storeWebSite}"/>
+												<m:Input
+													id="storeWebsiteInput2"
+													type="Url"
+													width="100%"
+													value="http://www.myshop.com"/>
+												<m:Label
+													labelFor="storePhoneNumberInput2"
+													text="{i18n>storePhone}"/>
+												<m:Input
+													type="Tel"
+													id="storePhoneNumberInput2"
+													width="100%"
+													value="+1 2345/6789"/>
+												<m:Label
+													labelFor="storeMailInput2"
+													text="{i18n>mail}"/>
+												<m:Input
+													type="Email"
+													id="storeMailInput2"
 													width="100%"
 													value="info@myshop.com"/>
 										</f:content>
