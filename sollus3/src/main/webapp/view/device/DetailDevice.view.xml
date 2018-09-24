@@ -72,16 +72,24 @@
 												width="100%"
 												value="{Nome}"/>
 											<m:Label
-												labelFor="lastNameInput"
-												text="{i18n>ownerLastName}"/>
+												labelFor="latitudeInput"
+												text="{i18n>latitudeInput}"/>
 											<m:Input
-												id="lastNameInput"
+												id="latitudeInput"
 												type="Text"
 												width="100%"
-												value="Nunes"/>
+												value="{Latitude}"/>
+											<m:Label
+												labelFor="longitudeInput"
+												text="{i18n>longitudeInput}"/>
+											<m:Input
+												id="longitudeInput"
+												type="Text"
+												width="100%"
+												value="{Longitude}"/>
 											<m:Label
 												labelFor="deviceModelInput"
-												text="{i18n>ownerStreet}"/>
+												text="{i18n>deviceModelInput}"/>
 											<m:ComboBox
 												id="deviceModelInput"
 												selectedKey="{IdModelo}"
@@ -91,25 +99,28 @@
 													suspended: false													
 												}"												
 												>												
-												<core:ListItem key="{Id}" text="{Nome}"/>
-												
+												<core:ListItem key="{Id}" text="{Nome}"/>												
 											</m:ComboBox>												
 											<m:Label
-												labelFor="addressTownInput"
-												text="{i18n>ownerZipCode}"/>
-											<m:Input
-												id="addressTownInput"
-												type="Text"
+												labelFor="installDateInput"
+												text="{i18n>installDateInput}"/>
+											<m:DatePicker
+												id="installDateInput"
+												displayFormat="short"
 												width="100%"
-												value="12345 Newport"/>
+												value="{
+														path : 'DataInstalacao', 
+             											type : 'sap.ui.model.type.Date',
+             											formatOptions: { style : 'short'}
+													}"/>
 											<m:Label
-												labelFor="addressCountryInput"
-												text="{i18n>ownerCountry}"/>
-											<m:Input
-												id="addressCountryInput"
-												type="Text"
-												width="100%"
-												value="England"/>
+												labelFor="deviceEnableSwitch"
+												text="{i18n>deviceEnableSwitch}"/>
+											<m:Switch
+												type="AcceptReject" 
+												state="true" 
+												enabled="true"
+												id="deviceEnableSwitch"/>
 										<core:Title text="{i18n>ownerContact}" />
 											<m:Label
 												labelFor="phoneNumberInput"
