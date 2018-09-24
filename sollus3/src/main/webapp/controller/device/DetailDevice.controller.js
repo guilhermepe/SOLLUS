@@ -35,7 +35,7 @@ sap.ui.define([
 
             this.getOwnerComponent().getModel().metadataLoaded().then(this._onMetadataLoaded.bind(this));
 
-            console.log(this.getView().byId("deviceModelInput").setProperty("selectedItemId",41));
+            
         },
 
         /* =========================================================== */
@@ -190,10 +190,7 @@ sap.ui.define([
             MessageToast.show("Alterações descartadas");            
 			
         },
-        handleLoadItems: function(oControlEvent) {
-			oControlEvent.getSource().getBinding("items").resume();
-		}
-
+       
     });
 
 }

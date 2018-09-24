@@ -57,8 +57,7 @@ sap.ui.define([
 		 * @param {sap.m.ObjectListItem} oItem selected Item
 		 * @private
 		 */
-		_showDetail : function (oItem) {			
-			console.log(oItem.getBindingContext().getProperty("Id"));			
+		_showDetail : function (oItem) {						
 			this.getRouter().navTo("detailDevice",{Id:oItem.getBindingContext().getProperty("Id")}, true);
 		},
 
