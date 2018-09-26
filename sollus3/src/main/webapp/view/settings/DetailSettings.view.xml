@@ -50,83 +50,81 @@
 				<subSections>
 					<ObjectPageSubSection
 						id="shopOwnerId"
-						title="{i18n>shopOwnerTitle}">
+						title="Seção 1">
 						<blocks>
 							<ObjectPageLazyLoader
 								id="shopOwnerLazyLoader">
 								<f:SimpleForm
-									title="{i18n>editOwnerDetailTitle}"
-									columnsL="2"
-									columnsM="2"
+									title="Conteúdo seção 1"
 									editable="true"
 									layout="ResponsiveGridLayout">
 									<f:content>
-										<core:Title text="{i18n>ownerAddress}"/>
+										<core:Title text="{Campos}"/>
 											<m:Label
-												text="{i18n>ownerFirstName}"
+												text="Campo"
 												labelFor="firstNameInput"/>
 											<m:Input
 												id="firstNameInput"
 												type="Text"
 												width="100%"
-												value="John"/>
+												value="Conteúdo Campo"/>
 											<m:Label
 												labelFor="lastNameInput"
-												text="{i18n>ownerLastName}"/>
+												text="Campo"/>
 											<m:Input
 												id="lastNameInput"
 												type="Text"
 												width="100%"
-												value="Doe"/>
+												value="Conteúdo campo"/>
 											<m:Label
 												labelFor="addressStreetInput"
-												text="{i18n>ownerStreet}"/>
+												text="Campo"/>
 											<m:Input
 												id="addressStreetInput"
 												type="Text"
 												width="100%"
-												value="Midtown Street 23"/>
+												value="Conteúdo campo"/>
 											<m:Label
 												labelFor="addressTownInput"
-												text="{i18n>ownerZipCode}"/>
+												text="Campo"/>
 											<m:Input
 												id="addressTownInput"
 												type="Text"
 												width="100%"
-												value="12345 Newport"/>
+												value="Conteúdo campo"/>
 											<m:Label
 												labelFor="addressCountryInput"
-												text="{i18n>ownerCountry}"/>
+												text="Campo"/>
 											<m:Input
 												id="addressCountryInput"
 												type="Text"
 												width="100%"
-												value="England"/>
-										<core:Title text="{i18n>ownerContact}" />
+												value="Conteúdo campo"/>
+										<core:Title text="Subtítulo" />
 											<m:Label
 												labelFor="phoneNumberInput"
-												text="{i18n>ownerMobile}"/>
+												text="Campo"/>
 											<m:Input
 												id="phoneNumberInput"
 												type="Tel"
 												width="100%"
-												value="+1 234 / 56789"/>
+												value="Conteúdo campo"/>
 											<m:Label
 												labelFor="faxNumberInput"
-												text="{i18n>ownerFax}"/>
+												text="Campo"/>
 											<m:Input
 												id="faxNumberInput"
 												type="Tel"
 												width="100%"
-												value="+1 987 / 654321"/>
+												value="Conteúdo campo"/>
 											<m:Label
 												labelFor="emailInput"
-												text="{i18n>mail}"/>
+												text="Campo"/>
 											<m:Input
 												id="emailInput"
 												type="Email"
 												width="100%"
-												value="john.doe@myshop.com"/>
+												value="Conteúdo campo"/>
 									</f:content>
 								</f:SimpleForm>
 							</ObjectPageLazyLoader>
@@ -138,67 +136,67 @@
 					<subSections>
 						<ObjectPageSubSection
 							id="shopConfigurationId"
-							title="{i18n>shopConfigurationTitle}">
+							title="Seção 2">
 							<blocks>
 								<ObjectPageLazyLoader
 									id="shopConfigurationLazyLoader">
 									<f:SimpleForm
-										title="{i18n>editSystemConfigurationTitle}"
+										title="Conteúdo da seção 2"
 										columnsL="2"
 										columnsM="2"
 										editable="true"
 										layout="ResponsiveGridLayout" >
 										<f:content>
-											<core:Title text="{i18n>storeSettings}" />
+											<core:Title text="Coluna 1 do form" />
 												<m:Label
 													labelFor="storeNameInput"
-													text="{i18n>storeName}"/>
+													text="Campos"/>
 												<m:Input
 													id="storeNameInput"
 													type="Text"
 													width="100%"
-													value="My Shop"/>
+													value="Conteúdo Campo"/>
 												<m:Label
 													labelFor="storeDefaultLanguageInput"
-													text="{i18n>storeDefaultLanguage}"/>
+													text="Campos"/>
 												<m:Input
 													id="storeDefaultLanguageInput"
 													type="Text"
 													width="100%"
-													value="English"/>
+													value="Conteúdo Campo"/>
 												<m:Label
-													labelFor="storeCodeInput"
+													labelFor="Campo"
 													text="{i18n>storeCode}"/>
 												<m:Input
 													id="storeCodeInput"
 													type="Text"
 													width="100%"
-													value="R2D2-C3P0"/>
+													value="Conteúdo Campo"/>
 											<core:Title text="{i18n>StoreContact}" />
 												<m:Label
 													labelFor="storeWebsiteInput"
-													text="{i18n>storeWebSite}"/>
+													text="Campo"/>
 												<m:Input
 													id="storeWebsiteInput"
 													type="Url"
 													width="100%"
-													value="http://www.myshop.com"/>
+													value="Conteúdo Campo"/>
 												<m:Label
 													labelFor="storePhoneNumberInput"
-													text="{i18n>storePhone}"/>
+													text="Telefone"/>
 												<m:Input
 													type="Tel"
 													id="storePhoneNumberInput"
 													width="100%"
-													value="+1 2345/6789"/>
+													value="51998009757"/>
 												<m:Label
 													labelFor="storeMailInput"
 													text="{i18n>mail}"/>
 												<m:Input
-													type="Email"
+													type="Campo"
 													id="storeMailInput"
 													width="100%"
-													value="info@myshop.com"/>
+													value="Conteúdo Campo"/>
 										</f:content>
 									</f:SimpleForm>
 								</ObjectPageLazyLoader>

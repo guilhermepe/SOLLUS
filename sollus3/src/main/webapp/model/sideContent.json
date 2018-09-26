@@ -24,17 +24,17 @@
 			"items": []
 		},
 		{
-			"title": "Statistics",
+			"title": "Estatísticas",
 			"icon": "sap-icon://line-chart",
 			"expanded": true,
 			"key": "statistics",
 			"items": [
 				{
-					"title": "Usage Statistics",
+					"title": "Estatísticas de uso",
 					"key": "Usage Statistics was pressed"
 				},
 				{
-					"title": "Order Statistics",
+					"title": "Estatísticas de medição",
 					"key": "Order Statistics was pressed"
 				}
 			]
@@ -42,40 +42,30 @@
 	],
 	"fixedNavigation": [
 		{
-			"title": "Important Links",
+			"title": "Links Importantes",
 			"icon": "sap-icon://chain-link",
-			"key": "Important Links was pressed"
+			"key": "Item \"Links Importantes\" acionado"
 		},
 		{
 			"title": "Legal",
 			"icon": "sap-icon://compare",
-			"key": "Legal was pressed"
+			"key": "Item \"Legal\" acionado"
 		}
 	],
 	"masterSettings": [
 		{
-			"title": "System Settings",
+			"title": "Configurações do sistema",
 			"key": "systemSettings",
 			"selected": true
 		},
 		{
-			"title": "Order Settings",
-			"key": "orderSettings",
+			"title": "Configurações do servidor",
+			"key": "serverSettings",
 			"selected": false
 		},
 		{
-			"title": "Supplier Settings",
-			"key": "supplierSettings",
-			"selected": false
-		},
-		{
-			"title": "Campaign Settings",
-			"key": "campaignSettings",
-			"selected": false
-		},
-		{
-			"title": "Shipping Settings",
-			"key": "shipping Settings",
+			"title": "Manutenção",
+			"key": "Maintenance",
 			"selected": false
 		}
 	]
