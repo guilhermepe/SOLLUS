@@ -64,6 +64,13 @@ public class Permissoes implements Serializable {
     public Permissoes() {
     }
 
+    @Override
+    public String toString() {
+        return "Permissoes[" + "id=" + id + ", reconhecerAlarme=" + reconhecerAlarme + ", historicoLeituras=" + historicoLeituras + ", historicoConexoes=" + historicoConexoes + ", historicoAlarmes=" + historicoAlarmes + ", cadastrarUsuario=" + cadastrarUsuario + ", editarUsuario=" + editarUsuario + ", excluirUsuario=" + excluirUsuario + ", cadastrarConta=" + cadastrarConta + ", excluirConta=" + excluirConta + ", cadastrar_equipamento=" + cadastrar_equipamento + ", editar_equipamento=" + editar_equipamento + ", excluir_equipamento=" + excluir_equipamento + ", envio_sms=" + envio_sms + ", acionar_saida=" + acionar_saida + ", habilitar_alarme_equip=" + habilitar_alarme_equip + ", idEquipamentos=" + idEquipamentos + ", mapa=" + mapa + ", mosaico=" + mosaico + ", historico_leituras_varias_portas=" + historico_leituras_varias_portas + ", idUsuario=" + idUsuario + ']';
+    }
+    
+    
+
     public Permissoes(int id, int reconhecerAlarme, int historicoLeituras, int historicoConexoes, int historicoAlarmes, int cadastrarUsuario, int editarUsuario, int excluirUsuario, int cadastrarConta, int excluirConta, int cadastrar_equipamento, int editar_equipamento, int excluir_equipamento, int envio_sms, int acionar_saida, int habilitar_alarme_equip, int idEquipamentos, int mapa, int mosaico, int historico_leituras_varias_portas, long idUsuario) {
         this.id = id;
         this.reconhecerAlarme = reconhecerAlarme;
