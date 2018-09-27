@@ -43,7 +43,7 @@ public class Equipamento implements Serializable {
     private float latitude;
     private float longitude;
     private int excluido;
-    private String numeroserie;
+    private String numeroSerie;
     @Column(name = "alarmesms")
     private int alarmeSms;
     @Column(name = "alarmehabilitado")
@@ -96,7 +96,7 @@ public class Equipamento implements Serializable {
 
     @Override
     public String toString() {
-        return "Equipamento[" + "id=" + id + ", contasId=" + contasId + ", nome=" + nome + ", ip=" + ip + ", habilitado=" + habilitado + ", idLocal=" + idLocal + ", idServidor=" + idServidor + ", emailAlarmeEq=" + emailAlarmeEq + ", tempoAlarmeEq=" + tempoAlarmeEq + ", login=" + login + ", senha=" + senha + ", latitude=" + latitude + ", longitude=" + longitude + ", excluido=" + excluido + ", numeroserie=" + numeroserie + ", alarmeSms=" + alarmeSms + ", alarmeHabilitado=" + alarmeHabilitado + ", dataHoraUltimaLeitura=" + dataHoraUltimaLeitura + ", fotoEquipamento=" + fotoEquipamento + ", idModelo=" + idModelo + ", idProtocolo=" + idProtocolo + ", portaTcp=" + portaTcp + ", idStatus=" + idStatus + ", idTipoConexao=" + idTipoConexao + ", timeOutLeitura=" + timeOutLeitura + ", timeOutConexao=" + timeOutConexao + ", intervaloLeitura=" + intervaloLeitura + ", numRetentivas=" + numRetentivas + ", dataHora=" + dataHora + ", dataInstalacao=" + dataInstalacao + ", dataCriacao=" + dataCriacao + ", enderecoAgente=" + enderecoAgente + ", descricao=" + descricao + ", keepAlive=" + keepAlive + ", apagarLogs=" + apagarLogs + ", hexFirmware=" + hexFirmware + ", versaoFirmware=" + versaoFirmware + ", versaoHardware=" + versaoHardware + ']';
+        return "Equipamento[" + "id=" + id + ", contasId=" + contasId + ", nome=" + nome + ", ip=" + ip + ", habilitado=" + habilitado + ", idLocal=" + idLocal + ", idServidor=" + idServidor + ", emailAlarmeEq=" + emailAlarmeEq + ", tempoAlarmeEq=" + tempoAlarmeEq + ", login=" + login + ", senha=" + senha + ", latitude=" + latitude + ", longitude=" + longitude + ", excluido=" + excluido + ", numeroserie=" + numeroSerie + ", alarmeSms=" + alarmeSms + ", alarmeHabilitado=" + alarmeHabilitado + ", dataHoraUltimaLeitura=" + dataHoraUltimaLeitura + ", fotoEquipamento=" + fotoEquipamento + ", idModelo=" + idModelo + ", idProtocolo=" + idProtocolo + ", portaTcp=" + portaTcp + ", idStatus=" + idStatus + ", idTipoConexao=" + idTipoConexao + ", timeOutLeitura=" + timeOutLeitura + ", timeOutConexao=" + timeOutConexao + ", intervaloLeitura=" + intervaloLeitura + ", numRetentivas=" + numRetentivas + ", dataHora=" + dataHora + ", dataInstalacao=" + dataInstalacao + ", dataCriacao=" + dataCriacao + ", enderecoAgente=" + enderecoAgente + ", descricao=" + descricao + ", keepAlive=" + keepAlive + ", apagarLogs=" + apagarLogs + ", hexFirmware=" + hexFirmware + ", versaoFirmware=" + versaoFirmware + ", versaoHardware=" + versaoHardware + ']';
     }
     
     //Constructors
@@ -222,12 +222,12 @@ public class Equipamento implements Serializable {
         this.excluido = excluido;
     }
 
-    public String getNumeroserie() {
-        return numeroserie;
+    public String getNumeroSerie() {
+        return numeroSerie;
     }
 
-    public void setNumeroserie(String numeroserie) {
-        this.numeroserie = numeroserie;
+    public void setNumeroSerie(String numeroSerie) {
+        this.numeroSerie = numeroSerie;
     }
 
     public int getAlarmeSms() {
@@ -412,43 +412,7 @@ public class Equipamento implements Serializable {
 
     public void setVersaoHardware(String versaoHardware) {
         this.versaoHardware = versaoHardware;
-    }
-    
+    }   
     
 
 }
-
-/**
- * CREATE TABLE `equipamento` ( `id` bigint(20) NOT NULL AUTO_INCREMENT,
- * `contas_id` bigint(20) NOT NULL, `nome` char(50) NOT NULL DEFAULT 'Sem Nome',
- * `ip` char(100) DEFAULT NULL, `habilitado` tinyint(3) unsigned NOT NULL
- * DEFAULT '1', `idLocal` bigint(20) DEFAULT NULL, `idServidor` tinyint(3)
- * unsigned DEFAULT '1', `emailAlarmeEq` tinyint(3) unsigned NOT NULL DEFAULT
- * '1', `tempoAlarmeEq` int(10) unsigned NOT NULL DEFAULT '3600000', `login`
- * char(35) DEFAULT NULL, `senha` char(15) DEFAULT NULL, `latitude` float NOT
- * NULL DEFAULT '0', `longitude` float NOT NULL DEFAULT '0', `excluido`
- * tinyint(3) unsigned NOT NULL DEFAULT '0', `numeroSerie` char(35) DEFAULT
- * NULL, `alarmeSms` tinyint(3) unsigned NOT NULL DEFAULT '0',
- * `alarmeHabilitado` tinyint(3) unsigned NOT NULL DEFAULT '1',
- * `dataHoraUltimaLeitura` datetime DEFAULT NULL, `fotoEquipamento` char(200)
- * DEFAULT NULL, `idModelo` smallint(5) unsigned DEFAULT NULL, `idProtocolo`
- * smallint(5) unsigned DEFAULT NULL, `portaTcp` smallint(5) unsigned DEFAULT
- * NULL, `idStatus` tinyint(3) unsigned DEFAULT '3', `idTipoConexao` tinyint(3)
- * unsigned DEFAULT NULL, `timeOut_leitura` int(10) unsigned NOT NULL DEFAULT
- * '10000', `timeOut_conexao` int(10) unsigned DEFAULT '5000',
- * `intervaloLeitura` int(10) unsigned NOT NULL DEFAULT '15000',
- * `num_retentativas` tinyint(3) unsigned NOT NULL DEFAULT '2', `data_hora`
- * datetime DEFAULT NULL, `data_instalacao` datetime DEFAULT NULL,
- * `data_criacao` datetime DEFAULT NULL, `enderecoAgente` varchar(15) DEFAULT
- * NULL, `descricao` char(255) DEFAULT 'Nenhum Comentario', `keepAlive`
- * tinyint(3) unsigned NOT NULL DEFAULT '1', `apagarLogs` tinyint(3) unsigned
- * DEFAULT '0', `hexFirmware` char(255) DEFAULT NULL, `versaoFirmware` char(15)
- * DEFAULT NULL, `versaoHardware` char(15) DEFAULT NULL, PRIMARY KEY (`id`), KEY
- * `Ix_contas` (`contas_id`) USING BTREE, KEY `Ix_IpPortaTcp` (`ip`,`portaTcp`)
- * USING BTREE, KEY `Ix_habilitado` (`habilitado`), KEY `Ix_modelo` (`idModelo`)
- * USING BTREE, KEY `Ix_protocolo` (`idProtocolo`) USING BTREE, KEY
- * `Ix_portaTcp` (`portaTcp`) USING BTREE, KEY `Ix_statusEq` (`idStatus`) USING
- * BTREE, KEY `Ix_tipoCon` (`idTipoConexao`) USING BTREE, KEY `Ix_local`
- * (`idLocal`) USING BTREE, KEY `Ix_servidor` (`idServidor`) USING BTREE, KEY
- * `FK_equip_conta` (`contas_id`), KEY `FK_equip_modelo` (`idModelo`),
- */
