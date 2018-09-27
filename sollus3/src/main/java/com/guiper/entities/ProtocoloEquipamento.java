@@ -6,6 +6,7 @@ import javax.persistence.Table;
 import com.guiper.annotations.SAPLineItem;
 import com.guiper.annotations.Sap;
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
@@ -14,28 +15,30 @@ import javax.persistence.GenerationType;
  * @author guiper
  */
 @Entity
-@Table(name = "statusequipamento")
-public class StatusEquipamento implements Serializable {
+@Table(name = "protocoloequipamento")
+public class ProtocoloEquipamento implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;    
     @Sap(filterable=true, sortable=true)
-    @SAPLineItem    
-    private String status;
-
-    public StatusEquipamento() {
+    @SAPLineItem
+    @Column(name = "nome")
+    private String nome;
+    
+    public ProtocoloEquipamento(long id, String nome) {
+        this.id = id;
+        this.nome = nome;
     }
-
-    public StatusEquipamento(String status) {
-        this.status = status;
+    
+    public ProtocoloEquipamento() {
     }
 
     @Override
     public String toString() {
-        return "StatusEquipamento[" + "id=" + id + ", status=" + status + ']';
+        return "ProtocoloEquipamento[" + "id=" + id + ", nome=" + nome + ']';
     }
-
+    
     public long getId() {
         return id;
     }
@@ -43,13 +46,13 @@ public class StatusEquipamento implements Serializable {
     public void setId(long id) {
         this.id = id;
     }
-    
-    public String getStatus() {
-        return status;
+
+    public String getNome() {
+        return nome;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
     
 }

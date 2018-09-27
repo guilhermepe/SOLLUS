@@ -24,6 +24,11 @@ public class TipoPorta implements Serializable {
     @SAPLineItem
     private String nome;
 
+    public TipoPorta(long id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }  
+    
     public TipoPorta() {
     }    
 
@@ -47,7 +52,6 @@ public class TipoPorta implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
     
     
 }
