@@ -1,6 +1,8 @@
 
 package com.guiper.entities;
 
+import com.guiper.annotations.SAPLineItem;
+import com.guiper.annotations.Sap;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,6 +27,8 @@ public class Porta implements Serializable{
    private long equipamentoId;
    @Column(name = "nivelalarme")
    private int nivelAlarme;
+   @Sap(filterable=true, sortable=true)
+   @SAPLineItem
    private String nome;
    @Column(name = "habilitaalarme")
    private int habilitaAlarme;
