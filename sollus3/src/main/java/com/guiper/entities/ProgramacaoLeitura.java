@@ -15,7 +15,7 @@ import javax.persistence.GenerationType;
  * @author guiper
  */
 @Entity
-@Table(name = "programacaoleitura")
+@Table(name = "programacao_leitura")
 public class ProgramacaoLeitura implements Serializable {
 
     @Id    
