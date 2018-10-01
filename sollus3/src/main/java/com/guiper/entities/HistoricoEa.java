@@ -18,41 +18,37 @@ import javax.persistence.Temporal;
  * @author guiper
  */
 @Entity
-@Table(name = "historicorecente_sd")
-public class HistoricoRecenteSd implements Serializable{
+@Table(name = "historico_ea")
+public class HistoricoEa implements Serializable{
     
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)   
    private long id;   
    @Column(name = "idporta")
-   @Sap(filterable=true, sortable=true)
-   @SAPLineItem
    private long idPorta;
-    @Column(name = "valorPorta")
-   private int valorPorta;
    private int alarme;   
-   private int acionada; 
+   @Column(name = "valorPorta")
+   private float valorPorta;
    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
    @Column(name = "dataHora")
    @Sap(filterable=true, sortable=true)
    @SAPLineItem
    private Date dataHora;
 
-    public HistoricoRecenteSd() {
+    public HistoricoEa() {
     }
 
-    public HistoricoRecenteSd(long id, long idPorta, int valorPorta, int alarme, int acionada, Date dataHora) {
+    public HistoricoEa(long id, long idPorta, int alarme, float valorPorta, Date dataHora) {
         this.id = id;
         this.idPorta = idPorta;
-        this.valorPorta = valorPorta;
         this.alarme = alarme;
-        this.acionada = acionada;
+        this.valorPorta = valorPorta;
         this.dataHora = dataHora;
     }
 
     @Override
     public String toString() {
-        return "HistoricoRecenteSd[" + "id=" + id + ", idPorta=" + idPorta + ", valorPorta=" + valorPorta + ", alarme=" + alarme + ", acionada=" + acionada + ", dataHora=" + dataHora + ']';
+        return "HistoricoEa[" + "id=" + id + ", idPorta=" + idPorta + ", alarme=" + alarme + ", valorPorta=" + valorPorta + ", dataHora=" + dataHora + ']';
     }
 
     public long getId() {
@@ -71,14 +67,6 @@ public class HistoricoRecenteSd implements Serializable{
         this.idPorta = idPorta;
     }
 
-    public float getValorPorta() {
-        return valorPorta;
-    }
-
-    public void setValorPorta(int valorPorta) {
-        this.valorPorta = valorPorta;
-    }
-
     public int getAlarme() {
         return alarme;
     }
@@ -87,12 +75,12 @@ public class HistoricoRecenteSd implements Serializable{
         this.alarme = alarme;
     }
 
-    public int getAcionada() {
-        return acionada;
+    public float getValorPorta() {
+        return valorPorta;
     }
 
-    public void setAcionada(int acionada) {
-        this.acionada = acionada;
+    public void setValorPorta(float valorPorta) {
+        this.valorPorta = valorPorta;
     }
 
     public Date getDataHora() {
