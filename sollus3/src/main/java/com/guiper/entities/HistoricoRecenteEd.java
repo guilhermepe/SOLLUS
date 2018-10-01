@@ -18,7 +18,7 @@ import javax.persistence.Temporal;
  * @author guiper
  */
 @Entity
-@Table(name = "historicoRecenteEd")
+@Table(name = "historicorecenteEd")
 public class HistoricoRecenteEd implements Serializable{
     
    @Id

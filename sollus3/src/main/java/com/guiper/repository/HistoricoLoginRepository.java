@@ -11,7 +11,6 @@ import java.util.Date;
  */
 public interface HistoricoLoginRepository extends CrudRepository<HistoricoLogin, Integer>{
     
-    List<HistoricoLogin> findByDataHora(Date dataHora);
     List<HistoricoLogin> findByIdUsuario(Long idUsuario);
     
 }
