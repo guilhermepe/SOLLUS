@@ -29,7 +29,7 @@ public class Equipamento implements Serializable {
     @SAPLineItem
     private String nome;
     private long ip;
-    private int habilitado;
+    private boolean habilitado;
     @Column(name = "idlocal")
     private long idLocal;
     @Column(name = "idservidor")
@@ -92,23 +92,15 @@ public class Equipamento implements Serializable {
     @Column(name = "versaofirmware")
     private String versaoFirmware;
     @Column(name = "versaohardware")
-    private String versaoHardware;
-
-    @Override
-    public String toString() {
-        return "Equipamento[" + "id=" + id + ", contasId=" + contasId + ", nome=" + nome + ", ip=" + ip + ", habilitado=" + habilitado + ", idLocal=" + idLocal + ", idServidor=" + idServidor + ", emailAlarmeEq=" + emailAlarmeEq + ", tempoAlarmeEq=" + tempoAlarmeEq + ", login=" + login + ", senha=" + senha + ", latitude=" + latitude + ", longitude=" + longitude + ", excluido=" + excluido + ", numeroserie=" + numeroSerie + ", alarmeSms=" + alarmeSms + ", alarmeHabilitado=" + alarmeHabilitado + ", dataHoraUltimaLeitura=" + dataHoraUltimaLeitura + ", fotoEquipamento=" + fotoEquipamento + ", idModelo=" + idModelo + ", idProtocolo=" + idProtocolo + ", portaTcp=" + portaTcp + ", idStatus=" + idStatus + ", idTipoConexao=" + idTipoConexao + ", timeOutLeitura=" + timeOutLeitura + ", timeOutConexao=" + timeOutConexao + ", intervaloLeitura=" + intervaloLeitura + ", numRetentivas=" + numRetentivas + ", dataHora=" + dataHora + ", dataInstalacao=" + dataInstalacao + ", dataCriacao=" + dataCriacao + ", enderecoAgente=" + enderecoAgente + ", descricao=" + descricao + ", keepAlive=" + keepAlive + ", apagarLogs=" + apagarLogs + ", hexFirmware=" + hexFirmware + ", versaoFirmware=" + versaoFirmware + ", versaoHardware=" + versaoHardware + ']';
-    }
-    
-    //Constructors
+    private String versaoHardware;   
 
     public Equipamento() {
     }
 
-    public Equipamento(String nome) {
-        this.nome = nome;
+    @Override
+    public String toString() {
+        return "Equipamento[" + "id=" + id + ", contasId=" + contasId + ", nome=" + nome + ", ip=" + ip + ", habilitado=" + habilitado + ", idLocal=" + idLocal + ", idServidor=" + idServidor + ", emailAlarmeEq=" + emailAlarmeEq + ", tempoAlarmeEq=" + tempoAlarmeEq + ", login=" + login + ", senha=" + senha + ", latitude=" + latitude + ", longitude=" + longitude + ", excluido=" + excluido + ", numeroSerie=" + numeroSerie + ", alarmeSms=" + alarmeSms + ", alarmeHabilitado=" + alarmeHabilitado + ", dataHoraUltimaLeitura=" + dataHoraUltimaLeitura + ", fotoEquipamento=" + fotoEquipamento + ", idModelo=" + idModelo + ", idProtocolo=" + idProtocolo + ", portaTcp=" + portaTcp + ", idStatus=" + idStatus + ", idTipoConexao=" + idTipoConexao + ", timeOutLeitura=" + timeOutLeitura + ", timeOutConexao=" + timeOutConexao + ", intervaloLeitura=" + intervaloLeitura + ", numRetentivas=" + numRetentivas + ", dataHora=" + dataHora + ", dataInstalacao=" + dataInstalacao + ", dataCriacao=" + dataCriacao + ", enderecoAgente=" + enderecoAgente + ", descricao=" + descricao + ", keepAlive=" + keepAlive + ", apagarLogs=" + apagarLogs + ", hexFirmware=" + hexFirmware + ", versaoFirmware=" + versaoFirmware + ", versaoHardware=" + versaoHardware + ']';
     }
-    
-    //Ascessors
 
     public long getId() {
         return id;
@@ -142,11 +134,11 @@ public class Equipamento implements Serializable {
         this.ip = ip;
     }
 
-    public int getHabilitado() {
+    public boolean isHabilitado() {
         return habilitado;
     }
 
-    public void setHabilitado(int habilitado) {
+    public void setHabilitado(boolean habilitado) {
         this.habilitado = habilitado;
     }
 
@@ -412,7 +404,48 @@ public class Equipamento implements Serializable {
 
     public void setVersaoHardware(String versaoHardware) {
         this.versaoHardware = versaoHardware;
-    }   
+    }
     
+
+    public Equipamento(long id, long contasId, String nome, long ip, boolean habilitado, long idLocal, long idServidor, String emailAlarmeEq, int tempoAlarmeEq, String login, String senha, float latitude, float longitude, int excluido, String numeroSerie, int alarmeSms, int alarmeHabilitado, Date dataHoraUltimaLeitura, String fotoEquipamento, int idModelo, int idProtocolo, int portaTcp, int idStatus, int idTipoConexao, int timeOutLeitura, int timeOutConexao, int intervaloLeitura, int numRetentivas, Date dataHora, Date dataInstalacao, Date dataCriacao, String enderecoAgente, String descricao, int keepAlive, int apagarLogs, String hexFirmware, String versaoFirmware, String versaoHardware) {
+        this.id = id;
+        this.contasId = contasId;
+        this.nome = nome;
+        this.ip = ip;
+        this.habilitado = habilitado;
+        this.idLocal = idLocal;
+        this.idServidor = idServidor;
+        this.emailAlarmeEq = emailAlarmeEq;
+        this.tempoAlarmeEq = tempoAlarmeEq;
+        this.login = login;
+        this.senha = senha;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.excluido = excluido;
+        this.numeroSerie = numeroSerie;
+        this.alarmeSms = alarmeSms;
+        this.alarmeHabilitado = alarmeHabilitado;
+        this.dataHoraUltimaLeitura = dataHoraUltimaLeitura;
+        this.fotoEquipamento = fotoEquipamento;
+        this.idModelo = idModelo;
+        this.idProtocolo = idProtocolo;
+        this.portaTcp = portaTcp;
+        this.idStatus = idStatus;
+        this.idTipoConexao = idTipoConexao;
+        this.timeOutLeitura = timeOutLeitura;
+        this.timeOutConexao = timeOutConexao;
+        this.intervaloLeitura = intervaloLeitura;
+        this.numRetentivas = numRetentivas;
+        this.dataHora = dataHora;
+        this.dataInstalacao = dataInstalacao;
+        this.dataCriacao = dataCriacao;
+        this.enderecoAgente = enderecoAgente;
+        this.descricao = descricao;
+        this.keepAlive = keepAlive;
+        this.apagarLogs = apagarLogs;
+        this.hexFirmware = hexFirmware;
+        this.versaoFirmware = versaoFirmware;
+        this.versaoHardware = versaoHardware;
+    }
 
 }

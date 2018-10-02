@@ -118,7 +118,7 @@
 												text="{i18n>deviceEnableSwitch}"/>
 											<m:Switch
 												type="AcceptReject" 
-												state="true" 
+												state="{Habilitado}" 
 												enabled="true"
 												id="deviceEnableSwitch"/>
 										<core:Title text="{i18n>ownerContact}" />
