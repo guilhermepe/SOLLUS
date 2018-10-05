@@ -21,8 +21,10 @@ public class Porta implements Serializable{
     
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-   @Column(name = "idPortas")
-   private long id;   
+   @Column(name = "idportas")
+   private long id;
+   @Sap(filterable=true, sortable=true)
+   @SAPLineItem
    @Column(name = "EquipamentoId")
    private long equipamentoId;
    @Column(name = "nivelalarme")

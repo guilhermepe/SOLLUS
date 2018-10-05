@@ -11,5 +11,6 @@ import com.guiper.entities.Porta;
 public interface PortaRepository extends CrudRepository<Porta, Integer>{
     
     List<Porta> findByNome(String nome);
+    List<Porta> findByEquipamentoId(Long equipamentoId);
     
 }
