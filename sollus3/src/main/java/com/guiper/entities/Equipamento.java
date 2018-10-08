@@ -7,10 +7,16 @@ import javax.persistence.Table;
 import com.guiper.annotations.SAPLineItem;
 import com.guiper.annotations.Sap;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 /**
@@ -92,7 +98,11 @@ public class Equipamento implements Serializable {
     @Column(name = "versaofirmware")
     private String versaoFirmware;
     @Column(name = "versaohardware")
-    private String versaoHardware;   
+    private String versaoHardware;
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name="EquipamentoId")
+    private List<Porta> portas = new ArrayList<>();
+    
 
     public Equipamento() {
     }
@@ -101,6 +111,15 @@ public class Equipamento implements Serializable {
     public String toString() {
         return "Equipamento[" + "id=" + id + ", contasId=" + contasId + ", nome=" + nome + ", ip=" + ip + ", habilitado=" + habilitado + ", idLocal=" + idLocal + ", idServidor=" + idServidor + ", emailAlarmeEq=" + emailAlarmeEq + ", tempoAlarmeEq=" + tempoAlarmeEq + ", login=" + login + ", senha=" + senha + ", latitude=" + latitude + ", longitude=" + longitude + ", excluido=" + excluido + ", numeroSerie=" + numeroSerie + ", alarmeSms=" + alarmeSms + ", alarmeHabilitado=" + alarmeHabilitado + ", dataHoraUltimaLeitura=" + dataHoraUltimaLeitura + ", fotoEquipamento=" + fotoEquipamento + ", idModelo=" + idModelo + ", idProtocolo=" + idProtocolo + ", portaTcp=" + portaTcp + ", idStatus=" + idStatus + ", idTipoConexao=" + idTipoConexao + ", timeOutLeitura=" + timeOutLeitura + ", timeOutConexao=" + timeOutConexao + ", intervaloLeitura=" + intervaloLeitura + ", numRetentivas=" + numRetentivas + ", dataHora=" + dataHora + ", dataInstalacao=" + dataInstalacao + ", dataCriacao=" + dataCriacao + ", enderecoAgente=" + enderecoAgente + ", descricao=" + descricao + ", keepAlive=" + keepAlive + ", apagarLogs=" + apagarLogs + ", hexFirmware=" + hexFirmware + ", versaoFirmware=" + versaoFirmware + ", versaoHardware=" + versaoHardware + ']';
     }
+
+    public List<Porta> getPortas() {
+        return portas;
+    }
+
+    public void setPortas(List<Porta> portas) {
+        this.portas = portas;
+    }
+    
 
     public long getId() {
         return id;
