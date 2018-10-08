@@ -1,10 +1,12 @@
 /*global location */
 sap.ui.define([
     'com/guiper/sollus/controller/BaseController',
+    'jquery.sap.global',    
     'sap/m/MessageToast',
     'sap/m/MessageBox',
-    'sap/ui/model/json/JSONModel'
-], function (BaseController, MessageToast,MessageBox, JSONModel) {
+    'sap/ui/model/json/JSONModel',
+    'sap/ui/core/Fragment'
+], function (BaseController,MessageToast,Fragment,MessageBox, JSONModel) {
     "use strict";
 
     return BaseController.extend("com.guiper.sollus.controller.device.DetailDevice", {
@@ -158,7 +160,37 @@ sap.ui.define([
             this.oViewModel.setProperty("/busy", true);
             // Restore original busy indicator delay for the detail view
             this.oViewModel.setProperty("/delay", iOriginalViewBusyDelay);
-        },       
+        },  
+        
+        /**
+         * popOver for Port COnfiguration controller section
+         */
+
+        onPortDetailClicked: function(oEvent) {
+
+            
+            
+            if (!this._oPopover) {
+				this._oPopover = sap.ui.xmlfragment("com.guiper.sollus.view.device.PortDeviceConfig", this);
+				this._oPopover.bindElement("/Portas(15164L)");
+				this.getView().addDependent(this._oPopover);
+			}
+
+			this._oPopover.openBy(oEvent.getSource());
+		},
+
+		handleCloseButton: function (oEvent) {
+			this._oPopover.close();
+		},
+        
+
+        onExit : function () {
+			if (this._oPopover) {
+				this._oPopover.destroy();
+			}
+        },
+        
+
 
         /**
          * Event handler for navigating back.

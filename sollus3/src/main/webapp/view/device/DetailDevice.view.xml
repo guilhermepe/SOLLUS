@@ -146,7 +146,9 @@
 										items="{PortaDetails}">
 										<m:DisplayListItem
 											label="{Nome}"
-											value="{Id}" />
+											value="{Id}"
+											type="{= ${Nome} ? 'Active' : 'Inactive'}"
+											press="onPortDetailClicked" />
 										</m:List>
 									</f:SimpleForm>
 								</ObjectPageLazyLoader>
