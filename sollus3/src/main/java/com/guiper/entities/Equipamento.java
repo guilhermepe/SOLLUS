@@ -41,7 +41,7 @@ public class Equipamento implements Serializable {
     @Column(name = "idservidor")
     private long idServidor;
     @Column(name = "emailalarmeeq")
-    private String emailAlarmeEq;
+    private boolean emailAlarmeEq;
     @Column(name = "tempoalarmeeq")
     private int tempoAlarmeEq;
     private String login;
@@ -51,9 +51,9 @@ public class Equipamento implements Serializable {
     private int excluido;
     private String numeroSerie;
     @Column(name = "alarmesms")
-    private int alarmeSms;
+    private boolean alarmeSms;
     @Column(name = "alarmehabilitado")
-    private int alarmeHabilitado;
+    private boolean alarmeHabilitado;
     @Column(name = "datahoraultimaleitura")
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dataHoraUltimaLeitura;
@@ -141,6 +141,31 @@ public class Equipamento implements Serializable {
         return nome;
     }
 
+    public boolean isEmailAlarmeEq() {
+        return emailAlarmeEq;
+    }
+
+    public void setEmailAlarmeEq(boolean emailAlarmeEq) {
+        this.emailAlarmeEq = emailAlarmeEq;
+    }
+
+    public boolean isAlarmeSms() {
+        return alarmeSms;
+    }
+
+    public void setAlarmeSms(boolean alarmeSms) {
+        this.alarmeSms = alarmeSms;
+    }
+
+    public boolean isAlarmeHabilitado() {
+        return alarmeHabilitado;
+    }
+
+    public void setAlarmeHabilitado(boolean alarmeHabilitado) {
+        this.alarmeHabilitado = alarmeHabilitado;
+    }
+    
+
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -175,15 +200,7 @@ public class Equipamento implements Serializable {
 
     public void setIdServidor(long idServidor) {
         this.idServidor = idServidor;
-    }
-
-    public String getEmailAlarmeEq() {
-        return emailAlarmeEq;
-    }
-
-    public void setEmailAlarmeEq(String emailAlarmeEq) {
-        this.emailAlarmeEq = emailAlarmeEq;
-    }
+    }    
 
     public int getTempoAlarmeEq() {
         return tempoAlarmeEq;
@@ -239,23 +256,7 @@ public class Equipamento implements Serializable {
 
     public void setNumeroSerie(String numeroSerie) {
         this.numeroSerie = numeroSerie;
-    }
-
-    public int getAlarmeSms() {
-        return alarmeSms;
-    }
-
-    public void setAlarmeSms(int alarmeSms) {
-        this.alarmeSms = alarmeSms;
-    }
-
-    public int getAlarmeHabilitado() {
-        return alarmeHabilitado;
-    }
-
-    public void setAlarmeHabilitado(int alarmeHabilitado) {
-        this.alarmeHabilitado = alarmeHabilitado;
-    }
+    }    
 
     public Date getDataHoraUltimaLeitura() {
         return dataHoraUltimaLeitura;
@@ -426,7 +427,7 @@ public class Equipamento implements Serializable {
     }
     
 
-    public Equipamento(long id, long contasId, String nome, long ip, boolean habilitado, long idLocal, long idServidor, String emailAlarmeEq, int tempoAlarmeEq, String login, String senha, float latitude, float longitude, int excluido, String numeroSerie, int alarmeSms, int alarmeHabilitado, Date dataHoraUltimaLeitura, String fotoEquipamento, int idModelo, int idProtocolo, int portaTcp, int idStatus, int idTipoConexao, int timeOutLeitura, int timeOutConexao, int intervaloLeitura, int numRetentivas, Date dataHora, Date dataInstalacao, Date dataCriacao, String enderecoAgente, String descricao, int keepAlive, int apagarLogs, String hexFirmware, String versaoFirmware, String versaoHardware) {
+    public Equipamento(long id, long contasId, String nome, long ip, boolean habilitado, long idLocal, long idServidor, boolean emailAlarmeEq, int tempoAlarmeEq, String login, String senha, float latitude, float longitude, int excluido, String numeroSerie, boolean alarmeSms, boolean alarmeHabilitado, Date dataHoraUltimaLeitura, String fotoEquipamento, int idModelo, int idProtocolo, int portaTcp, int idStatus, int idTipoConexao, int timeOutLeitura, int timeOutConexao, int intervaloLeitura, int numRetentivas, Date dataHora, Date dataInstalacao, Date dataCriacao, String enderecoAgente, String descricao, int keepAlive, int apagarLogs, String hexFirmware, String versaoFirmware, String versaoHardware) {
         this.id = id;
         this.contasId = contasId;
         this.nome = nome;
