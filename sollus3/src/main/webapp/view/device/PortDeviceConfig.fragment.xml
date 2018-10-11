@@ -8,56 +8,118 @@
 		modal="true"
 		placement="Auto">
 		<beginButton>
-			<Button text="Action-A" press="handleCloseButton" />
+			<Button text="{i18n>save}" press="handlePortConfigFormSaveButton" />
 		</beginButton>
 		<endButton>
-			<Button text="Action-B" press="handleCloseButton" />
+			<Button text="{i18n>cancel}" press="handlePortConfigFormCancelButton" />
 		</endButton>
                 <content>
                     <forms:SimpleForm>
 
-		<core:Title text="General"/>
-		<Label text="Job classification"/>
-		<Input value="Senior Ui Developer (UIDEV-SR)"/>
+		<core:Title text="{i18n>portGeneralSettingsTitle}"/>
+		<Label text="{i18n>portName}"/>
+		<Input value="{Nome}"/>
 
-		<Label text="Pay Grade"/>
-		<Input value="Salary Grade 18 (GR-14)"/>
+		<Label text="{i18n>portEnable}"/>
+		<!-- <Switch
+			type="AcceptReject" 
+			state="{Habilitado}" 
+			enabled="true"
+			id="portEnableSwitch"/>	 -->
 
-		<Label text="Job title"/>
-		<Input value="Developer"/>
+		<Label text="{i18n>portType}"/>
+		<!-- <ComboBox
+			id="portTypeInput"
+			selectedKey="{IdModelo}"
+			items="{
+				path: '/ModeloEquipamentos',
+				sorter: { path: 'Nome' },
+				suspended: false													
+			}"/>	 -->
 
-		<Label text="Local Job Title"/>
-		<Label text="Ui Developer"/>
+		<Label text="{i18n>portReadingInterval}"/>
 		
+		<!-- <Slider
+			id="portReadingIntervalInput"												
+			min="0"
+			max="3600"
+			enableTickmarks="true"
+			showAdvancedTooltip="true"													
+			class="sapUiSmallMarginBottom"
+			width="80%"
+			value="{TempoAlarmeEq}"/> -->
 
-		<core:Title text="General"/>
-		<Label text="Job classification"/>
-		<Input value="Senior Ui Developer (UIDEV-SR)"/>
 
-		<Label text="Pay Grade"/>
-		<Input value="Salary Grade 18 (GR-14)"/>
+		<Label text="{i18n>portNumber}"/>
+		<!-- <ComboBox
+			id="portNumberInput"
+			selectedKey="{IdModelo}"
+			items="{
+				path: '/ModeloEquipamentos',
+				sorter: { path: 'Nome' },
+				suspended: false													
+			}"/>		 -->		
 
-		<Label text="Job title"/>
-		<Input value="Developer"/>
+		<core:Title text="{i18n>portAlarmSettingsTitle}"/>
+		<Label text="{i18n>portAlarmEnable}"/>
+		<!-- <Switch
+			type="AcceptReject" 
+			state="{Habilitado}" 
+			enabled="true"
+			id="portAlarmEnableSwitch"/> -->		
 
-		<Label text="Local Job Title"/>
-		<Label text="Ui Developer"/>
+		<Label text="{i18n>portAlarmType}"/>
+		<!-- <ComboBox
+			id="portAlarmTypeInput"
+			selectedKey="{IdModelo}"
+			items="{
+				path: '/ModeloEquipamentos',
+				sorter: { path: 'Nome' },
+				suspended: false													
+			}"/>	 -->
 
-		<core:Title text="Rating"/>
-		<Label text="Employee Class"/>
-		<Input value="Employee"/>
+		<Label text="{i18n>portAlarmTimeWait}"/>
+		<!-- <Slider
+			id="portAlarmTimeWaitInput"												
+			min="0"
+			max="3600"
+			enableTickmarks="true"
+			showAdvancedTooltip="true"													
+			class="sapUiSmallMarginBottom"
+			width="80%"
+			value="{TempoAlarmeEq}"/> -->
 
-		<Label text="FTE"/>
-		<Input value="1"/>
+		<Label text="{i18n>alarmsEmailSendSwitch}"/>
+		<!-- <Switch
+			type="AcceptReject" 
+			state="{Habilitado}" 
+			enabled="true"
+			id="portAlarmsEmailSendInput"/>	 -->
 
-		<Label text="Standard Weekly Hours"/>
-		<Input value="40"/>		
+		<Label text="{i18n>alarmsSmsSendSwitch}"/>
+		<!-- <Switch
+			type="AcceptReject" 
+			state="{Habilitado}" 
+			enabled="true"
+			id="portAlarmsSmsSendInput"/>	 -->
+
+		<core:Title text="{i18n>portMesurementSettingsTitle}"/>
+		<Label text="{i18n>portUnit}"/>
+		<Input value="{Nome}"/>	
+
+		<Label text="{i18n>portConstant}"/>
+		<Input value="{Nome}"/>	
+
+		<Label text="{i18n>portOffset}"/>
+		<Input value="{Nome}"/>	
+
+		<Label text="{i18n>portLowerLimit}"/>
+		<Input value="{Nome}"/>	
+
+		<Label text="{i18n>portUpperLimit}"/>
+		<Input value="{Nome}"/>	
 
 	</forms:SimpleForm>
-                    
-                    
-                    
-                    
                 </content>                                
 	</ResponsivePopover>
 </core:FragmentDefinition>

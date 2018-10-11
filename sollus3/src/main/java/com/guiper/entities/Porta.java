@@ -33,7 +33,7 @@ public class Porta implements Serializable{
    @SAPLineItem
    private String nome;
    @Column(name = "habilitaalarme")
-   private int habilitaAlarme;
+   private boolean habilitaAlarme;
    private int acionada;
    private String unidade;
    @Column(name = "limanin")
@@ -49,20 +49,20 @@ public class Porta implements Serializable{
    private String img;
    @Column(name = "alteroustatus")
    private int alterouStatus;
-   private int sms;
+   private booelan sms;
    @Column(name = "tipoalarme")
    private int tipoAlarme;
    @Column(name = "tempoalarme")
    private String tempoAlarme;
    @Column(name = "emailalarme")
-   private int emailAlarme;
+   private boolean emailAlarme;
    @Column(name = "mingrafico")
    private float minGrafico;
    @Column(name = "maxgrafico")
    private float maxGrafico;
-   private int habilitada;
+   private boolean habilitada;
    @Column(name = "reconhecealarme")
-   private int reconheceAlarme;
+   private boolean reconheceAlarme;
    private int filtro;
    @Column(name = "idtipoporta")
    private int idTipoPorta;
