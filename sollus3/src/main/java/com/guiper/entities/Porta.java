@@ -28,13 +28,13 @@ public class Porta implements Serializable{
    @Column(name = "EquipamentoId")
    private long equipamentoId;
    @Column(name = "nivelalarme")
-   private int nivelAlarme;
+   private boolean nivelAlarme;
    @Sap(filterable=true, sortable=true)
    @SAPLineItem
    private String nome;
    @Column(name = "habilitaalarme")
    private boolean habilitaAlarme;
-   private int acionada;
+   private boolean acionada;
    private String unidade;
    @Column(name = "limanin")
    private float limAnIn;
@@ -43,15 +43,15 @@ public class Porta implements Serializable{
    @Column(name = "intervaloleitura")
    private int intervaloLeitura;
    private String oid;
-   private int alterar;
+   private boolean alterar;
    @Column(name = "emailrelatorio")
-   private int emailRelatorio;
+   private boolean emailRelatorio;
    private String img;
    @Column(name = "alteroustatus")
-   private int alterouStatus;
-   private booelan sms;
+   private boolean alterouStatus;
+   private boolean sms;
    @Column(name = "tipoalarme")
-   private int tipoAlarme;
+   private boolean tipoAlarme;
    @Column(name = "tempoalarme")
    private String tempoAlarme;
    @Column(name = "emailalarme")
@@ -63,7 +63,7 @@ public class Porta implements Serializable{
    private boolean habilitada;
    @Column(name = "reconhecealarme")
    private boolean reconheceAlarme;
-   private int filtro;
+   private boolean filtro;
    @Column(name = "idtipoporta")
    private int idTipoPorta;
    private float constante;
@@ -90,10 +90,6 @@ public class Porta implements Serializable{
 
     public Porta() {
     }
-    
-    
-    
-    
 
     public long getId() {
         return id;
@@ -111,11 +107,11 @@ public class Porta implements Serializable{
         this.equipamentoId = equipamentoId;
     }
 
-    public int getNivelAlarme() {
+    public boolean isNivelAlarme() {
         return nivelAlarme;
     }
 
-    public void setNivelAlarme(int nivelAlarme) {
+    public void setNivelAlarme(boolean nivelAlarme) {
         this.nivelAlarme = nivelAlarme;
     }
 
@@ -127,19 +123,19 @@ public class Porta implements Serializable{
         this.nome = nome;
     }
 
-    public int getHabilitaAlarme() {
+    public boolean isHabilitaAlarme() {
         return habilitaAlarme;
     }
 
-    public void setHabilitaAlarme(int habilitaAlarme) {
+    public void setHabilitaAlarme(boolean habilitaAlarme) {
         this.habilitaAlarme = habilitaAlarme;
     }
 
-    public int getAcionada() {
+    public boolean isAcionada() {
         return acionada;
     }
 
-    public void setAcionada(int acionada) {
+    public void setAcionada(boolean acionada) {
         this.acionada = acionada;
     }
 
@@ -183,19 +179,19 @@ public class Porta implements Serializable{
         this.oid = oid;
     }
 
-    public int getAlterar() {
+    public boolean isAlterar() {
         return alterar;
     }
 
-    public void setAlterar(int alterar) {
+    public void setAlterar(boolean alterar) {
         this.alterar = alterar;
     }
 
-    public int getEmailRelatorio() {
+    public boolean isEmailRelatorio() {
         return emailRelatorio;
     }
 
-    public void setEmailRelatorio(int emailRelatorio) {
+    public void setEmailRelatorio(boolean emailRelatorio) {
         this.emailRelatorio = emailRelatorio;
     }
 
@@ -207,27 +203,27 @@ public class Porta implements Serializable{
         this.img = img;
     }
 
-    public int getAlterouStatus() {
+    public boolean isAlterouStatus() {
         return alterouStatus;
     }
 
-    public void setAlterouStatus(int alterouStatus) {
+    public void setAlterouStatus(boolean alterouStatus) {
         this.alterouStatus = alterouStatus;
     }
 
-    public int getSms() {
+    public boolean isSms() {
         return sms;
     }
 
-    public void setSms(int sms) {
+    public void setSms(boolean sms) {
         this.sms = sms;
     }
 
-    public int getTipoAlarme() {
+    public boolean isTipoAlarme() {
         return tipoAlarme;
     }
 
-    public void setTipoAlarme(int tipoAlarme) {
+    public void setTipoAlarme(boolean tipoAlarme) {
         this.tipoAlarme = tipoAlarme;
     }
 
@@ -239,11 +235,11 @@ public class Porta implements Serializable{
         this.tempoAlarme = tempoAlarme;
     }
 
-    public int getEmailAlarme() {
+    public boolean isEmailAlarme() {
         return emailAlarme;
     }
 
-    public void setEmailAlarme(int emailAlarme) {
+    public void setEmailAlarme(boolean emailAlarme) {
         this.emailAlarme = emailAlarme;
     }
 
@@ -263,27 +259,27 @@ public class Porta implements Serializable{
         this.maxGrafico = maxGrafico;
     }
 
-    public int getHabilitada() {
+    public boolean isHabilitada() {
         return habilitada;
     }
 
-    public void setHabilitada(int habilitada) {
+    public void setHabilitada(boolean habilitada) {
         this.habilitada = habilitada;
     }
 
-    public int getReconheceAlarme() {
+    public boolean isReconheceAlarme() {
         return reconheceAlarme;
     }
 
-    public void setReconheceAlarme(int reconheceAlarme) {
+    public void setReconheceAlarme(boolean reconheceAlarme) {
         this.reconheceAlarme = reconheceAlarme;
     }
 
-    public int getFiltro() {
+    public boolean isFiltro() {
         return filtro;
     }
 
-    public void setFiltro(int filtro) {
+    public void setFiltro(boolean filtro) {
         this.filtro = filtro;
     }
 
@@ -350,7 +346,7 @@ public class Porta implements Serializable{
     public void setTotalizar(int totalizar) {
         this.totalizar = totalizar;
     }
-   
-   
+    
+    
     
 }

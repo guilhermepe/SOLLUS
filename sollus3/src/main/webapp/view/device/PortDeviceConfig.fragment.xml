@@ -21,34 +21,37 @@
 		<Input value="{Nome}"/>
 
 		<Label text="{i18n>portEnable}"/>
-		<!-- <Switch
+		<Switch
 			type="AcceptReject" 
-			state="{Habilitado}" 
+			state="{Habilitada}" 
 			enabled="true"
-			id="portEnableSwitch"/>	 -->
+			id="portEnableSwitch"/>
 
 		<Label text="{i18n>portType}"/>
-		<!-- <ComboBox
+		<Select
 			id="portTypeInput"
-			selectedKey="{IdModelo}"
+            forceSelection="true"
+			selectedKey="{IdTipoPorta}"            
 			items="{
-				path: '/ModeloEquipamentos',
+				path: '/TipoPortas',
 				sorter: { path: 'Nome' },
 				suspended: false													
-			}"/>	 -->
+			}">
+            <core:ListItem key="{Id}" text="{Nome}"/>
+            </Select>
 
-		<Label text="{i18n>portReadingInterval}"/>
-		
-		<!-- <Slider
-			id="portReadingIntervalInput"												
-			min="0"
-			max="3600"
-			enableTickmarks="true"
-			showAdvancedTooltip="true"													
-			class="sapUiSmallMarginBottom"
-			width="80%"
-			value="{TempoAlarmeEq}"/> -->
-
+		<Label text="{i18n>portReadingInterval}"/>		
+		<Input
+			value="{
+				path:'IntervaloLeitura',
+				type:'sap.ui.model.type.Integer',
+				constraints:{
+					minimum:0,
+					maximum:999999999
+				}
+			}"
+			valueLiveUpdate="false"
+			/> 
 
 		<Label text="{i18n>portNumber}"/>
 		<!-- <ComboBox
@@ -62,46 +65,51 @@
 
 		<core:Title text="{i18n>portAlarmSettingsTitle}"/>
 		<Label text="{i18n>portAlarmEnable}"/>
-		<!-- <Switch
+		<Switch
 			type="AcceptReject" 
-			state="{Habilitado}" 
+			state="{HabilitaAlarme}" 
 			enabled="true"
-			id="portAlarmEnableSwitch"/> -->		
+			id="portAlarmEnableSwitch"/>
 
-		<Label text="{i18n>portAlarmType}"/>
-		<!-- <ComboBox
-			id="portAlarmTypeInput"
-			selectedKey="{IdModelo}"
-			items="{
-				path: '/ModeloEquipamentos',
-				sorter: { path: 'Nome' },
-				suspended: false													
-			}"/>	 -->
+		<Label text="{i18n>portAlarmTypeSwitch}"/>
+		<Switch
+			width="40%"
+			customTextOn="{i18n>portAlarmTypeTemporized}"
+			customTextOff="{i18n>portAlarmTypeVariation}"			 
+			state="{TipoAlarme}" 
+			enabled="true"
+			id="portAlarmTypeSwitch"/>
 
 		<Label text="{i18n>portAlarmTimeWait}"/>
-		<!-- <Slider
-			id="portAlarmTimeWaitInput"												
-			min="0"
-			max="3600"
-			enableTickmarks="true"
-			showAdvancedTooltip="true"													
-			class="sapUiSmallMarginBottom"
-			width="80%"
-			value="{TempoAlarmeEq}"/> -->
+		<Input
+			value="{
+				path:'TempoAlarmeEq',
+				type:'sap.ui.model.type.Integer',
+				constraints:{
+					minimum:0,
+					maximum:999999999
+				}
+			}"
+			valueLiveUpdate="false"
+			id="portAlarmTimeWait"
+			/> 
+			
 
 		<Label text="{i18n>alarmsEmailSendSwitch}"/>
-		<!-- <Switch
+		<Switch
 			type="AcceptReject" 
-			state="{Habilitado}" 
+			state="{EmailAlarme}" 
 			enabled="true"
-			id="portAlarmsEmailSendInput"/>	 -->
+			id="portAlarmsEmailSendInput"
+		/>
 
 		<Label text="{i18n>alarmsSmsSendSwitch}"/>
-		<!-- <Switch
+		<Switch
 			type="AcceptReject" 
-			state="{Habilitado}" 
+			state="{Sms}" 
 			enabled="true"
-			id="portAlarmsSmsSendInput"/>	 -->
+			id="portAlarmsSmsSendInput"
+		/>
 
 		<core:Title text="{i18n>portMesurementSettingsTitle}"/>
 		<Label text="{i18n>portUnit}"/>
