@@ -116,20 +116,57 @@
 
 		<core:Title text="{i18n>portMesurementSettingsTitle}"/>
 		<Label text="{i18n>portUnit}"/>
-		<Input value="{Nome}"/>	
+		<Input value="{Unidade}"/>	
 
 		<Label text="{i18n>portConstant}"/>
-		<Input value="{Nome}"/>	
+		<Input value="{
+                            path:'Constante',
+                            type:'sap.ui.model.type.Float',
+                            constraints:{
+                                    minimum:0,
+                                    maximum:999999999
+                            }
+			}"
+                    valueLiveUpdate="false"
+                />	
 
 		<Label text="{i18n>portOffset}"/>
-		<Input value="{Nome}"/>	
+		<Input value="{
+                            path:'Offset',
+                            type:'sap.ui.model.type.Float',
+                            constraints:{
+                                    minimum:-9999,
+                                    maximum:999999999
+                            }
+			}"
+                    valueLiveUpdate="false"
+                />		
 
 		<Label text="{i18n>portLowerLimit}"/>
-		<Input value="{Nome}"/>	
+		<Input 
+                    value="{
+                            path:'LimAnIn',
+                            type:'sap.ui.model.type.Float',
+                            constraints:{
+                                    minimum:0,
+                                    maximum:999999999
+                            }
+			}"
+                    valueLiveUpdate="false"
+                />	
 
 		<Label text="{i18n>portUpperLimit}"/>
-		<Input value="{Nome}"/>	
-
+		<Input                
+                    value="{
+                            path:'LimAnSu',
+                            type:'sap.ui.model.type.Float',
+                            constraints:{
+                                    minimum:0,
+                                    maximum:999999999
+                            }
+			}"
+                    valueLiveUpdate="false"
+                />
 	</forms:SimpleForm>
                 </content>                                
 	</ResponsivePopover>
