@@ -10,6 +10,6 @@ import com.guiper.entities.TipoAlarme;
  */
 public interface TipoAlarmeRepository extends CrudRepository<TipoAlarme, Integer>{
     
-    List<TipoAlarme> findByNome(String tipoAlarmeDescricao);
+    List<TipoAlarme> findByTipoAlarmeDescricao(String tipoAlarmeDescricao);
     
 }

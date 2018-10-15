@@ -71,15 +71,18 @@
 			enabled="true"
 			id="portAlarmEnableSwitch"/>
 
-		<Label text="{i18n>portAlarmTypeSwitch}"/>
-		<Switch
-			width="40%"
-			customTextOn="{i18n>portAlarmTypeTemporized}"
-			customTextOff="{i18n>portAlarmTypeVariation}"			 
-			state="{TipoAlarme}" 
-			enabled="true"
-			id="portAlarmTypeSwitch"/>
-
+		<Label text="{i18n>TipoAlarmeSelect}"/>
+		<Select
+			id="portAlarmSelect"
+            forceSelection="true"
+			selectedKey="{TipoAlarme}"            
+			items="{
+				path: '/TipoAlarmes',
+				sorter: { path: 'TipoAlarmeDescricao' },
+				suspended: false													
+			}">
+            <core:ListItem key="{Valor}" text="{TipoAlarmeDescricao}"/>
+        </Select>
 		<Label text="{i18n>portAlarmTimeWait}"/>
 		<Input
 			value="{
