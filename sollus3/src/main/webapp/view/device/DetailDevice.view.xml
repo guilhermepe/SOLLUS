@@ -34,14 +34,14 @@
             <headerContent>
                 <m:MessageStrip
                     text="{
-						parts: [
-							'i18n>deviceName',
-							'{Nome}',
-							'view>/currentUser',
-							'view>/lastLogin'
-						],
-						formatter: 'jQuery.sap.formatMessage'
-						}"
+                        parts: [
+                                'i18n>deviceName',
+                                '{Nome}',
+                                'view>/currentUser',
+                                'view>/lastLogin'
+                        ],
+                        formatter: 'jQuery.sap.formatMessage'
+                        }"
                     type="Information"
                     showIcon="true">
                 </m:MessageStrip>
@@ -205,6 +205,92 @@
                                                 id="alarmsSmsSendSwitch"
                                                 type="AcceptReject" 
                                                 state="{AlarmeSms}"/>																						
+                                        </f:content>
+                                    </f:SimpleForm>
+                                </ObjectPageLazyLoader>
+                            </blocks>
+                        </ObjectPageSubSection>
+                    </subSections>
+                </ObjectPageSection>
+                <ObjectPageSection>
+                    <subSections>
+                        <ObjectPageSubSection
+                            id="advancedSettingsId"
+                            title="{i18n>advancedSettingsTitle}">
+                            <blocks>
+                                <ObjectPageLazyLoader
+                                    id="generalSettingsLazyLoader">
+                                    <f:SimpleForm
+                                        title="{i18n>advancedSettingsDetailTitle}"
+                                        columnsL="2"
+                                        columnsM="2"
+                                        editable="true"
+                                        layout="ResponsiveGridLayout">
+                                        <f:content>
+                                            <core:Title text="{i18n>deviceNetworkSettingsTitle}"/>
+                                            <m:Label
+                                                text="{i18n>communicationProtocolSelect"
+                                                labelFor="networkProtocolSelectInput"/>
+                                            <m:ComboBox
+                                                id="networkProtocolSelectInput"
+                                                selectedKey="{IdProtocolo}"
+                                                items="{
+                                                        path: '/ProtocoloEquipamentos',
+                                                        sorter: { path: 'Nome' },
+                                                        suspended: false													
+                                                }">												
+                                                <core:ListItem key="{Id}" text="{Nome}"/>												
+                                            </m:ComboBox>
+                                            <m:Label
+                                                labelFor="latitudeInput"
+                                                text="{i18n>latitudeInput}"/>
+                                            <m:Input
+                                                id="latitudeInput"
+                                                type="Text"
+                                                width="100%"
+                                                value="{Latitude}"/>
+                                            <m:Label
+                                                labelFor="longitudeInput"
+                                                text="{i18n>longitudeInput}"/>
+                                            <m:Input
+                                                id="longitudeInput"
+                                                type="Text"
+                                                width="100%"
+                                                value="{Longitude}"/>
+                                            <m:Label
+                                                labelFor="deviceModelInput"
+                                                text="{i18n>deviceModelInput}"/>
+                                            <m:ComboBox
+                                                id="deviceModelInput"
+                                                selectedKey="{IdModelo}"
+                                                items="{
+													path: '/ModeloEquipamentos',
+													sorter: { path: 'Nome' },
+													suspended: false													
+												}">												
+                                                <core:ListItem key="{Id}" text="{Nome}"/>												
+                                            </m:ComboBox>												
+                                            <m:Label
+                                                labelFor="installDateInput"
+                                                text="{i18n>installDateInput}"/>
+                                            <m:DatePicker
+                                                id="installDateInput"
+                                                displayFormat="short"
+                                                width="100%"
+                                                value="{
+														path : 'DataInstalacao', 
+             											type : 'sap.ui.model.type.Date',
+             											formatOptions: { style : 'short'}
+													}"/>
+                                            <m:Label
+                                                labelFor="deviceEnableSwitch"
+                                                text="{i18n>deviceEnableSwitch}"/>
+                                            <m:Switch
+                                                type="AcceptReject" 
+                                                state="{Habilitado}" 
+                                                enabled="true"
+                                                id="deviceEnableSwitch"/>									
+										
                                         </f:content>
                                     </f:SimpleForm>
                                 </ObjectPageLazyLoader>
