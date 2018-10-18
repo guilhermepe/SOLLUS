@@ -108,10 +108,10 @@
                                                 displayFormat="short"
                                                 width="100%"
                                                 value="{
-														path : 'DataInstalacao', 
-             											type : 'sap.ui.model.type.Date',
-             											formatOptions: { style : 'short'}
-													}"/>
+                                                        path : 'DataInstalacao', 
+                                                        type : 'sap.ui.model.type.Date',
+                                                        formatOptions: { style : 'short'}
+                                                }"/>
                                             <m:Label
                                                 labelFor="deviceEnableSwitch"
                                                 text="{i18n>deviceEnableSwitch}"/>
@@ -219,7 +219,7 @@
                             title="{i18n>advancedSettingsTitle}">
                             <blocks>
                                 <ObjectPageLazyLoader
-                                    id="generalSettingsLazyLoader">
+                                    id="advancedlSettingsLazyLoader">
                                     <f:SimpleForm
                                         title="{i18n>advancedSettingsDetailTitle}"
                                         columnsL="2"
@@ -229,11 +229,12 @@
                                         <f:content>
                                             <core:Title text="{i18n>deviceNetworkSettingsTitle}"/>
                                             <m:Label
-                                                text="{i18n>communicationProtocolSelect"
+                                                text="{i18n>communicationProtocolSelect}"
                                                 labelFor="networkProtocolSelectInput"/>
                                             <m:ComboBox
                                                 id="networkProtocolSelectInput"
                                                 selectedKey="{IdProtocolo}"
+                                                width="60%"
                                                 items="{
                                                         path: '/ProtocoloEquipamentos',
                                                         sorter: { path: 'Nome' },
@@ -242,68 +243,62 @@
                                                 <core:ListItem key="{Id}" text="{Nome}"/>												
                                             </m:ComboBox>
                                              <m:Label
-                                                text="{i18n>connectionTypeSelect"
+                                                text="{i18n>connectionTypeSelect}"
                                                 labelFor="connectionTypeSelectInput"/>
                                             <m:ComboBox
                                                 id="connectionTypeSelectInput"
                                                 selectedKey="{IdTipoConexao}"
+                                                width="60%"
                                                 items="{
                                                         path: '/TipoConexaos',
-                                                        sorter: { path: 'tipoConexao' },
+                                                        sorter: { path: 'TipoConexao' },
                                                         suspended: false													
                                                 }">												
-                                                <core:ListItem key="{Id}" text="{tipoConexao}"/>												
+                                                <core:ListItem key="{Id}" text="{TipoConexao}"/>												
                                             </m:ComboBox>
-                                            <m:Label
-                                                labelFor="latitudeInput"
-                                                text="{i18n>latitudeInput}"/>
-                                            <m:Input
-                                                id="latitudeInput"
-                                                type="Text"
-                                                width="100%"
-                                                value="{Latitude}"/>
-                                            <m:Label
-                                                labelFor="longitudeInput"
-                                                text="{i18n>longitudeInput}"/>
-                                            <m:Input
-                                                id="longitudeInput"
-                                                type="Text"
-                                                width="100%"
-                                                value="{Longitude}"/>
-                                            <m:Label
-                                                labelFor="deviceModelInput"
-                                                text="{i18n>deviceModelInput}"/>
+                                           <m:Label
+                                                text="{i18n>networkPortSelect}"
+                                                labelFor="networkPortSelectInput"/>
                                             <m:ComboBox
-                                                id="deviceModelInput"
-                                                selectedKey="{IdModelo}"
+                                                id="networkPortSelectInput"
+                                                selectedKey="{portaTcp}"
                                                 items="{
-													path: '/ModeloEquipamentos',
-													sorter: { path: 'Nome' },
-													suspended: false													
-												}">												
-                                                <core:ListItem key="{Id}" text="{Nome}"/>												
-                                            </m:ComboBox>												
+                                                        path: '/PortasTcps',
+                                                        sorter: { path: 'Porta' },
+                                                        suspended: false													
+                                                }">												
+                                                <core:ListItem key="{Porta}" text="{Porta}"/>												
+                                            </m:ComboBox>
+                                            <core:Title text="{i18n>deviceAuthSettingsTitle}"/>
                                             <m:Label
-                                                labelFor="installDateInput"
-                                                text="{i18n>installDateInput}"/>
-                                            <m:DatePicker
-                                                id="installDateInput"
-                                                displayFormat="short"
-                                                width="100%"
-                                                value="{
-														path : 'DataInstalacao', 
-             											type : 'sap.ui.model.type.Date',
-             											formatOptions: { style : 'short'}
-													}"/>
-                                            <m:Label
-                                                labelFor="deviceEnableSwitch"
-                                                text="{i18n>deviceEnableSwitch}"/>
+                                                labelFor="deviceAuthRequiredSwitch"
+                                                text="{i18n>deviceAuthRequiredSwitch}"/>
                                             <m:Switch
                                                 type="AcceptReject" 
                                                 state="{Habilitado}" 
                                                 enabled="true"
-                                                id="deviceEnableSwitch"/>									
-										
+                                                id="deviceAuthRequiredSwitch"/>	
+                                            <m:Label
+                                                labelFor="field1"
+                                                text="{i18n>longitudeInput}"/>
+                                            <m:Input
+                                                id="field1"
+                                                type="Text"
+                                                width="100%"
+                                                value="{Longitude}"/>
+                                            <m:Label
+                                                labelFor="field2"
+                                                text="{i18n>deviceModelInput}"/>
+                                            <m:ComboBox
+                                                id="field2"
+                                                selectedKey="{IdModelo}"
+                                                items="{
+                                                        path: '/ModeloEquipamentos',
+                                                        sorter: { path: 'Nome' },
+                                                        suspended: false													
+                                                }">												
+                                                <core:ListItem key="{Id}" text="{Nome}"/>												
+                                            </m:ComboBox>
                                         </f:content>
                                     </f:SimpleForm>
                                 </ObjectPageLazyLoader>

@@ -34,7 +34,7 @@ public class PortasTcp implements Serializable {
 
     @Override
     public String toString() {
-        return "PortasTcp[" + "porta=" + porta + ", disponivel=" + disponivel + ']';
+        return "PortasTcp[" + "porta=" + porta + ", disponivel=" + disponivel + "]";
     }
     
     public int getPorta() {
