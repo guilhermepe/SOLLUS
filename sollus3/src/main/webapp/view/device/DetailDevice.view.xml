@@ -242,10 +242,10 @@
                                                 <core:ListItem key="{Id}" text="{Nome}"/>												
                                             </m:ComboBox>
                                              <m:Label
-                                                text="{i18n>communicationProtocolSelect"
-                                                labelFor="networkProtocolSelectInput"/>
+                                                text="{i18n>connectionTypeSelect"
+                                                labelFor="connectionTypeSelectInput"/>
                                             <m:ComboBox
-                                                id="networkProtocolSelectInput"
+                                                id="connectionTypeSelectInput"
                                                 selectedKey="{IdTipoConexao}"
                                                 items="{
                                                         path: '/TipoConexaos',
