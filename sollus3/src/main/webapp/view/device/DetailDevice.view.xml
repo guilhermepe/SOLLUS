@@ -261,7 +261,7 @@
                                                 labelFor="networkPortSelectInput"/>
                                             <m:ComboBox
                                                 id="networkPortSelectInput"
-                                                selectedKey="{portaTcp}"
+                                                selectedKey="{PortaTcp}"
                                                 items="{
                                                         path: '/PortasTcps',
                                                         sorter: { path: 'Porta' },
@@ -280,25 +280,20 @@
                                                 id="deviceAuthRequiredSwitch"/>	
                                             <m:Label
                                                 labelFor="field1"
-                                                text="{i18n>longitudeInput}"/>
+                                                text="{i18n>connectionLoginInput}"/>
                                             <m:Input
                                                 id="field1"
                                                 type="Text"
-                                                width="100%"
-                                                value="{Longitude}"/>
+                                                width="60%"
+                                                value="{Login}"/>
                                             <m:Label
-                                                labelFor="field2"
-                                                text="{i18n>deviceModelInput}"/>
-                                            <m:ComboBox
-                                                id="field2"
-                                                selectedKey="{IdModelo}"
-                                                items="{
-                                                        path: '/ModeloEquipamentos',
-                                                        sorter: { path: 'Nome' },
-                                                        suspended: false													
-                                                }">												
-                                                <core:ListItem key="{Id}" text="{Nome}"/>												
-                                            </m:ComboBox>
+                                                labelFor="connectionPasswordInput"
+                                                text="{i18n>connectionPasswordInput}"/>
+                                            <m:Input
+                                                id="connectionPasswordInput"
+                                                type="Password"
+                                                width="60%"
+                                                value="{Senha}"/>
                                         </f:content>
                                     </f:SimpleForm>
                                 </ObjectPageLazyLoader>
