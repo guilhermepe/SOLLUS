@@ -7,10 +7,7 @@
     xmlns:mvc="sap.ui.core.mvc">
     <m:Page
         id="deviceDetailsPage"
-        title="{i18n>deviceSettingsTitle}"
-        showHeader="{device>/system/phone}"
-        showNavButton="{device>/system/phone}"
-        navButtonPress="onNavButtonPress">
+        title="{i18n>deviceSettingsTitle}">
         <ObjectPageLayout
             id="objectPageLayout">
             <headerTitle>
@@ -22,25 +19,27 @@
                             text="{i18n>save}"
                             hideText="false"
                             press="onSavePressed"
-                            type="Emphasized"/>
+                            type="Emphasized"
+                            enable="false"/>
                         <ObjectPageHeaderActionButton
                             id="cancel"
                             text="{i18n>cancel}"
                             press="onCancelPressed"
-                            hideText="false"/>
+                            hideText="false"
+                            enable="false"/>
                     </actions>
                 </ObjectPageHeader>
             </headerTitle>
             <headerContent>
                 <m:MessageStrip
                     text="{
-                        parts: [
-                                'i18n>deviceName',
-                                '{Nome}',
-                                'view>/currentUser',
-                                'view>/lastLogin'
-                        ],
-                        formatter: 'jQuery.sap.formatMessage'
+                         parts:[
+                                    'i18n>lastSeen',
+                                    {path: 'DataHoraUltimaLeitura',
+                                    type: 'sap.ui.model.type.Date',
+                                    formatOptions: {relative: false}
+                                                            }],
+                            formatter: 'jQuery.sap.formatMessage'
                         }"
                     type="Information"
                     showIcon="true">
@@ -69,7 +68,7 @@
                                             <m:Input
                                                 id="deviceNameInput"
                                                 type="Text"
-                                                width="100%"
+                                                width="60%"
                                                 value="{Nome}"/>
                                             <m:Label
                                                 labelFor="latitudeInput"
@@ -77,7 +76,7 @@
                                             <m:Input
                                                 id="latitudeInput"
                                                 type="Text"
-                                                width="100%"
+                                                width="60%"
                                                 value="{Latitude}"/>
                                             <m:Label
                                                 labelFor="longitudeInput"
@@ -85,7 +84,7 @@
                                             <m:Input
                                                 id="longitudeInput"
                                                 type="Text"
-                                                width="100%"
+                                                width="60%"
                                                 value="{Longitude}"/>
                                             <m:Label
                                                 labelFor="deviceModelInput"
@@ -93,11 +92,12 @@
                                             <m:ComboBox
                                                 id="deviceModelInput"
                                                 selectedKey="{IdModelo}"
+                                                width="60%"
                                                 items="{
-													path: '/ModeloEquipamentos',
-													sorter: { path: 'Nome' },
-													suspended: false													
-												}">												
+                                                        path: '/ModeloEquipamentos',
+                                                        sorter: { path: 'Nome' },
+                                                        suspended: false													
+                                                }">												
                                                 <core:ListItem key="{Id}" text="{Nome}"/>												
                                             </m:ComboBox>												
                                             <m:Label
@@ -106,7 +106,7 @@
                                             <m:DatePicker
                                                 id="installDateInput"
                                                 displayFormat="short"
-                                                width="100%"
+                                                width="60%"
                                                 value="{
                                                         path : 'DataInstalacao', 
                                                         type : 'sap.ui.model.type.Date',
@@ -189,7 +189,7 @@
                                                 enableTickmarks="true"
                                                 showAdvancedTooltip="true"													
                                                 class="sapUiSmallMarginBottom"
-                                                width="80%"
+                                                width="60%"
                                                 value="{TempoAlarmeEq}"/>												
                                             <m:Label
                                                 labelFor="alarmsEmailSendSwitch"
@@ -234,7 +234,7 @@
                                             <m:ComboBox
                                                 id="networkProtocolSelectInput"
                                                 selectedKey="{IdProtocolo}"
-                                                width="60%"
+                                                width="75%"
                                                 items="{
                                                         path: '/ProtocoloEquipamentos',
                                                         sorter: { path: 'Nome' },
@@ -248,7 +248,7 @@
                                             <m:ComboBox
                                                 id="connectionTypeSelectInput"
                                                 selectedKey="{IdTipoConexao}"
-                                                width="60%"
+                                                width="75%"
                                                 items="{
                                                         path: '/TipoConexaos',
                                                         sorter: { path: 'TipoConexao' },
@@ -262,6 +262,7 @@
                                             <m:ComboBox
                                                 id="networkPortSelectInput"
                                                 selectedKey="{PortaTcp}"
+                                                width="75%"
                                                 items="{
                                                         path: '/PortasTcps',
                                                         sorter: { path: 'Porta' },
