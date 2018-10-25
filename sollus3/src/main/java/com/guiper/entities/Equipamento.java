@@ -20,7 +20,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 /**
- *
+ * Commit test
  * @author guiper
  */
 @Entity
