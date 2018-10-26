@@ -14,5 +14,6 @@ public interface HistoricoEaDiarioRepository extends CrudRepository<HistoricoEaD
     List<HistoricoEaDiario> findByDiaRegistro(Date diaRegistro);
     List<HistoricoEaDiario> findByNomeEquipamento(String nomeEquipamento);
     List<HistoricoEaDiario> findByIdPorta(Long idPorta);
+    List<HistoricoEaDiario> findByIdEquipamento(Long idEquipamento);
     
 }

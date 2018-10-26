@@ -25,10 +25,11 @@ public class HistoricoEaDiario implements Serializable{
    @GeneratedValue(strategy = GenerationType.IDENTITY)   
    private long id;
    @Sap(filterable=true, sortable=true)
-   @SAPLineItem   
-   @Column(name = "idporta")
+   @SAPLineItem      
    private long idPorta;   
    private String nomePorta;
+   @Sap(filterable=true, sortable=true)
+   @SAPLineItem   
    private long idEquipamento;
    @Sap(filterable=true, sortable=true)
    @SAPLineItem   
