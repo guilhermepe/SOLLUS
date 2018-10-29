@@ -122,9 +122,9 @@
 					"pattern": "Measure",
 					"name": "measure",
 					"target": [
-                                                "masterMeasure",
-                                                "detailMeasure"
-                                        ]
+						"detailMeasure",
+						"masterMeasure"
+					]
 				},
 				{
 					"pattern": "detailDevice/{Id}",
@@ -179,6 +179,24 @@
 				"statistics": {
 					"viewId": "statistics",
 					"viewName": "Statistics"
+				},
+                                "appMeasure": {
+					"viewId": "appMeasure",
+					"viewName": "measure.AppMeasure"
+				},
+                               "masterMeasure": {
+					"viewId": "masterMeasure",
+					"viewName": "measure.MasterMeasure",
+					"controlId": "appMeasure",
+					"controlAggregation": "masterPages",
+					"parent": "appMeasure"
+				},
+				"detailMeasure": {
+					"viewId": "detailMeasure",
+					"viewName": "measure.DetailMeasure",
+					"controlId": "appMeasure",
+					"controlAggregation": "detailPages",
+					"parent": "appMeasure"
 				}
 			}
 		}

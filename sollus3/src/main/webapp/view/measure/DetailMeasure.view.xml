@@ -1,0 +1,13 @@
+<mvc:View
+    controllerName=""
+    xmlns="sap.uxap"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:m="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc">
+    <m:Page
+        id="detailMeasure"
+        title="{i18n>deviceSettingsTitle}">
+        
+    </m:Page>
+</mvc:View>

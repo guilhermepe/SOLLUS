@@ -1,9 +1,9 @@
 <mvc:View
-    controllerName="com.guiper.sollus.controller.device.MasterDevice"
+    controllerName=""
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc">
 
-    <Page id="masterDevicePage"
+    <Page id="masterMeasure"
               showHeader="false">
         <List
             id="masterDeviceList"
@@ -22,7 +22,7 @@
                 <ObjectListItem
                     title="{Nome}"
                     type="{= ${Nome} ? 'Active' : 'Inactive'}"
-                    press="onSelectionChange"
+                    press=""
                     intro="{
                             parts:[
                                     'i18n>lastSeen',

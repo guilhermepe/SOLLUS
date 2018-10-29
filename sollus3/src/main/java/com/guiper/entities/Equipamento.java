@@ -49,6 +49,7 @@ public class Equipamento implements Serializable {
     private float latitude;
     private float longitude;
     private int excluido;
+    @Column(name = "numeroserie")
     private String numeroSerie;
     @Column(name = "alarmesms")
     private boolean alarmeSms;
