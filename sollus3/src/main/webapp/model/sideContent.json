@@ -24,20 +24,16 @@
 			"items": []
 		},
 		{
-			"title": "Estatísticas",
+			"title": "Medições",
 			"icon": "sap-icon://line-chart",
 			"expanded": true,
-			"key": "statistics",
-			"items": [
-				{
-					"title": "Estatísticas de uso",
-					"key": "Usage Statistics was pressed"
-				},
-				{
-					"title": "Estatísticas de medição",
-					"key": "Order Statistics was pressed"
-				}
-			]
+			"key": "measure"
+		},
+                {
+			"title": "Leituras",
+			"icon": "sap-icon://line-chart",
+			"expanded": true,
+			"key": "statistics"
 		}
 	],
 	"fixedNavigation": [

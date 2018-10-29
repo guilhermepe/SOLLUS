@@ -1,0 +1,173 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+        xmlns:forms="sap.ui.layout.form"        
+	xmlns:core="sap.ui.core">
+	<ResponsivePopover
+		title="{Nome}"
+		class="sapUiPopupWithPadding"
+		modal="true"
+		placement="Auto">
+		<beginButton>
+			<Button text="{i18n>save}" press="handlePortConfigFormSaveButton" />
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>cancel}" press="handlePortConfigFormCancelButton" />
+		</endButton>
+                <content>
+                    <forms:SimpleForm>
+
+		<core:Title text="{i18n>portGeneralSettingsTitle}"/>
+		<Label text="{i18n>portName}"/>
+		<Input value="{Nome}"/>
+
+		<Label text="{i18n>portEnable}"/>
+		<Switch
+			type="AcceptReject" 
+			state="{Habilitada}" 
+			enabled="true"
+			id="portEnableSwitch"/>
+
+		<Label text="{i18n>portType}"/>
+		<Select
+			id="portTypeInput"
+            forceSelection="true"
+			selectedKey="{IdTipoPorta}"            
+			items="{
+				path: '/TipoPortas',
+				sorter: { path: 'Nome' },
+				suspended: false													
+			}">
+            <core:ListItem key="{Id}" text="{Nome}"/>
+            </Select>
+
+		<Label text="{i18n>portReadingInterval}"/>		
+		<Input
+			value="{
+				path:'IntervaloLeitura',
+				type:'sap.ui.model.type.Integer',
+				constraints:{
+					minimum:0,
+					maximum:999999999
+				}
+			}"
+			valueLiveUpdate="false"
+			/> 
+
+		<Label text="{i18n>portNumber}"/>
+		<!-- <ComboBox
+			id="portNumberInput"
+			selectedKey="{IdModelo}"
+			items="{
+				path: '/ModeloEquipamentos',
+				sorter: { path: 'Nome' },
+				suspended: false													
+			}"/>		 -->		
+
+		<core:Title text="{i18n>portAlarmSettingsTitle}"/>
+		<Label text="{i18n>portAlarmEnable}"/>
+		<Switch
+			type="AcceptReject" 
+			state="{HabilitaAlarme}" 
+			enabled="true"
+			id="portAlarmEnableSwitch"/>
+
+		<Label text="{i18n>TipoAlarmeSelect}"/>
+		<Select
+			id="portAlarmSelect"
+            forceSelection="true"
+			selectedKey="{TipoAlarme}"            
+			items="{
+				path: '/TipoAlarmes',
+				sorter: { path: 'TipoAlarmeDescricao' },
+				suspended: false													
+			}">
+            <core:ListItem key="{Valor}" text="{TipoAlarmeDescricao}"/>
+        </Select>
+		<Label text="{i18n>portAlarmTimeWait}"/>
+		<Input
+			value="{
+				path:'TempoAlarmeEq',
+				type:'sap.ui.model.type.Integer',
+				constraints:{
+					minimum:0,
+					maximum:999999999
+				}
+			}"
+			valueLiveUpdate="false"
+			id="portAlarmTimeWait"
+			/> 
+			
+
+		<Label text="{i18n>alarmsEmailSendSwitch}"/>
+		<Switch
+			type="AcceptReject" 
+			state="{EmailAlarme}" 
+			enabled="true"
+			id="portAlarmsEmailSendInput"
+		/>
+
+		<Label text="{i18n>alarmsSmsSendSwitch}"/>
+		<Switch
+			type="AcceptReject" 
+			state="{Sms}" 
+			enabled="true"
+			id="portAlarmsSmsSendInput"
+		/>
+
+		<core:Title text="{i18n>portMesurementSettingsTitle}"/>
+		<Label text="{i18n>portUnit}"/>
+		<Input value="{Unidade}"/>	
+
+		<Label text="{i18n>portConstant}"/>
+		<Input value="{
+                            path:'Constante',
+                            type:'sap.ui.model.type.Float',
+                            constraints:{
+                                    minimum:0,
+                                    maximum:999999999
+                            }
+			}"
+                    valueLiveUpdate="false"
+                />	
+
+		<Label text="{i18n>portOffset}"/>
+		<Input value="{
+                            path:'Offset',
+                            type:'sap.ui.model.type.Float',
+                            constraints:{
+                                    minimum:-9999,
+                                    maximum:999999999
+                            }
+			}"
+                    valueLiveUpdate="false"
+                />		
+
+		<Label text="{i18n>portLowerLimit}"/>
+		<Input 
+                    value="{
+                            path:'LimAnIn',
+                            type:'sap.ui.model.type.Float',
+                            constraints:{
+                                    minimum:0,
+                                    maximum:999999999
+                            }
+			}"
+                    valueLiveUpdate="false"
+                />	
+
+		<Label text="{i18n>portUpperLimit}"/>
+		<Input                
+                    value="{
+                            path:'LimAnSu',
+                            type:'sap.ui.model.type.Float',
+                            constraints:{
+                                    minimum:0,
+                                    maximum:999999999
+                            }
+			}"
+                    valueLiveUpdate="false"
+                />
+	</forms:SimpleForm>
+                </content>                                
+	</ResponsivePopover>
+</core:FragmentDefinition>
