@@ -1,12 +1,12 @@
 /*global location */
 sap.ui.define([
     'com/guiper/sollus/controller/BaseController',
-    'jquery.sap.global',    
+    'jquery.sap.global',
     'sap/m/MessageToast',
     'sap/m/MessageBox',
     'sap/ui/model/json/JSONModel',
     'sap/ui/core/Fragment'
-], function (BaseController,MessageToast,Fragment,MessageBox, JSONModel) {
+], function (BaseController, MessageToast, Fragment, MessageBox, JSONModel) {
     "use strict";
 
     return BaseController.extend("com.guiper.sollus.controller.device.DetailDevice", {
@@ -18,7 +18,7 @@ sap.ui.define([
         /* =========================================================== */
 
         onInit: function () {
-            
+
             // Model used to manipulate control states. The chosen values make sure,
             // detail page is busy indication immediately so there is no break in
             // between the busy indication for loading the view's meta data
@@ -29,15 +29,13 @@ sap.ui.define([
                 delay: 0
             });
 
-            
+            this.getView().setModel(oViewModel, "detailDevice");
 
-            this.getView().setModel(oViewModel, "detailDevice"); 
-            
-            this.getRouter().getRoute("detailDevice").attachPatternMatched(this,this._onObjectMatched);
+            this.getRouter().getRoute("detailDevice").attachPatternMatched(this, this._onObjectMatched);
 
             this.getOwnerComponent().getModel().metadataLoaded().then(this._onMetadataLoaded.bind(this));
 
-            
+
         },
 
         /* =========================================================== */
@@ -47,18 +45,18 @@ sap.ui.define([
         /**
          * Event handler when the share by E-Mail button has been clicked
          * @public
-       
-        onShareEmailPress: function () {
-            var oViewModel = this._getModel("detailDevice");
-
-            sap.m.URLHelper.triggerEmail(
-                null,
-                oViewModel.getProperty("/shareSendEmailSubject"),
-                oViewModel.getProperty("/shareSendEmailMessage")
-            );
-        },
-
-        */
+         
+         onShareEmailPress: function () {
+         var oViewModel = this._getModel("detailDevice");
+         
+         sap.m.URLHelper.triggerEmail(
+         null,
+         oViewModel.getProperty("/shareSendEmailSubject"),
+         oViewModel.getProperty("/shareSendEmailMessage")
+         );
+         },
+         
+         */
 
 
 
@@ -74,8 +72,8 @@ sap.ui.define([
          * @private
          * 
          */
-        _onObjectMatched: function (oEvent,oController) {
-            var sObjectId = oEvent.getParameter("arguments").Id; 
+        _onObjectMatched: function (oEvent, oController) {
+            var sObjectId = oEvent.getParameter("arguments").Id;
             oController.getView().getModel().metadataLoaded().then(function () {
                 var sObjectPath = oController.getView().getModel().createKey("Equipamentos", {
                     Id: sObjectId
@@ -132,25 +130,25 @@ sap.ui.define([
             }
 
             var sPath = oElementBinding.getPath(),
-                oResourceBundle = this.getResourceBundle(),
-                oObject = oView.getModel().getObject(sPath),
-                sObjectId = oObject.ObjectID,
-                sObjectName = oObject.Name,
-                oViewModel = this.getModel("detailDevice");
+                    oResourceBundle = this.getResourceBundle(),
+                    oObject = oView.getModel().getObject(sPath),
+                    sObjectId = oObject.ObjectID,
+                    sObjectName = oObject.Name,
+                    oViewModel = this.getModel("detailDevice");
 
             /*this.getOwnerComponent().oListSelector.selectAListItem(sPath);
-
-            oViewModel.setProperty("/shareSendEmailSubject",
-                oResourceBundle.getText("shareSendEmailObjectSubject", [sObjectId]));
-            oViewModel.setProperty("/shareSendEmailMessage",
-                oResourceBundle.getText("shareSendEmailObjectMessage", [sObjectName, sObjectId, location.href]));
-                */
+             
+             oViewModel.setProperty("/shareSendEmailSubject",
+             oResourceBundle.getText("shareSendEmailObjectSubject", [sObjectId]));
+             oViewModel.setProperty("/shareSendEmailMessage",
+             oResourceBundle.getText("shareSendEmailObjectMessage", [sObjectName, sObjectId, location.href]));
+             */
         },
 
         _onMetadataLoaded: function () {
             // Store original busy indicator delay for the detail view
             var iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay();
-                this.oViewModel = this.getModel("detailDevice");
+            this.oViewModel = this.getModel("detailDevice");
 
             // Make sure busy indicator is displayed immediately when
             // detail view is displayed for the first time
@@ -160,37 +158,36 @@ sap.ui.define([
             this.oViewModel.setProperty("/busy", true);
             // Restore original busy indicator delay for the detail view
             this.oViewModel.setProperty("/delay", iOriginalViewBusyDelay);
-        },  
-        
+        },
+
         /**
          * popOver for Port COnfiguration controller section
          */
 
-        onPortDetailClicked: function(oEvent) {
+        onPortDetailClicked: function (oEvent) {
 
-            
-            
+
+
             if (!this._oPopover) {
-				this._oPopover = sap.ui.xmlfragment("com.guiper.sollus.view.device.PortDeviceConfig", this);
-				this._oPopover.bindElement("/Portas(15164L)");
-				this.getView().addDependent(this._oPopover);
-			}
+                
+                this._oPopover = sap.ui.xmlfragment("com.guiper.sollus.view.device.PortDeviceConfig", this);
+                //Binds the selected port context 
+                this._oPopover.bindElement("/Portas("+ oEvent.getSource().getProperty("value") +"L)");
+                this.getView().addDependent(this._oPopover);
+            }
 
-			this._oPopover.openBy(oEvent.getSource());
-		},
-
-		handleCloseButton: function (oEvent) {
-			this._oPopover.close();
-		},
-        
-
-        onExit : function () {
-			if (this._oPopover) {
-				this._oPopover.destroy();
-			}
+            this._oPopover.openBy(oEvent.getSource());
         },
-        
 
+        handleCloseButton: function (oEvent) {
+            this._oPopover.close();
+        },
+
+        onExit: function () {
+            if (this._oPopover) {
+                this._oPopover.destroy();
+            }
+        },
 
         /**
          * Event handler for navigating back.
@@ -208,25 +205,27 @@ sap.ui.define([
             }
         },
 
-        onSavePressed: function(event) {            
-			this.getView().getModel().submitChanges({
-				success: function() {
+        onSavePressed: function (event) {
+            this.getView().getModel().submitChanges({
+                success: function () {
                     MessageToast.show("Alterações Salvas");
-					//MessageBox.success.show();					
-				},
-				error: function(error) {
-					MessageToast.show("Não foi possível salvar");
-				}
-			});
-        }, 
-        
-        onCancelPressed: function(event) {		
-            this.getView().getModel().refresh(true);
-            MessageToast.show("Alterações descartadas");            
-			
+                    //MessageBox.success.show();					
+                },
+                error: function (error) {
+                    MessageToast.show("Não foi possível salvar");
+                }
+            });
         },
-       
+
+        onCancelPressed: function (event) {
+            this.getView().getModel().refresh(true);
+            MessageToast.show("Alterações descartadas");
+
+        }
+
     });
+
+
 
 }
 );
