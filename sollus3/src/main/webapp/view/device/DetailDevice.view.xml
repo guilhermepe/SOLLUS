@@ -156,10 +156,11 @@
                                         editable="true"
                                         layout="ResponsiveGridLayout" >
                                         <m:List
-                                            items="{PortaDetails}">
+                                            items="{PortaDetails}"
+                                            id="devicePortList">
                                             <m:DisplayListItem
                                                 label="{Nome}"
-                                                value="{Id}"
+                                                value="{Id} - {IdTipoPorta}"
                                                 type="{= ${Nome} ? 'Active' : 'Inactive'}"
                                                 press="onPortDetailClicked" />
                                         </m:List>
@@ -199,8 +200,7 @@
                                                 id="alarmCommunicationFailTime"												
                                                 min="0"
                                                 max="3600"
-                                                enableTickmarks="true"
-                                                showAdvancedTooltip="true"													
+                                                enableTickmarks="true"                                                													
                                                 class="sapUiSmallMarginBottom"
                                                 width="60%"
                                                 value="{TempoAlarmeEq}"/>												
@@ -329,15 +329,19 @@
                                         columnsM="2"
                                         editable="true"
                                         layout="ResponsiveGridLayout">
-                                        <f:content>                                            
+                                        <f:content>
+                                            <m:Button text="Button" id="button10"  press="fireTest"/>                                            
                                             <m:Label
                                                 labelFor="pendingSyncDisplay"
                                                 text="{i18n>pendingSyncLabel}"/>
+                                            	<m:Label text="only with set text" design="Bold"/>
+			                                    <m:ObjectAttribute binding="{/Equipamentos}" text="{Nome} x {ID}" />
                                             <m:Input
                                                 id="pendingSyncDisplay"
                                                 type="Text"
                                                 width="60%"
-                                                value="Valor"/>
+                                                value=""
+                                                visible="true"/>
                                             <m:Label
                                                 labelFor="lastPortValueInput"
                                                 text="{i18n>lastPortValueInput}"/>

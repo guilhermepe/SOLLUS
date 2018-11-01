@@ -111,6 +111,8 @@ sap.ui.define([
                     }
                 }
             });
+
+            
         },
 
         _onBindingChange: function () {
@@ -165,17 +167,15 @@ sap.ui.define([
          */
 
         onPortDetailClicked: function (oEvent) {
-
-
-
-            if (!this._oPopover) {
-                
+            if (!this._oPopover) {                
                 this._oPopover = sap.ui.xmlfragment("com.guiper.sollus.view.device.PortDeviceConfig", this);
-                //Binds the selected port context 
-                this._oPopover.bindElement("/Portas("+ oEvent.getSource().getProperty("value") +"L)");
+                //Binds the selected port context                
                 this.getView().addDependent(this._oPopover);
             }
-
+            var sObjectPath = this.getView().getModel().createKey("Portas", {
+                Id: oEvent.getSource().getProperty("value")
+            });
+            this._oPopover.bindElement("/"+sObjectPath);            
             this._oPopover.openBy(oEvent.getSource());
         },
 
@@ -188,6 +188,28 @@ sap.ui.define([
                 this._oPopover.destroy();
             }
         },
+
+         /**
+         * Port Synchronization controller Logic
+         
+
+         //Port setup variables
+         int flagAlterouStatus = 0;
+         int flagAcionada = 0;
+         int cfgAcionamento = 0;
+        */
+
+       fireTest : function() {
+           var teste = this.byId("devicePortList");
+           teste = teste.getProperty("items");
+           console.log(teste);
+
+       },
+
+
+
+
+
 
         /**
          * Event handler for navigating back.
