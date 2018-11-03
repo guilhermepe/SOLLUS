@@ -104,6 +104,7 @@ public class Equipamento implements Serializable {
     @JoinColumn(name="EquipamentoId")
     private List<Porta> portas = new ArrayList<>();
     
+    
 
     public Equipamento() {
     }
@@ -120,8 +121,7 @@ public class Equipamento implements Serializable {
     public void setPortas(List<Porta> portas) {
         this.portas = portas;
     }
-    
-
+     
     public long getId() {
         return id;
     }
