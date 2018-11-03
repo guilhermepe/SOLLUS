@@ -160,7 +160,7 @@
                                             id="devicePortList">
                                             <m:DisplayListItem
                                                 label="{Nome}"
-                                                value="{Id} - {IdTipoPorta}"
+                                                value="{LeituraDetails/ValorPorta}"                                                                                              
                                                 type="{= ${Nome} ? 'Active' : 'Inactive'}"
                                                 press="onPortDetailClicked" />
                                         </m:List>
@@ -314,65 +314,7 @@
                             </blocks>
                         </ObjectPageSubSection>
                     </subSections>
-                </ObjectPageSection>
-                <ObjectPageSection>
-                    <subSections>
-                        <ObjectPageSubSection
-                            id="syncSettingsId"
-                            title="{i18n>SyncSettingsTitle}">
-                            <blocks>
-                                <ObjectPageLazyLoader
-                                    id="syncSettingsLazyLoader">
-                                    <f:SimpleForm
-                                        title="{i18n>syncSettingsDetailTitle}"
-                                        columnsL="2"
-                                        columnsM="2"
-                                        editable="true"
-                                        layout="ResponsiveGridLayout">
-                                        <f:content>
-                                            <m:Button text="Button" id="button10"  press="fireTest"/>                                            
-                                            <m:Label
-                                                labelFor="pendingSyncDisplay"
-                                                text="{i18n>pendingSyncLabel}"/>
-                                            	<m:Label text="only with set text" design="Bold"/>
-			                                    <m:ObjectAttribute binding="{/Equipamentos}" text="{Nome} x {ID}" />
-                                            <m:Input
-                                                id="pendingSyncDisplay"
-                                                type="Text"
-                                                width="60%"
-                                                value=""
-                                                visible="true"/>
-                                            <m:Label
-                                                labelFor="lastPortValueInput"
-                                                text="{i18n>lastPortValueInput}"/>
-                                            <m:Input
-                                                id="lastPortValueInput"
-                                                type="Text"
-                                                width="60%"
-                                                value="Valor"/>
-                                            <m:Label
-                                                labelFor="valueTimestampInput"
-                                                text="{i18n>valueTimestampInput}"/>
-                                            <m:Input
-                                                id="valueTimestampInput"
-                                                type="Text"
-                                                width="60%"
-                                                value="Valor"/>
-                                             <m:Label
-                                                labelFor="setPortValueInput"
-                                                text="{i18n>setPortValueInput}"/>
-                                            <m:Input
-                                                id="setPortValueInput"
-                                                type="Text"
-                                                width="60%"
-                                                value="Valor"/>                                            
-                                        </f:content>
-                                    </f:SimpleForm>
-                                </ObjectPageLazyLoader>
-                            </blocks>
-                        </ObjectPageSubSection>
-                    </subSections>
-                </ObjectPageSection>
+                </ObjectPageSection>                
             </sections>
         </ObjectPageLayout>
     </m:Page>

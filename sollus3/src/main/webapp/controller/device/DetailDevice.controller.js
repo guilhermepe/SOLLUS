@@ -99,7 +99,10 @@ sap.ui.define([
             this.getView().bindElement({
                 path: sObjectPath,
                 parameters: {
-                    expand: "PortaDetails"
+                    expand: "PortaDetails",
+                    parameters : {
+                        expand: "LeituraDetails"
+                    }
                 },
                 events: {
                     change: this._onBindingChange.bind(this),
@@ -167,16 +170,27 @@ sap.ui.define([
          */
 
         onPortDetailClicked: function (oEvent) {
+            
+            
             if (!this._oPopover) {                
                 this._oPopover = sap.ui.xmlfragment("com.guiper.sollus.view.device.PortDeviceConfig", this);
                 //Binds the selected port context                
                 this.getView().addDependent(this._oPopover);
             }
             var sObjectPath = this.getView().getModel().createKey("Portas", {
-                Id: oEvent.getSource().getProperty("value")
+                Id: oEvent.getSource().getBindingContext().getProperty("Id")
             });
             this._oPopover.bindElement("/"+sObjectPath);            
             this._oPopover.openBy(oEvent.getSource());
+
+            var oContext =this._oPopover.getBindingContext();
+            console.clear();
+            console.log("Model:" + oContext);
+            console.log("Id da porta:" + oContext.getProperty("Id"));
+            console.log("AlterouStatus:" + oContext.getProperty("AlterouStatus"));
+            console.log("Acionada:" + oContext.getProperty("Acionada"));
+            console.log("Config de acionamento:" + oContext.getProperty("CfgAcionamento"));
+            console.log("Config de acionamento:" + oContext.getProperty("IdTipoPorta"));
         },
 
         handleCloseButton: function (oEvent) {
