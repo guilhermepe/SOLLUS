@@ -5,8 +5,10 @@ sap.ui.define([
     'sap/m/MessageToast',
     'sap/m/MessageBox',
     'sap/ui/model/json/JSONModel',
-    'sap/ui/core/Fragment'
-], function (BaseController, MessageToast, Fragment, MessageBox, JSONModel) {
+    'sap/ui/core/Fragment',
+    'sap/ui/model/Filter',
+	'sap/ui/model/FilterOperator'
+], function (BaseController, MessageToast, Filter, FilterOperator, Fragment, MessageBox, JSONModel) {
     "use strict";
 
     return BaseController.extend("com.guiper.sollus.controller.device.DetailDevice", {
@@ -80,6 +82,8 @@ sap.ui.define([
                 });
                 oController._bindView("/" + sObjectPath);
             }.bind(this));
+
+            oController.setupPortsList(sObjectId);
         },
 
         /**
@@ -99,10 +103,7 @@ sap.ui.define([
             this.getView().bindElement({
                 path: sObjectPath,
                 parameters: {
-                    expand: "PortaDetails",
-                    parameters : {
-                        expand: "LeituraDetails"
-                    }
+                    expand: "PortaDetails/LeituraDetails"                    
                 },
                 events: {
                     change: this._onBindingChange.bind(this),
@@ -150,6 +151,24 @@ sap.ui.define([
              */
         },
 
+        setupPortsList : function(idEquipamento) {
+
+            /*Sets Up the ports displayed on device ports section*/
+
+                // build filter array
+                var aFilter = [], sQuery = idEquipamento,
+                    // retrieve list control
+                    oList = this.getView().byId("devicePortList"),
+                    // get binding for aggregation 'items'
+                    oBinding = oList.getBinding("items");    
+                if (sQuery) {
+                    aFilter.push(new sap.ui.model.Filter("EquipamentoId", sap.ui.model.FilterOperator.EQ, sQuery));
+                }
+                // apply filter. an empty filter array simply removes the filter
+                // which will make all entries visible again
+                oBinding.filter(aFilter);
+        },
+
         _onMetadataLoaded: function () {
             // Store original busy indicator delay for the detail view
             var iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay();
@@ -178,7 +197,7 @@ sap.ui.define([
                 this.getView().addDependent(this._oPopover);
             }
             var sObjectPath = this.getView().getModel().createKey("Portas", {
-                Id: oEvent.getSource().getBindingContext().getProperty("Id")
+                Id: oEvent.getSource().getBindingContext().getProperty("PortaId")
             });
             this._oPopover.bindElement("/"+sObjectPath);            
             this._oPopover.openBy(oEvent.getSource());
@@ -190,7 +209,7 @@ sap.ui.define([
             console.log("AlterouStatus:" + oContext.getProperty("AlterouStatus"));
             console.log("Acionada:" + oContext.getProperty("Acionada"));
             console.log("Config de acionamento:" + oContext.getProperty("CfgAcionamento"));
-            console.log("Config de acionamento:" + oContext.getProperty("IdTipoPorta"));
+            console.log("Config de acionamento:" + oContext.getProperty("IdTipoPorta"));            
         },
 
         handleCloseButton: function (oEvent) {
@@ -219,11 +238,6 @@ sap.ui.define([
            console.log(teste);
 
        },
-
-
-
-
-
 
         /**
          * Event handler for navigating back.
@@ -258,6 +272,8 @@ sap.ui.define([
             MessageToast.show("Alterações descartadas");
 
         }
+
+        
 
     });
 

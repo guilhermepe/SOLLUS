@@ -157,27 +157,57 @@
                                         layout="ResponsiveGridLayout" >
                                         <m:List
                                             id="devicePortList"
+                                            items="{PortaDetails}">
+                                            <m:DisplayListItem
+                                                label="{Nome}"
+                                                type="{= ${Nome} ? 'Active' : 'Inactive'}"
+                                                press="onPortDetailClicked" 
+                                                />
+                                        </m:List> 
+
+
+                                        <m:Table
                                             items="{
                                             path: '/ViewLeituraRecentes',
                                             sorter: {
-                                                path: 'DataHora'}
-                                            }">
-                                            <m:DisplayListItem
-                                                label="{PortaNome}"
-                                                value="{
-                                                    parts : [                                                        
-                                                        {path :'DataHora',
-                                                            type: 'sap.ui.model.type.Date',
-                                                            formatOptions: {pattern: 'dd/MM/YYYY HH:mm:ss'}
-                                                        },
-                                                        'i18n>portValueTitle',
-                                                        {path :'ValorPorta'},
-                                                        {path :'PortaUnidade'}
-                                                    ]}"
-                                                type="{= ${PortaNome} ? 'Active' : 'Inactive'}"
-                                                press="onPortDetailClicked" 
-                                                />
-                                        </m:List>
+                                                path: 'DataHora'
+                                            }
+                                        }">
+                                        <m:headerToolbar>
+                                        <m:Toolbar height="3rem">
+                                            <m:Title text="Table toolbar"/>
+                                        </m:Toolbar>
+                                        </m:headerToolbar>
+
+                                        <m:columns>
+                                            <m:Column>
+                                                <m:Text text="Variável" />
+                                            </m:Column>
+                                        <m:Column>
+                                                <m:Text text="Data e Hora" />
+                                            </m:Column>
+                                            <m:Column>
+                                                <m:Text text="Valor" />
+                                            </m:Column>
+                                        </m:columns>
+                                    <m:items>
+                                        <m:ColumnListItem vAlign="Middle">
+                                            <m:cells>
+                                                <m:Text text="{PortaNome}" wrapping="false" />
+                                                <m:Text text="{DataHora}" wrapping="false"/>
+                                                <m:Text text="{ValorPorta}" />
+                                            </m:cells>
+                                        </m:ColumnListItem>
+                                    </m:items>
+                                    </m:Table>
+
+
+
+
+
+
+
+
                                     </f:SimpleForm>
                                 </ObjectPageLazyLoader>
                             </blocks>

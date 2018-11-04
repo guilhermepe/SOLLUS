@@ -19,7 +19,7 @@
 		<core:Title text="{i18n>portGeneralSettingsTitle}"/>
 		<Label text="{i18n>portName}"/>
 		<Input value="{Nome}"/>
-
+		
 		<Label text="{i18n>portEnable}"/>
 		<Switch
 			type="AcceptReject" 
