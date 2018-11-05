@@ -36,11 +36,12 @@ public class ViewLeituraRecente implements Serializable {
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dataHora;
     private String portaUnidade;
+    private int tipoPortaId;
 
     public ViewLeituraRecente() {
     }
 
-    public ViewLeituraRecente(long portaId, long equipamentoId, String equipamentoNome, String portaNome, float valorPorta, Date dataHora, String portaUnidade) {
+    public ViewLeituraRecente(long portaId, long equipamentoId, String equipamentoNome, String portaNome, float valorPorta, Date dataHora, String portaUnidade, int tipoPortaId) {
         this.portaId = portaId;
         this.equipamentoId = equipamentoId;
         this.equipamentoNome = equipamentoNome;
@@ -48,12 +49,8 @@ public class ViewLeituraRecente implements Serializable {
         this.valorPorta = valorPorta;
         this.dataHora = dataHora;
         this.portaUnidade = portaUnidade;
+        this.tipoPortaId = tipoPortaId;
     }
-
-    @Override
-    public String toString() {
-        return "ViewLeituraRecente[" + "portaId=" + portaId + ", equipamentoId=" + equipamentoId + ", equipamentoNome=" + equipamentoNome + ", portaNome=" + portaNome + ", valorPorta=" + valorPorta + ", dataHora=" + dataHora + ", portaUnidade=" + portaUnidade + ']';
-    }    
 
     public long getPortaId() {
         return portaId;
@@ -110,8 +107,20 @@ public class ViewLeituraRecente implements Serializable {
     public void setPortaUnidade(String portaUnidade) {
         this.portaUnidade = portaUnidade;
     }
+
+    public int getTipoPortaId() {
+        return tipoPortaId;
+    }
+
+    public void setTipoPortaId(int tipoPortaId) {
+        this.tipoPortaId = tipoPortaId;
+    }
+
+    @Override
+    public String toString() {
+        return "ViewLeituraRecente[" + "portaId=" + portaId + ", equipamentoId=" + equipamentoId + ", equipamentoNome=" + equipamentoNome + ", portaNome=" + portaNome + ", valorPorta=" + valorPorta + ", dataHora=" + dataHora + ", portaUnidade=" + portaUnidade + ", tipoPortaId=" + tipoPortaId + ']';
+    }
     
-    
-       
+        
 }
 
