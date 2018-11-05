@@ -1,6 +1,6 @@
 <core:FragmentDefinition
 	xmlns="sap.m"
-        xmlns:forms="sap.ui.layout.form"        
+    xmlns:forms="sap.ui.layout.form"        
 	xmlns:core="sap.ui.core">
 	<ResponsivePopover
 		title="{Nome}"
@@ -13,12 +13,18 @@
 		<endButton>
 			<Button text="{i18n>cancel}" press="handlePortConfigFormCancelButton" />
 		</endButton>
-                <content>
-                    <forms:SimpleForm>
+		<content>
+			<forms:SimpleForm  id="syncSectionForm" visible="false">
+			<Label text="{i18n>portName}"/>
+			<Input value="{Nome}"/>		
+			</forms:SimpleForm>		
+		</content>
+        <content>
+            <forms:SimpleForm>
 
 		<core:Title text="{i18n>portGeneralSettingsTitle}"/>
 		<Label text="{i18n>portName}"/>
-		<Input value="{Nome}"/>
+		<Input value="{Nome}"/>		
 		
 		<Label text="{i18n>portEnable}"/>
 		<Switch

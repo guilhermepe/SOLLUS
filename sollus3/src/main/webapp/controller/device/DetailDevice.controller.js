@@ -189,31 +189,37 @@ sap.ui.define([
          */
 
         onPortDetailClicked: function (oEvent) {
-            
-            
-            if (!this._oPopover) {                
-                this._oPopover = sap.ui.xmlfragment("com.guiper.sollus.view.device.PortDeviceConfig", this);
-                //Binds the selected port context                
-                this.getView().addDependent(this._oPopover);
+
+            //Defines which fragment gona be used;
+            var tipoPorta = oEvent.getSource().getBindingContext().getProperty("TipoPortaId")
+            console.log("TipoPorta: "+tipoPorta);
+
+            //Cleans opopover reference for new instantiation
+            if (this._oPopover) {
+                this._oPopover.destroy();
             }
+
+            if (tipoPorta == "6") {
+                this._oPopover = sap.ui.xmlfragment("com.guiper.sollus.view.device.PortSyncConfig", this);
+            } else {
+                this._oPopover = sap.ui.xmlfragment("com.guiper.sollus.view.device.PortConfig", this);
+            }
+              
+            this.getView().addDependent(this._oPopover);
+            
             var sObjectPath = this.getView().getModel().createKey("Portas", {
                 Id: oEvent.getSource().getBindingContext().getProperty("PortaId")
             });
             this._oPopover.bindElement("/"+sObjectPath);            
             this._oPopover.openBy(oEvent.getSource());
-
-            var oContext =this._oPopover.getBindingContext();
-            console.clear();
-            console.log("Model:" + oContext);
-            console.log("Id da porta:" + oContext.getProperty("Id"));
-            console.log("AlterouStatus:" + oContext.getProperty("AlterouStatus"));
-            console.log("Acionada:" + oContext.getProperty("Acionada"));
-            console.log("Config de acionamento:" + oContext.getProperty("CfgAcionamento"));
-            console.log("Config de acionamento:" + oContext.getProperty("IdTipoPorta"));            
         },
 
         handleCloseButton: function (oEvent) {
             this._oPopover.close();
+        },
+
+        handlePortConfigFormSaveButton: function (oEvent) {            
+            console.log("salvar pressionado");
         },
 
         onExit: function () {
