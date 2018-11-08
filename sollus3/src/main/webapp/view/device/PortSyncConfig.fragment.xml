@@ -16,9 +16,24 @@
 		<content>		
         <forms:SimpleForm>
 
-		<core:Title text="{i18n>portGeneralSettingsTitle}"/>
-		<Label text="{i18n>portName}"/>
-		<Input value="{Nome}"/>		
+		<core:Title text="{i18n>syncSettingsDetailTitle}"/>
+
+		<Label text="{i18n>valueToSync}" labelFor="valueToSyncField"/>
+		<Input id="valueToSyncField" value="{CfgAcionamento}" />
+		<Toolbar>
+		<Button text="{i18n>sync}" 
+			visible="false" 
+			press="setFutureSync"  
+			type="Accept"
+			tooltip="" />	
+		<Button text="{i18n>Cancelync}" 
+			visible="false" 
+			press="unsetFutureSync" 
+			type="Reject" />
+		</Toolbar>
+
+
+		<core:Title text="{i18n>portGeneralSettingsTitle}"/>	
 
 		<Label text="{i18n>portName}"/>
 		<Input value="{Nome}"/>		

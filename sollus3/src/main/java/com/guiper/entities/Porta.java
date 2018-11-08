@@ -15,7 +15,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -75,7 +74,6 @@ public class Porta implements Serializable{
    private int idTipoPorta;
    private float constante;
    private float offset;
-   //@Column(name = "numeroPorta")
    private int numeroPorta;
    @Column(name = "cfgacionamento")
    private String cfgAcionamento;

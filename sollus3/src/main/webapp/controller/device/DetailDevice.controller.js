@@ -191,13 +191,15 @@ sap.ui.define([
         onPortDetailClicked: function (oEvent) {
 
             //Defines which fragment gona be used;
-            var tipoPorta = oEvent.getSource().getBindingContext().getProperty("TipoPortaId")
-            console.log("TipoPorta: "+tipoPorta);
+           
 
             //Cleans opopover reference for new instantiation
             if (this._oPopover) {
                 this._oPopover.destroy();
             }
+
+            var oContext = this.getView().getBindingContext();
+            var tipoPorta = oContext.getProperty("TipoPortaId");
 
             if (tipoPorta == "6") {
                 this._oPopover = sap.ui.xmlfragment("com.guiper.sollus.view.device.PortSyncConfig", this);
@@ -205,13 +207,23 @@ sap.ui.define([
                 this._oPopover = sap.ui.xmlfragment("com.guiper.sollus.view.device.PortConfig", this);
             }
               
-            this.getView().addDependent(this._oPopover);
-            
+            this.getView().addDependent(this._oPopover);            
             var sObjectPath = this.getView().getModel().createKey("Portas", {
                 Id: oEvent.getSource().getBindingContext().getProperty("PortaId")
             });
             this._oPopover.bindElement("/"+sObjectPath);            
             this._oPopover.openBy(oEvent.getSource());
+
+            console.log(this.getView().byId("CfgAcionamento").getValue());            
+            var acionada = oContext.getProperty("Acionada");
+            var alterouStatus = oContext.getProperty("AlterouStatus");
+            
+            console.log("Acionada " + acionada); 
+            console.log("alterouStatus " + alterouStatus);
+            console.log("TipoPorta "+tipoPorta);
+
+            //Sets up sync configuration
+            //acionada, alterouStatus, cfgAcionamento
         },
 
         handleCloseButton: function (oEvent) {
