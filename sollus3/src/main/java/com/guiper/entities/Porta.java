@@ -57,7 +57,7 @@ public class Porta implements Serializable{
    private boolean alterouStatus;
    private boolean sms;
    @Column(name = "tipoalarme")
-   private boolean tipoAlarme;
+   private int tipoAlarme;
    @Column(name = "tempoalarme")
    private String tempoAlarme;
    @Column(name = "emailalarme")
@@ -94,6 +94,15 @@ public class Porta implements Serializable{
     public List<Leitura> getLeituras() {
         return leituras;
     }
+
+    public int getTipoAlarme() {
+        return tipoAlarme;
+    }
+
+    public void setTipoAlarme(int tipoAlarme) {
+        this.tipoAlarme = tipoAlarme;
+    }  
+    
 
     public void setLeituras(List<Leitura> leituras) {
         this.leituras = leituras;
@@ -234,15 +243,7 @@ public class Porta implements Serializable{
 
     public void setSms(boolean sms) {
         this.sms = sms;
-    }
-
-    public boolean isTipoAlarme() {
-        return tipoAlarme;
-    }
-
-    public void setTipoAlarme(boolean tipoAlarme) {
-        this.tipoAlarme = tipoAlarme;
-    }
+    }    
 
     public String getTempoAlarme() {
         return tempoAlarme;

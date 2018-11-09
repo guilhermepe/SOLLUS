@@ -21,13 +21,15 @@
 		<Label text="{i18n>valueToSync}" labelFor="valueToSyncField"/>
 		<Input id="valueToSyncField" value="{CfgAcionamento}" />
 		<Toolbar>
-		<Button text="{i18n>sync}" 
-			visible="false" 
+		<Button text="{i18n>sync}"
+			id="setFutureSyncBtn" 
+			visible="{= ${AlterouStatus}? false : true}" 
 			press="setFutureSync"  
 			type="Accept"
 			tooltip="" />	
 		<Button text="{i18n>Cancelync}" 
-			visible="false" 
+			id="unsetFutureSyncBtn"
+			visible="{= ${AlterouStatus}? true : false}" 
 			press="unsetFutureSync" 
 			type="Reject" />
 		</Toolbar>

@@ -197,9 +197,8 @@ sap.ui.define([
             if (this._oPopover) {
                 this._oPopover.destroy();
             }
-
-            var oContext = this.getView().getBindingContext();
-            var tipoPorta = oContext.getProperty("TipoPortaId");
+           
+            var tipoPorta = oEvent.getSource().getBindingContext().getProperty("TipoPortaId");           
 
             if (tipoPorta == "6") {
                 this._oPopover = sap.ui.xmlfragment("com.guiper.sollus.view.device.PortSyncConfig", this);
@@ -214,24 +213,51 @@ sap.ui.define([
             this._oPopover.bindElement("/"+sObjectPath);            
             this._oPopover.openBy(oEvent.getSource());
 
-            console.log(this.getView().byId("CfgAcionamento").getValue());            
+            //Providencia os parâmetros para os campos
+            var oContext = this._oPopover.getBindingContext();
+            if (tipoPorta == "6") {
+                if (oContext.getProperty("CfgAcionamento")) {
+                    console.log(this.getView().byId("devicePortList"));
+                }         
+            }
+           
+
+            /*
             var acionada = oContext.getProperty("Acionada");
             var alterouStatus = oContext.getProperty("AlterouStatus");
             
             console.log("Acionada " + acionada); 
             console.log("alterouStatus " + alterouStatus);
-            console.log("TipoPorta "+tipoPorta);
-
+          
             //Sets up sync configuration
             //acionada, alterouStatus, cfgAcionamento
+            */
         },
 
         handleCloseButton: function (oEvent) {
             this._oPopover.close();
         },
 
-        handlePortConfigFormSaveButton: function (oEvent) {            
-            console.log("salvar pressionado");
+        handlePortConfigFormCancelButton: function(oEvent) {
+            var oBundle = this.getModel("i18n").getResourceBundle();
+            this._oPopover.getModel().resetChanges();   
+            sap.m.MessageToast.show("Alterações descartadas");
+            this._oPopover.close();
+        },
+
+        handlePortConfigFormSaveButton: function (oEvent) {    
+            var oBundle = this.getModel("i18n").getResourceBundle();        
+            
+            this._oPopover.getModel().submitChanges({
+                success: function () {
+                    sap.m.MessageToast.show(oBundle.getText("changesSavedMessage"));                    
+
+                },
+                error: function (error) {
+                    sap.m.MessageToast.show(oBundle.getText("changesNotSavedErrorMessage")+error);
+                }
+            });
+            this._oPopover.close();
         },
 
         onExit: function () {
@@ -276,20 +302,22 @@ sap.ui.define([
         onSavePressed: function (event) {
             this.getView().getModel().submitChanges({
                 success: function () {
-                    MessageToast.show("Alterações Salvas");
-                    //MessageBox.success.show();					
+                    sap.m.MessageToast.show("teste");                   					
                 },
                 error: function (error) {
-                    MessageToast.show("Não foi possível salvar");
+                    sap.m.MessageToast.show("Não foi possível salvar");
+                    this.getView().getModel().refresh(true);
                 }
             });
         },
 
         onCancelPressed: function (event) {
             this.getView().getModel().refresh(true);
-            MessageToast.show("Alterações descartadas");
+            sap.m.MessageToast.show("Alterações descartadas");
 
         }
+
+        
 
         
 
