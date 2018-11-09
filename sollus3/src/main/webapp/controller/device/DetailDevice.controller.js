@@ -216,9 +216,8 @@ sap.ui.define([
             //Providencia os parâmetros para os campos
             var oContext = this._oPopover.getBindingContext();
             if (tipoPorta == "6") {
-                if (oContext.getProperty("CfgAcionamento")) {
-                    console.log(this.getView().byId("devicePortList"));
-                }         
+                console.log("teste" +
+                this._oPopover.getBindingContext());       
             }
            
 
@@ -234,14 +233,10 @@ sap.ui.define([
             */
         },
 
-        handleCloseButton: function (oEvent) {
-            this._oPopover.close();
-        },
-
         handlePortConfigFormCancelButton: function(oEvent) {
             var oBundle = this.getModel("i18n").getResourceBundle();
             this._oPopover.getModel().resetChanges();   
-            sap.m.MessageToast.show("Alterações descartadas");
+            sap.m.MessageToast.show(oBundle.getText("changesDiscardedMessage"));
             this._oPopover.close();
         },
 
@@ -265,23 +260,7 @@ sap.ui.define([
                 this._oPopover.destroy();
             }
         },
-
-         /**
-         * Port Synchronization controller Logic
          
-
-         //Port setup variables
-         int flagAlterouStatus = 0;
-         int flagAcionada = 0;
-         int cfgAcionamento = 0;
-        */
-
-       fireTest : function() {
-           var teste = this.byId("devicePortList");
-           teste = teste.getProperty("items");
-           console.log(teste);
-
-       },
 
         /**
          * Event handler for navigating back.
@@ -300,30 +279,26 @@ sap.ui.define([
         },
 
         onSavePressed: function (event) {
+            var oBundle = this.getModel("i18n").getResourceBundle();        
             this.getView().getModel().submitChanges({
                 success: function () {
-                    sap.m.MessageToast.show("teste");                   					
+                    sap.m.MessageToast.show(oBundle.getText("changesSavedMessage"));
                 },
                 error: function (error) {
-                    sap.m.MessageToast.show("Não foi possível salvar");
+                    sap.m.MessageToast.show(oBundle.getText("changesNotSavedErrorMessage")+error);
                     this.getView().getModel().refresh(true);
                 }
             });
         },
 
         onCancelPressed: function (event) {
-            this.getView().getModel().refresh(true);
-            sap.m.MessageToast.show("Alterações descartadas");
+            var oBundle = this.getModel("i18n").getResourceBundle();        
+            this.getView().getModel().resetChanges();             
+            sap.m.MessageToast.show(oBundle.getText("changesDiscardedMessage"));
 
         }
 
-        
-
-        
-
     });
-
-
 
 }
 );
