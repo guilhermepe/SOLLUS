@@ -103,7 +103,7 @@ sap.ui.define([
             this.getView().bindElement({
                 path: sObjectPath,
                 parameters: {
-                    expand: "PortaDetails/LeituraDetails"                    
+                    expand: "PortaDetails"                    
                 },
                 events: {
                     change: this._onBindingChange.bind(this),
@@ -140,7 +140,7 @@ sap.ui.define([
                     oObject = oView.getModel().getObject(sPath),
                     sObjectId = oObject.ObjectID,
                     sObjectName = oObject.Name,
-                    oViewModel = this.getModel("detailDevice");
+                    oViewModel = this.getModel("detailDevice");                    
 
             /*this.getOwnerComponent().oListSelector.selectAListItem(sPath);
              
@@ -188,18 +188,16 @@ sap.ui.define([
          * popOver for Port COnfiguration controller section
          */
 
-        onPortDetailClicked: function (oEvent) {
-
-            //Defines which fragment gona be used;
-           
+        onPortDetailClicked: function (oEvent) {           
 
             //Cleans opopover reference for new instantiation
             if (this._oPopover) {
                 this._oPopover.destroy();
             }
            
-            var tipoPorta = oEvent.getSource().getBindingContext().getProperty("TipoPortaId");           
+            var tipoPorta = oEvent.getSource().getBindingContext().getProperty("TipoPortaId");
 
+             //Defines which fragment gona be used;           
             if (tipoPorta == "6") {
                 this._oPopover = sap.ui.xmlfragment("com.guiper.sollus.view.device.PortSyncConfig", this);
             } else {
@@ -211,26 +209,7 @@ sap.ui.define([
                 Id: oEvent.getSource().getBindingContext().getProperty("PortaId")
             });
             this._oPopover.bindElement("/"+sObjectPath);            
-            this._oPopover.openBy(oEvent.getSource());
-
-            //Providencia os parâmetros para os campos
-            var oContext = this._oPopover.getBindingContext();
-            if (tipoPorta == "6") {
-                console.log("teste" +
-                this._oPopover.getBindingContext());       
-            }
-           
-
-            /*
-            var acionada = oContext.getProperty("Acionada");
-            var alterouStatus = oContext.getProperty("AlterouStatus");
-            
-            console.log("Acionada " + acionada); 
-            console.log("alterouStatus " + alterouStatus);
-          
-            //Sets up sync configuration
-            //acionada, alterouStatus, cfgAcionamento
-            */
+            this._oPopover.openBy(oEvent.getSource());  
         },
 
         handlePortConfigFormCancelButton: function(oEvent) {
@@ -240,9 +219,37 @@ sap.ui.define([
             this._oPopover.close();
         },
 
+        unsetFutureSync: function(oEvent) {
+            var oContext = this._oPopover.getBindingContext();
+            var oModel = this._oPopover.getModel();
+            var path = ("/Portas("+oContext.getProperty("Id")+"l)");
+            var porta = this._oPopover.getModel().bindProperty(path);
+            oModel.setProperty(path+"/CfgAcionamento", "");          
+            oModel.refresh();
+            oEvent.getSource.setVisible(false);
+            sap.m.MessageToast.show(oBundle.getText("syncUnsetMessage"));
+        },
+
         handlePortConfigFormSaveButton: function (oEvent) {    
-            var oBundle = this.getModel("i18n").getResourceBundle();        
-            
+            var oBundle = this.getModel("i18n").getResourceBundle();
+            var oContext = this._oPopover.getBindingContext();
+            var oModel = this._oPopover.getModel();            
+
+            var acionada = oContext.getProperty("Acionada");
+            var alterouStatus = oContext.getProperty("AlterouStatus");            
+            //var cfgAcionamento = oContext.getProperty("CfgAcionamento");
+            var path = ("/Portas("+oContext.getProperty("Id")+"l)");
+            var porta = this._oPopover.getModel().bindProperty(path);
+
+            var cfg = oModel.getProperty(path+"/CfgAcionamento");
+            if (cfg !== "") {
+                oModel.setProperty(path+"/Acionada", true);
+                oModel.setProperty(path+"/AlterouStatus", false);
+            }else {
+                oModel.setProperty(path+"/Acionada", false);
+                oModel.setProperty(path+"/AlterouStatus", true);
+
+            }                    
             this._oPopover.getModel().submitChanges({
                 success: function () {
                     sap.m.MessageToast.show(oBundle.getText("changesSavedMessage"));                    
@@ -259,7 +266,7 @@ sap.ui.define([
             if (this._oPopover) {
                 this._oPopover.destroy();
             }
-        },
+        },       
          
 
         /**

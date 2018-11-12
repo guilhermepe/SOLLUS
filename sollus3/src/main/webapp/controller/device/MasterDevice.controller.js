@@ -15,6 +15,7 @@ sap.ui.define([
 				});
 
 			this.setModel(oViewModel, "view");
+			
 		},
 
 		/**
@@ -35,7 +36,7 @@ sap.ui.define([
 		 * @private
 		 */
 		_onMasterMatched :  function() {
-			this.getOwnerComponent().oListSelector.oWhenListLoadingIsDone.then(
+			this.getOwnerComponent().oListSelector.oWhenUpdateFinished.then(
 				function (mParams) {
 					if (mParams.list.getMode() === "None") {
 						return;

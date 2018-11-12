@@ -160,7 +160,7 @@
                                             items="{
                                             path: '/ViewLeituraRecentes',
                                             sorter: {
-                                                path: 'DataHora'}
+                                                path: 'PortaNome'}
                                             }">
                                             <m:DisplayListItem
                                                 label="{PortaNome}"
