@@ -25,8 +25,7 @@ public class HistoricoEaMensal implements Serializable{
    @GeneratedValue(strategy = GenerationType.IDENTITY)   
    private long id;
    @Sap(filterable=true, sortable=true)
-   @SAPLineItem   
-   @Column(name = "idporta")
+   @SAPLineItem      
    private long idPorta;   
    private String nomePorta;
    private long idEquipamento;
