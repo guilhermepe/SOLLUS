@@ -30,7 +30,7 @@ sap.ui.define([
 			            pointRadius: 1,
 			            pointHitRadius: 10,
 			            data: [65, 59, 80, 81, 56, 55, 40],
-			            spanGaps: false
+			            spanGaps: true
 			        }
 			    ]
 			};
@@ -60,109 +60,12 @@ sap.ui.define([
 			            data: [65, 59, 80, 81, 56, 55, 40],
 			        }
 			    ]
-			};
+			};			
 			
-			var radarChartData = {
-				labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
-			    datasets: [
-			        {
-			            label: "My First dataset",
-			            backgroundColor: "rgba(179,181,198,0.2)",
-			            borderColor: "rgba(179,181,198,1)",
-			            pointBackgroundColor: "rgba(179,181,198,1)",
-			            pointBorderColor: "#fff",
-			            pointHoverBackgroundColor: "#fff",
-			            pointHoverBorderColor: "rgba(179,181,198,1)",
-			            data: [65, 59, 90, 81, 56, 55, 40]
-			        },
-			        {
-			            label: "My Second dataset",
-			            backgroundColor: "rgba(255,99,132,0.2)",
-			            borderColor: "rgba(255,99,132,1)",
-			            pointBackgroundColor: "rgba(255,99,132,1)",
-			            pointBorderColor: "#fff",
-			            pointHoverBackgroundColor: "#fff",
-			            pointHoverBorderColor: "rgba(255,99,132,1)",
-			            data: [28, 48, 40, 19, 96, 27, 100]
-			        }
-			    ]
-			};
-			
-			var polarAreaChartData = {
-				labels: [
-			        "Red",
-			        "Green",
-			        "Yellow",
-			        "Grey",
-			        "Blue"
-			    ],
-			    datasets: [{
-			        data: [
-			            11,
-			            16,
-			            7,
-			            3,
-			            14
-			        ],
-			        backgroundColor: [
-			            "#FF6384",
-			            "#4BC0C0",
-			            "#FFCE56",
-			            "#E7E9ED",
-			            "#36A2EB"
-			        ],
-			        label: 'My dataset' // for legend
-			    }]
-			};
-			
-			var pieChartData = {
-				labels: [
-			        "Red",
-			        "Blue",
-			        "Yellow"
-			    ],
-			    datasets: [{
-		            data: [300, 50, 100],
-		            backgroundColor: [
-		                "#FF6384",
-		                "#36A2EB",
-		                "#FFCE56"
-		            ],
-		            hoverBackgroundColor: [
-		                "#FF6384",
-		                "#36A2EB",
-		                "#FFCE56"
-		            ]
-		        }]
-			};
-			
-			var bubbleChartData = {
-			    datasets: [{
-		            label: 'First Dataset',
-		            data: [
-		                {
-		                    x: 20,
-		                    y: 30,
-		                    r: 15
-		                },
-		                {
-		                    x: 40,
-		                    y: 10,
-		                    r: 10
-		                }
-		            ],
-		            backgroundColor:"#FF6384",
-		            hoverBackgroundColor: "#FF6384",
-		        }]
-			};
 			
 			this.getView().setModel( new JSONModel({
 				lineChart: lineChartData,
-				barChart: barChartData,
-				radarChart: radarChartData,
-				polarAreaChart: polarAreaChartData,
-				pieChart: pieChartData,
-				bubbleChart: bubbleChartData
+				barChart: barChartData
 			}), "temp");
 			
 		},
@@ -173,6 +76,7 @@ sap.ui.define([
 		
 		setupLineChart: function() {
 			var oChart = this.getView().byId("line_chart");
+			console.log(oChart);
 			if( !oChart ) {
 				return;
 			}

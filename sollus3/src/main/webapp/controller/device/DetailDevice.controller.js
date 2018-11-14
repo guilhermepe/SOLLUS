@@ -38,27 +38,7 @@ sap.ui.define([
             this.getOwnerComponent().getModel().metadataLoaded().then(this._onMetadataLoaded.bind(this));
 
 
-        },
-
-        /* =========================================================== */
-        /* event handlers                                              */
-        /* =========================================================== */
-
-        /**
-         * Event handler when the share by E-Mail button has been clicked
-         * @public
-         
-         onShareEmailPress: function () {
-         var oViewModel = this._getModel("detailDevice");
-         
-         sap.m.URLHelper.triggerEmail(
-         null,
-         oViewModel.getProperty("/shareSendEmailSubject"),
-         oViewModel.getProperty("/shareSendEmailMessage")
-         );
-         },
-         
-         */
+        },     
 
 
 
@@ -125,7 +105,7 @@ sap.ui.define([
 
             // No data for the binding
             if (!oElementBinding.getBoundContext()) {
-                console.log("item não encontrado", sObjectId)
+                console.log("item não encontrado", sObjectId);
                 //this.getRouter().getTargets().display("detailObjectNotFound");
                 // if object could not be found, the selection in the master list
                 // does not make sense anymore.
@@ -198,7 +178,7 @@ sap.ui.define([
             var tipoPorta = oEvent.getSource().getBindingContext().getProperty("TipoPortaId");
 
              //Defines which fragment gona be used;           
-            if (tipoPorta == "6") {
+            if (tipoPorta === "6") {
                 this._oPopover = sap.ui.xmlfragment("com.guiper.sollus.view.device.PortSyncConfig", this);
             } else {
                 this._oPopover = sap.ui.xmlfragment("com.guiper.sollus.view.device.PortConfig", this);
@@ -236,8 +216,7 @@ sap.ui.define([
             var oModel = this._oPopover.getModel();            
 
             var acionada = oContext.getProperty("Acionada");
-            var alterouStatus = oContext.getProperty("AlterouStatus");            
-            //var cfgAcionamento = oContext.getProperty("CfgAcionamento");
+            var alterouStatus = oContext.getProperty("AlterouStatus");                        
             var path = ("/Portas("+oContext.getProperty("Id")+"l)");
             var porta = this._oPopover.getModel().bindProperty(path);
 

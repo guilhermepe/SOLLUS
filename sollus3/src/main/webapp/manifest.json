@@ -47,7 +47,8 @@
 				"sap.m": {},
 				"sap.tnt": {},
 				"sap.ui.layout": {},
-				"sap.uxap": {}
+				"sap.uxap": {},
+				"it.designfuture.chartjs": {}
 			}
 		},
 		"models": {
