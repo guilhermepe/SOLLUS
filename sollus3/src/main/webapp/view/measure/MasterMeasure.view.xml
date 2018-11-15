@@ -1,5 +1,5 @@
 <mvc:View
-    controllerName=""
+     controllerName="com.guiper.sollus.controller.measure.MasterMeasure"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc">
 
@@ -22,7 +22,7 @@
                 <ObjectListItem
                     title="{Nome}"
                     type="{= ${Nome} ? 'Active' : 'Inactive'}"
-                    press=""
+                    press="onSelectionChange"
                     intro="{
                             parts:[
                                     'i18n>lastSeen',

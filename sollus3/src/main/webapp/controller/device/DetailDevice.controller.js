@@ -7,7 +7,7 @@ sap.ui.define([
     'sap/ui/model/json/JSONModel',
     'sap/ui/core/Fragment',
     'sap/ui/model/Filter',
-	'sap/ui/model/FilterOperator'
+    'sap/ui/model/FilterOperator'
 ], function (BaseController, MessageToast, Filter, FilterOperator, Fragment, MessageBox, JSONModel) {
     "use strict";
 
@@ -32,11 +32,8 @@ sap.ui.define([
             });
 
             this.getView().setModel(oViewModel, "detailDevice");
-
             this.getRouter().getRoute("detailDevice").attachPatternMatched(this, this._onObjectMatched);
-
             this.getOwnerComponent().getModel().metadataLoaded().then(this._onMetadataLoaded.bind(this));
-
 
         },     
 
@@ -95,8 +92,6 @@ sap.ui.define([
                     }
                 }
             });
-
-            
         },
 
         _onBindingChange: function () {
@@ -178,7 +173,7 @@ sap.ui.define([
             var tipoPorta = oEvent.getSource().getBindingContext().getProperty("TipoPortaId");
 
              //Defines which fragment gona be used;           
-            if (tipoPorta === "6") {
+            if (tipoPorta === 6) {
                 this._oPopover = sap.ui.xmlfragment("com.guiper.sollus.view.device.PortSyncConfig", this);
             } else {
                 this._oPopover = sap.ui.xmlfragment("com.guiper.sollus.view.device.PortConfig", this);

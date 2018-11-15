@@ -120,8 +120,16 @@
 					"target": "statistics"
 				},				
 				{
-					"pattern": "Measure",
-					"name": "measure",
+					"pattern": "MasterMeasure",
+					"name": "masterMeasure",
+					"target": [
+						"detailMeasure",
+						"masterMeasure"
+					]
+				},
+                                {
+					"pattern": "detailMeasure/{Id}",
+					"name": "detailMeasure",
 					"target": [
 						"detailMeasure",
 						"masterMeasure"

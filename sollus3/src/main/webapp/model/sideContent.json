@@ -27,7 +27,7 @@
 			"title": "Medições",
 			"icon": "sap-icon://line-chart",
 			"expanded": true,
-			"key": "measure"
+			"key": "masterMeasure"
 		},
                 {
 			"title": "Leituras",

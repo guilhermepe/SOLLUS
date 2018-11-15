@@ -1,32 +1,110 @@
 <mvc:View
     controllerName="com.guiper.sollus.controller.measure.DetailMeasure"   
+    xmlns:tb="sap.ui.table"
+    xmlns="sap.uxap"
     xmlns:f="sap.ui.layout.form"
-    xmlns:l="sap.ui.layout"
     xmlns:m="sap.m"
-    xmlns:u="sap.ui.unified"
     xmlns:core="sap.ui.core"
-    xmlns:lab="it.designfuture.chartjs"
-    xmlns:mvc="sap.ui.core.mvc">	
-
-    <m:Panel title="{i18n>title}">		
-        <m:content>
-            <lab:LineChartJS
-                id="line_chart"
-                datasets="{temp>/lineChart/datasets}"
-                labels="{temp>/lineChart/labels}"
-                titleDisplay="true"
-                titleText="Line Chart Example"
-                onLegendItemClick="onLegendItemClick"
-                onLegendItemHover="onLegendItemHover"
-                onClick="onClick"
-                onHover="onHover"
-                tooltipEnabled="true"
-                onAnimationProgress="onAnimationProgress"
-                onAnimationComplete="onAnimationComplete"
-                showLines="true"
-                spanGaps="true">
-            </lab:LineChartJS>
-        </m:content>				
-    </m:Panel>         			
-	
+    xmlns:mvc="sap.ui.core.mvc">
+    <m:Page
+        id="detailMeasurePage"
+        title="{i18n>detailMeasureTitle}">
+        <ObjectPageLayout
+            id="detailMeasureObjectPageLayout">
+            <headerTitle>
+                <ObjectPageHeader					
+                    objectTitle="{Nome}">
+                </ObjectPageHeader>                
+            </headerTitle>
+            <headerContent>
+                <m:MessageStrip
+                    text="{
+                        parts:[
+                            'i18n>lastSeen',
+                            {path: 'DataHoraUltimaLeitura',
+                            type: 'sap.ui.model.type.Date',
+                            formatOptions: {relative: false}
+                                                    }],
+                        formatter: 'jQuery.sap.formatMessage'
+                        }"
+                    type="Information"
+                    showIcon="true">
+                </m:MessageStrip>
+            </headerContent>
+            <sections>
+                <ObjectPageSection>
+                    <subSections>
+                        <ObjectPageSubSection
+                            id="recentMeasureSubSection"
+                            title="{i18n>recentMeasureTitle}">
+                            <blocks>
+                                <ObjectPageLazyLoader
+                                    id="recentMeasureLazyLoader">
+                                    <f:SimpleForm
+                                        title="{i18n>generalSettingsDetailTitle}"                                        
+                                        layout="ResponsiveGridLayout">
+                                        <f:content>   
+                                            <m:TextArea
+                                                width="65%"
+                                                maxLenght="244"
+                                                id="testTextAreaI" 
+                                                value="{Descricao}"/>	
+                                        </f:content>
+                                    </f:SimpleForm>
+                                </ObjectPageLazyLoader>
+                            </blocks>
+                        </ObjectPageSubSection>
+                    </subSections>
+                </ObjectPageSection>                
+                <ObjectPageSection>
+                    <subSections>
+                        <ObjectPageSubSection
+                            id="recentMeasureSubSection2"
+                            title="{i18n>recentMeasureTitle2}">
+                            <blocks>
+                                <ObjectPageLazyLoader
+                                    id="recentMeasureLazyLoader2">
+                                    <f:SimpleForm
+                                        title="{i18n>generalSettingsDetailTitle2}"                                        
+                                        layout="ResponsiveGridLayout">
+                                        <f:content>   
+                                            <m:TextArea
+                                                width="65%"
+                                                maxLenght="244"
+                                                id="testTextArea2" 
+                                                value="{Descricao}"/>	
+                                        </f:content>
+                                    </f:SimpleForm>
+                                </ObjectPageLazyLoader>
+                            </blocks>
+                        </ObjectPageSubSection>
+                    </subSections>
+                </ObjectPageSection>
+                <ObjectPageSection>
+                    <subSections>
+                        <ObjectPageSubSection
+                            id="recentMeasureSubSection3"
+                            title="{i18n>recentMeasureTitle3}">
+                            <blocks>
+                                <ObjectPageLazyLoader
+                                    id="recentMeasureLazyLoader3">
+                                    <f:SimpleForm
+                                        title="{i18n>generalSettingsDetailTitle3}"                                        
+                                        layout="ResponsiveGridLayout3">
+                                        <f:content>   
+                                            <m:TextArea
+                                                width="65%"
+                                                maxLenght="244"
+                                                id="testTextArea3" 
+                                                value="{Descricao}"/>	
+                                        </f:content>
+                                    </f:SimpleForm>
+                                </ObjectPageLazyLoader>
+                            </blocks>
+                        </ObjectPageSubSection>
+                    </subSections>
+                </ObjectPageSection>
+            </sections>               
+        </ObjectPageLayout>       
+    </m:Page>
 </mvc:View>
