@@ -8,7 +8,8 @@
         <List
             id="masterDeviceList"
             items="{/Equipamentos}"
-            growing="true">
+            growing="true"
+            updateFinished="onUpdateFinished">
             
             <headerToolbar>
                 <Toolbar>

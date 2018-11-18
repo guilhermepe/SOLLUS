@@ -17,15 +17,17 @@ sap.ui.define([
             // detail page is busy indication immediately so there is no break in
             // between the busy indication for loading the view's meta data
             //  sap.ui.model.json.JSONModel used because of constructor unknown bug.
-            var oViewModel = new sap.ui.model.json.JSONModel({
+            var oViewModel = new sap.ui.model.json.JSONModel({                
                 busy: false,
                 callbackData: [],
                 delay: 0
-            });
+            });           
+            
 
             this.getView().setModel(oViewModel, "detailMeasure");
             this.getRouter().getRoute("detailMeasure").attachPatternMatched(this, this._onObjectMatched);
-            this.getOwnerComponent().getModel().metadataLoaded().then(this._onMetadataLoaded.bind(this));
+            this.getOwnerComponent().getModel().metadataLoaded().then(this._onMetadataLoaded.bind(this));           
+                     
             
             /*
             var oView = this.getView();
@@ -59,7 +61,7 @@ sap.ui.define([
             this.getView().bindElement({
                 path: sObjectPath,
                 parameters: {
-                    expand: "PortaDetails"                
+                    expand: "HistoricoEaMensalDetails"                
                 },
                 events: {
                     change: this._onBindingChange.bind(this),
@@ -90,8 +92,8 @@ sap.ui.define([
         
         _onBindingChange: function () {
             var oView = this.getView();
-            var oElementBinding = oView.getElementBinding();
-
+            var oElementBinding = oView.getElementBinding();         
+           
             // No data for the binding
             if (!oElementBinding.getBoundContext()) {
                 console.log("item não encontrado", sObjectId);
@@ -109,15 +111,7 @@ sap.ui.define([
                     oObject = oView.getModel().getObject(sPath),
                     sObjectId = oObject.ObjectID,
                     sObjectName = oObject.Name,
-                    oViewModel = this.getModel("detailDevice");                    
-
-            /*this.getOwnerComponent().oListSelector.selectAListItem(sPath);
-             
-             oViewModel.setProperty("/shareSendEmailSubject",
-             oResourceBundle.getText("shareSendEmailObjectSubject", [sObjectId]));
-             oViewModel.setProperty("/shareSendEmailMessage",
-             oResourceBundle.getText("shareSendEmailObjectMessage", [sObjectName, sObjectId, location.href]));
-             */
+                    oViewModel = this.getModel("detailMeasure");         
         },
 
         

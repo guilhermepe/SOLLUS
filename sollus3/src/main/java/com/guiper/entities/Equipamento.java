@@ -3,7 +3,6 @@ package com.guiper.entities;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 import com.guiper.annotations.SAPLineItem;
 import com.guiper.annotations.Sap;
 import java.io.Serializable;
@@ -103,6 +102,12 @@ public class Equipamento implements Serializable {
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name="EquipamentoId")
     private List<Porta> portas = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name="idEquipamento")
+    private List<HistoricoEaMensal> historicoEaMensal = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name="idEquipamento")
+    private List<HistoricoEaDiario> historicoEaDiario = new ArrayList<>();
     
     
 
@@ -111,8 +116,25 @@ public class Equipamento implements Serializable {
 
     @Override
     public String toString() {
-        return "Equipamento[" + "id=" + id + ", contasId=" + contasId + ", nome=" + nome + ", ip=" + ip + ", habilitado=" + habilitado + ", idLocal=" + idLocal + ", idServidor=" + idServidor + ", emailAlarmeEq=" + emailAlarmeEq + ", tempoAlarmeEq=" + tempoAlarmeEq + ", login=" + login + ", senha=" + senha + ", latitude=" + latitude + ", longitude=" + longitude + ", excluido=" + excluido + ", numeroSerie=" + numeroSerie + ", alarmeSms=" + alarmeSms + ", alarmeHabilitado=" + alarmeHabilitado + ", dataHoraUltimaLeitura=" + dataHoraUltimaLeitura + ", fotoEquipamento=" + fotoEquipamento + ", idModelo=" + idModelo + ", idProtocolo=" + idProtocolo + ", portaTcp=" + portaTcp + ", idStatus=" + idStatus + ", idTipoConexao=" + idTipoConexao + ", timeOutLeitura=" + timeOutLeitura + ", timeOutConexao=" + timeOutConexao + ", intervaloLeitura=" + intervaloLeitura + ", numRetentivas=" + numRetentivas + ", dataHora=" + dataHora + ", dataInstalacao=" + dataInstalacao + ", dataCriacao=" + dataCriacao + ", enderecoAgente=" + enderecoAgente + ", descricao=" + descricao + ", keepAlive=" + keepAlive + ", apagarLogs=" + apagarLogs + ", hexFirmware=" + hexFirmware + ", versaoFirmware=" + versaoFirmware + ", versaoHardware=" + versaoHardware + ']';
+        return "Equipamento[" + "id=" + id + ", contasId=" + contasId + ", nome=" + nome + ", ip=" + ip + ", habilitado=" + habilitado + ", idLocal=" + idLocal + ", idServidor=" + idServidor + ", emailAlarmeEq=" + emailAlarmeEq + ", tempoAlarmeEq=" + tempoAlarmeEq + ", login=" + login + ", senha=" + senha + ", latitude=" + latitude + ", longitude=" + longitude + ", excluido=" + excluido + ", numeroSerie=" + numeroSerie + ", alarmeSms=" + alarmeSms + ", alarmeHabilitado=" + alarmeHabilitado + ", dataHoraUltimaLeitura=" + dataHoraUltimaLeitura + ", fotoEquipamento=" + fotoEquipamento + ", idModelo=" + idModelo + ", idProtocolo=" + idProtocolo + ", portaTcp=" + portaTcp + ", idStatus=" + idStatus + ", idTipoConexao=" + idTipoConexao + ", timeOutLeitura=" + timeOutLeitura + ", timeOutConexao=" + timeOutConexao + ", intervaloLeitura=" + intervaloLeitura + ", numRetentivas=" + numRetentivas + ", dataHora=" + dataHora + ", dataInstalacao=" + dataInstalacao + ", dataCriacao=" + dataCriacao + ", enderecoAgente=" + enderecoAgente + ", descricao=" + descricao + ", keepAlive=" + keepAlive + ", apagarLogs=" + apagarLogs + ", hexFirmware=" + hexFirmware + ", versaoFirmware=" + versaoFirmware + ", versaoHardware=" + versaoHardware + ", portas=" + portas + ", historicoEaMensal=" + historicoEaMensal + ", historicoEaDiario=" + historicoEaDiario + ']';
     }
+        
+    public List<HistoricoEaDiario> getHistoricoEaDiario() {
+        return historicoEaDiario;
+    }
+
+    public void setHistoricoEaDiario(List<HistoricoEaDiario> historicoEaDiario) {
+        this.historicoEaDiario = historicoEaDiario;
+    }    
+
+    public List<HistoricoEaMensal> getHistoricoEaMensal() {
+        return historicoEaMensal;
+    }
+
+    public void setHistoricoEaMensal(List<HistoricoEaMensal> historicoEaMensal) {
+        this.historicoEaMensal = historicoEaMensal;
+    }
+    
 
     public List<Porta> getPortas() {
         return portas;

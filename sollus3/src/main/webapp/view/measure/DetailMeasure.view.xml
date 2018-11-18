@@ -1,9 +1,9 @@
 <mvc:View
     controllerName="com.guiper.sollus.controller.measure.DetailMeasure"   
-    xmlns:tb="sap.ui.table"
     xmlns="sap.uxap"
-    xmlns:f="sap.ui.layout.form"
-    xmlns:m="sap.m"
+    xmlns:t="sap.ui.table"
+    xmlns:m="sap.m"    
+    xmlns:f="sap.ui.layout.form"    
     xmlns:core="sap.ui.core"
     xmlns:mvc="sap.ui.core.mvc">
     <m:Page
@@ -41,7 +41,7 @@
                                 <ObjectPageLazyLoader
                                     id="recentMeasureLazyLoader">
                                     <f:SimpleForm
-                                        title="{i18n>generalSettingsDetailTitle}"                                        
+                                        title="{i18n>recentMeasurelTitle}"                                        
                                         layout="ResponsiveGridLayout">
                                         <f:content>   
                                             <m:TextArea
@@ -60,21 +60,84 @@
                     <subSections>
                         <ObjectPageSubSection
                             id="recentMeasureSubSection2"
-                            title="{i18n>recentMeasureTitle2}">
+                            title="{i18n>recentMeasureTitle2}">                            
                             <blocks>
                                 <ObjectPageLazyLoader
-                                    id="recentMeasureLazyLoader2">
-                                    <f:SimpleForm
-                                        title="{i18n>generalSettingsDetailTitle2}"                                        
-                                        layout="ResponsiveGridLayout">
-                                        <f:content>   
-                                            <m:TextArea
-                                                width="65%"
-                                                maxLenght="244"
-                                                id="testTextArea2" 
-                                                value="{Descricao}"/>	
-                                        </f:content>
-                                    </f:SimpleForm>
+                                    id="recentMeasureLazyLoader2">                                    
+                                    <t:Table
+                                        id="tableDailyMeasures"
+                                        selectionMode="None"  
+                                        rows="{
+                                            path: 'HistoricoEaDiarioDetails',
+                                            parameters: {operationMode: 'Server'}
+                                        }"
+                                        threshold="12"
+                                        enableBusyIndicator="true"
+                                        visibleRowCount="10"> 
+                                        <t:noData>
+                                            <m:BusyIndicator class="sapUiMediumMargin"/>
+                                        </t:noData>
+                                        <t:toolbar>
+                                            <m:Toolbar>
+                                                <m:Title id="tableDailyMeasuresTitle" text="Medições diárias"></m:Title>
+                                                <m:ToolbarSpacer/>
+                                                <m:Button
+                                                    icon="sap-icon://refresh"
+                                                    tooltip="Reinitialize Model"
+                                                    press="onModelRefresh"/>
+                                            </m:Toolbar>
+                                        </t:toolbar>                                       
+                                        <t:columns>
+                                            <t:Column
+                                                id="dailyIdColumn1">                                               
+                                                <m:Label text="NomePorta" />
+                                                <t:template>
+                                                    <m:Text text="{NomePorta}" wrapping="false" />
+                                                </t:template>                                                
+                                            </t:Column>
+                                            <t:Column
+                                                id="dailyIdColumn2"
+                                                sortProperty="ValorPortaInicial"
+                                                filterProperty="ValorPortaInicial">                                               
+                                                <m:Label text="ValorPortaInicial" />
+                                                <t:template>
+                                                    <m:Text text="{ValorPortaInicial}" wrapping="false" />
+                                                </t:template>                                                
+                                            </t:Column>
+                                            <t:Column
+                                                id="dailyIdColumn3"
+                                                sortProperty="ValorPortaDelta"
+                                                filterProperty="ValorPortaDelta">                                               
+                                                <m:Label text="ValorPortaDelta" />
+                                                <t:template>
+                                                    <m:Text text="{ValorPortaDelta}" wrapping="false" />
+                                                </t:template>                                                
+                                            </t:Column>
+                                            <t:Column
+                                                id="dailyIdColumn4"
+                                                sortProperty="ValorPortaFinal"
+                                                filterProperty="ValorPortaFinal">                                               
+                                                <m:Label text="ValorPortaFinal" />
+                                                <t:template>
+                                                    <m:Text text="{ValorPortaFinal}" wrapping="false" />
+                                                </t:template>                                                
+                                            </t:Column>
+                                            <t:Column
+                                                id="dailyIdColumn5"
+                                                sortProperty="DiaRegistro"
+                                                filterProperty="DiaRegistro">                                                  
+                                                <m:Label text="DiaRegistro" />
+                                                <t:template>
+                                                    <m:Text text="{path :'DiaRegistro',
+                                                            type: 'sap.ui.model.type.Date',
+                                                            formatOptions: {pattern: 'dd/MM/YYYY'}}"
+                                                            wrapping="false" />
+                                                </t:template>                                                
+                                            </t:Column>                                                
+                                        </t:columns>
+                                                
+                                    </t:Table>                                              
+                                                      
                                 </ObjectPageLazyLoader>
                             </blocks>
                         </ObjectPageSubSection>
@@ -87,18 +150,81 @@
                             title="{i18n>recentMeasureTitle3}">
                             <blocks>
                                 <ObjectPageLazyLoader
-                                    id="recentMeasureLazyLoader3">
-                                    <f:SimpleForm
-                                        title="{i18n>generalSettingsDetailTitle3}"                                        
-                                        layout="ResponsiveGridLayout3">
-                                        <f:content>   
-                                            <m:TextArea
-                                                width="65%"
-                                                maxLenght="244"
-                                                id="testTextArea3" 
-                                                value="{Descricao}"/>	
-                                        </f:content>
-                                    </f:SimpleForm>
+                                    id="recentMeasureLazyLoader3">                                    
+                                    <t:Table
+                                        id="tableMonthlyMeasures"
+                                        selectionMode="None"  
+                                        rows="{
+                                            path: 'HistoricoEaMensalDetails',
+                                            parameters: {operationMode: 'Server'}
+                                        }"
+                                        threshold="12"
+                                        enableBusyIndicator="true"
+                                        visibleRowCount="10"> 
+                                        <t:noData>
+                                            <m:BusyIndicator class="sapUiMediumMargin"/>
+                                        </t:noData>
+                                        <t:toolbar>
+                                            <m:Toolbar>
+                                                <m:Title id="tableMonthlyMeasuresTitle" text="Medições mensais"></m:Title>
+                                                <m:ToolbarSpacer/>
+                                                <m:Button
+                                                    icon="sap-icon://refresh"
+                                                    tooltip="Reinitialize Model"
+                                                    press="onModelRefresh"/>
+                                            </m:Toolbar>
+                                        </t:toolbar>                                       
+                                        <t:columns>
+                                            <t:Column
+                                                id="idColumn1">                                               
+                                                <m:Label text="NomePorta" />
+                                                <t:template>
+                                                    <m:Text text="{NomePorta}" wrapping="false" />
+                                                </t:template>                                                
+                                            </t:Column>
+                                            <t:Column
+                                                id="idColumn2"
+                                                sortProperty="ValorPortaInicial"
+                                                filterProperty="ValorPortaInicial">                                               
+                                                <m:Label text="ValorPortaInicial" />
+                                                <t:template>
+                                                    <m:Text text="{ValorPortaInicial}" wrapping="false" />
+                                                </t:template>                                                
+                                            </t:Column>
+                                            <t:Column
+                                                id="idColumn3"
+                                                sortProperty="ValorPortaDelta"
+                                                filterProperty="ValorPortaDelta">                                               
+                                                <m:Label text="ValorPortaDelta" />
+                                                <t:template>
+                                                    <m:Text text="{ValorPortaDelta}" wrapping="false" />
+                                                </t:template>                                                
+                                            </t:Column>
+                                            <t:Column
+                                                id="idColumn4"
+                                                sortProperty="ValorPortaFinal"
+                                                filterProperty="ValorPortaFinal">                                               
+                                                <m:Label text="ValorPortaFinal" />
+                                                <t:template>
+                                                    <m:Text text="{ValorPortaFinal}" wrapping="false" />
+                                                </t:template>                                                
+                                            </t:Column>
+                                            <t:Column
+                                                id="idColumn5"
+                                                sortProperty="DiaRegistro"
+                                                filterProperty="DiaRegistro">                                                  
+                                                <m:Label text="DiaRegistro" />
+                                                <t:template>
+                                                    <m:Text text="{path :'DiaRegistro',
+                                                            type: 'sap.ui.model.type.Date',
+                                                            formatOptions: {pattern: 'dd/MM/YYYY'}}"
+                                                            wrapping="false" />
+                                                </t:template>                                                
+                                            </t:Column>                                                
+                                        </t:columns>
+                                                
+                                    </t:Table>                                              
+                                                      
                                 </ObjectPageLazyLoader>
                             </blocks>
                         </ObjectPageSubSection>
