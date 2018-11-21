@@ -108,16 +108,25 @@ public class Equipamento implements Serializable {
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name="idEquipamento")
     private List<HistoricoEaDiario> historicoEaDiario = new ArrayList<>();
-    
-    
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name="equipamentoId")
+    private List<ViewLeituraHoraria> leiturasHorarias = new ArrayList<>();
 
     public Equipamento() {
     }
 
     @Override
     public String toString() {
-        return "Equipamento[" + "id=" + id + ", contasId=" + contasId + ", nome=" + nome + ", ip=" + ip + ", habilitado=" + habilitado + ", idLocal=" + idLocal + ", idServidor=" + idServidor + ", emailAlarmeEq=" + emailAlarmeEq + ", tempoAlarmeEq=" + tempoAlarmeEq + ", login=" + login + ", senha=" + senha + ", latitude=" + latitude + ", longitude=" + longitude + ", excluido=" + excluido + ", numeroSerie=" + numeroSerie + ", alarmeSms=" + alarmeSms + ", alarmeHabilitado=" + alarmeHabilitado + ", dataHoraUltimaLeitura=" + dataHoraUltimaLeitura + ", fotoEquipamento=" + fotoEquipamento + ", idModelo=" + idModelo + ", idProtocolo=" + idProtocolo + ", portaTcp=" + portaTcp + ", idStatus=" + idStatus + ", idTipoConexao=" + idTipoConexao + ", timeOutLeitura=" + timeOutLeitura + ", timeOutConexao=" + timeOutConexao + ", intervaloLeitura=" + intervaloLeitura + ", numRetentivas=" + numRetentivas + ", dataHora=" + dataHora + ", dataInstalacao=" + dataInstalacao + ", dataCriacao=" + dataCriacao + ", enderecoAgente=" + enderecoAgente + ", descricao=" + descricao + ", keepAlive=" + keepAlive + ", apagarLogs=" + apagarLogs + ", hexFirmware=" + hexFirmware + ", versaoFirmware=" + versaoFirmware + ", versaoHardware=" + versaoHardware + ", portas=" + portas + ", historicoEaMensal=" + historicoEaMensal + ", historicoEaDiario=" + historicoEaDiario + ']';
+        return "Equipamento[" + "id=" + id + ", contasId=" + contasId + ", nome=" + nome + ", ip=" + ip + ", habilitado=" + habilitado + ", idLocal=" + idLocal + ", idServidor=" + idServidor + ", emailAlarmeEq=" + emailAlarmeEq + ", tempoAlarmeEq=" + tempoAlarmeEq + ", login=" + login + ", senha=" + senha + ", latitude=" + latitude + ", longitude=" + longitude + ", excluido=" + excluido + ", numeroSerie=" + numeroSerie + ", alarmeSms=" + alarmeSms + ", alarmeHabilitado=" + alarmeHabilitado + ", dataHoraUltimaLeitura=" + dataHoraUltimaLeitura + ", fotoEquipamento=" + fotoEquipamento + ", idModelo=" + idModelo + ", idProtocolo=" + idProtocolo + ", portaTcp=" + portaTcp + ", idStatus=" + idStatus + ", idTipoConexao=" + idTipoConexao + ", timeOutLeitura=" + timeOutLeitura + ", timeOutConexao=" + timeOutConexao + ", intervaloLeitura=" + intervaloLeitura + ", numRetentivas=" + numRetentivas + ", dataHora=" + dataHora + ", dataInstalacao=" + dataInstalacao + ", dataCriacao=" + dataCriacao + ", enderecoAgente=" + enderecoAgente + ", descricao=" + descricao + ", keepAlive=" + keepAlive + ", apagarLogs=" + apagarLogs + ", hexFirmware=" + hexFirmware + ", versaoFirmware=" + versaoFirmware + ", versaoHardware=" + versaoHardware + ", portas=" + portas + ", historicoEaMensal=" + historicoEaMensal + ", historicoEaDiario=" + historicoEaDiario + ", leiturasHorarias=" + leiturasHorarias + ']';
     }
+
+    public List<ViewLeituraHoraria> getLeiturasHorarias() {
+        return leiturasHorarias;
+    }
+
+    public void setLeiturasHorarias(List<ViewLeituraHoraria> leiturasHorarias) {
+        this.leiturasHorarias = leiturasHorarias;
+    }    
         
     public List<HistoricoEaDiario> getHistoricoEaDiario() {
         return historicoEaDiario;
@@ -448,7 +457,6 @@ public class Equipamento implements Serializable {
     public void setVersaoHardware(String versaoHardware) {
         this.versaoHardware = versaoHardware;
     }
-    
 
     public Equipamento(long id, long contasId, String nome, long ip, boolean habilitado, long idLocal, long idServidor, boolean emailAlarmeEq, int tempoAlarmeEq, String login, String senha, float latitude, float longitude, int excluido, String numeroSerie, boolean alarmeSms, boolean alarmeHabilitado, Date dataHoraUltimaLeitura, String fotoEquipamento, int idModelo, int idProtocolo, int portaTcp, int idStatus, int idTipoConexao, int timeOutLeitura, int timeOutConexao, int intervaloLeitura, int numRetentivas, Date dataHora, Date dataInstalacao, Date dataCriacao, String enderecoAgente, String descricao, int keepAlive, int apagarLogs, String hexFirmware, String versaoFirmware, String versaoHardware) {
         this.id = id;
@@ -490,5 +498,8 @@ public class Equipamento implements Serializable {
         this.versaoFirmware = versaoFirmware;
         this.versaoHardware = versaoHardware;
     }
+    
+    
+    
 
 }
