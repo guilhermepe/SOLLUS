@@ -21,7 +21,7 @@
 		<Label text="{i18n>valueToSync}" labelFor="valueToSyncField"/>
 		<Input id="valueToSyncField" value="{CfgAcionamento}" />
 		<Toolbar>		
-		<Button text="{i18n>Cancelync}" 
+		<Button text="{i18n>cancelSync}" 
 			id="unsetFutureSyncBtn"
 			visible="{= ${AlterouStatus}? false : true}" 
 			press="unsetFutureSync" 

@@ -23,8 +23,7 @@ public class HistoricoEaConsolidado implements Serializable{
     
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)   
-   private long id;   
-   @Column(name = "idporta")
+   private long id;      
    private long idPorta;
    private int alarme;   
    @Column(name = "valorPorta")

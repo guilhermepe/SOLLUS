@@ -8,7 +8,7 @@
 			"items": []
 		},
 		{
-			"title": "Configurações",
+			"title": "Sistema",
 			"icon": "sap-icon://settings",
 			"expanded": false,
 			"key": "masterSettings"
@@ -52,6 +52,16 @@
 		{
 			"title": "Configurações do sistema",
 			"key": "systemSettings",
+			"selected": true
+		},
+		{
+			"title": "Contas de Empresas",
+			"key": "accountSettings",
+			"selected": true
+		},
+		{
+			"title": "Contas de Usuários",
+			"key": "accountSettings",
 			"selected": true
 		},
 		{

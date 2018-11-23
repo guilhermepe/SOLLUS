@@ -82,7 +82,7 @@ public class Porta implements Serializable{
    private int categoria;
    private int totalizar;
    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-   @JoinColumn(name="Idportas")
+   @JoinColumn(name="portasIdportas")
    private List<Leitura> leituras  = new ArrayList<>();
 
     public Porta(long equipamentoId, String nome, int idTipoPorta) {
