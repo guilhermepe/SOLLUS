@@ -55,7 +55,7 @@
                                         </t:noData>
                                         <t:toolbar>
                                             <m:Toolbar>
-                                                <m:Title id="tableHourlyMeasuresTitle" text="Medições horárias"></m:Title>
+                                                <m:Title id="tableHourlyMeasuresTitle" text="{i18n>recentMeasureTitle}"></m:Title>
                                                 <m:ToolbarSpacer/>
                                                 <m:Button
                                                     icon="sap-icon://refresh"
@@ -68,7 +68,7 @@
                                                 id="HourlyIdColumn1"
                                                 sortProperty="Nome"
                                                 filterProperty="Nome">    
-                                                <m:Label text="NomePorta" />
+                                                <m:Label text="{i18n>varMeasured}" />
                                                 <t:template>
                                                     <m:Text text="{Nome}" wrapping="false" />
                                                 </t:template>                                                
@@ -77,7 +77,7 @@
                                                 id="HourlyIdColumn4"
                                                 sortProperty="ValorPorta"
                                                 filterProperty="ValorPorta">                                               
-                                                <m:Label text="ValorPorta" />
+                                                <m:Label text="{i18n>varMeasuredValue}" />
                                                 <t:template>
                                                     <m:Text text="{ValorPorta}" wrapping="false" />
                                                 </t:template>                                                
@@ -126,7 +126,7 @@
                                         </t:noData>
                                         <t:toolbar>
                                             <m:Toolbar>
-                                                <m:Title id="tableDailyMeasuresTitle" text="Medições diárias"></m:Title>
+                                                <m:Title id="tableDailyMeasuresTitle" text="{i18n>tableDailyMeasuresTitle}"></m:Title>
                                                 <m:ToolbarSpacer/>
                                                 <m:Button
                                                     icon="sap-icon://refresh"
@@ -137,7 +137,7 @@
                                         <t:columns>
                                             <t:Column
                                                 id="dailyIdColumn1">                                               
-                                                <m:Label text="NomePorta" />
+                                                <m:Label text="{i18n>varMeasured}" />
                                                 <t:template>
                                                     <m:Text text="{NomePorta}" wrapping="false" />
                                                 </t:template>                                                
@@ -222,7 +222,7 @@
                                         <t:columns>
                                             <t:Column
                                                 id="idColumn1">                                               
-                                                <m:Label text="NomePorta" />
+                                                <m:Label text="{i18n>varMeasured}" />
                                                 <t:template>
                                                     <m:Text text="{NomePorta}" wrapping="false" />
                                                 </t:template>                                                
