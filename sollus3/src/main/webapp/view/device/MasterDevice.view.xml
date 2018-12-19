@@ -1,0 +1,42 @@
+<mvc:View
+    controllerName="com.guiper.sollus.controller.device.MasterDevice"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+
+    <Page id="masterDevicePage"
+              showHeader="false">
+        <List
+            id="masterDeviceList"
+            items="{/Equipamentos}"
+            growing="true"
+            updateFinished="onUpdateFinished">
+            
+            <headerToolbar>
+                <Toolbar>
+                    <Title text="{i18n>equipmentTitle}"/>
+                    <ToolbarSpacer/>
+                    <SearchField width="50%" search="onFilterDevices"/>
+                </Toolbar>
+            </headerToolbar>			
+           
+            <items>
+                <ObjectListItem
+                    title="{Nome}"
+                    type="{= ${Nome} ? 'Active' : 'Inactive'}"
+                    press="onSelectionChange"
+                    intro="{
+                            parts:[
+                                    'i18n>lastSeen',
+                                    {path: 'DataHoraUltimaLeitura',
+                                    type: 'sap.ui.model.type.Date',
+                                    formatOptions: {relative: true,
+                                                            relativeScale:'auto'}
+                                                            }],
+                            formatter: 'jQuery.sap.formatMessage'							
+                            }"/>															
+                
+            </items>
+			
+        </List>
+    </Page>
+</mvc:View>

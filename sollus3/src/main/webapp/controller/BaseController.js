@@ -1,32 +1,49 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller",
-	"sap/ui/core/routing/History"
-], function (Controller, History) {
+	"sap/ui/core/mvc/Controller"
+], function (Controller) {
 	"use strict";
 
-	return Controller.extend("com.penninkhof.odata.controller.BaseController", {
+	return Controller.extend("com.guiper.sollus.controller.BaseController", {
 
-		getRouter : function () {
+		/**
+		 * Convenience method for accessing the router.
+		 * @public
+		 * @returns {sap.ui.core.routing.Router} the router for this component
+		 */
+		getRouter: function () {
 			return sap.ui.core.UIComponent.getRouterFor(this);
 		},
 
-		getComponent: function() {
-			return sap.ui.component(sap.ui.core.Component.getOwnerIdFor(this.getView()));
+		/**
+		 * Convenience method for getting the view model by name.
+		 * @public
+		 * @param {string} [sName] the model name
+		 * @returns {sap.ui.model.Model} the model instance
+		 */
+		getModel: function (sName) {
+			return this.getView().getModel(sName);
 		},
 
-		onNavBack: function (event) {
-			var oHistory, sPreviousHash;
+		/**
+		 * Convenience method for setting the view model.
+		 * @public
+		 * @param {sap.ui.model.Model} oModel the model instance
+		 * @param {string} sName the model name
+		 * @returns {sap.ui.mvc.View} the view instance
+		 */
+		setModel: function (oModel, sName) {
+			return this.getView().setModel(oModel, sName);
+		},
 
-			oHistory = History.getInstance();
-			sPreviousHash = oHistory.getPreviousHash();
-
-			if (sPreviousHash !== undefined) {
-				window.history.go(-1);
-			} else {
-				this.getRouter().navTo("Main", {}, true /*no history*/);
-			}
+		/**
+		* Convenience method for getting the resource bundle.
+		* @public
+		* @returns {sap.ui.model.resource.ResourceModel} the resourceModel of the component
+		*/
+		getResourceBundle: function () {
+			return this.getOwnerComponent().getModel("i18n").getResourceBundle();
 		}
-
+		
 	});
 
 });

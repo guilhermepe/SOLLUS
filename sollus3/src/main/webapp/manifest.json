@@ -1,18 +1,13 @@
 {
-	"_version": "1.1.0",
+	"_version": "1.8.0",
 	"sap.app": {
-		"_version": "1.1.0",
-		"id": "com.penninkhof.odata",
+		"id": "com.guiper.sollus",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
-		"applicationVersion": {
-			"version": "1.0.0"
-		},
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
-		"sourceTemplate": {
-			"id": "ui5template.basicSAPUI5ApplicationProject",
-			"version": "1.32.0"
+		"applicationVersion": {
+			"version": "1.0.0"
 		},
 		"dataSources": {
 			"odata": {
@@ -24,18 +19,8 @@
 			}
 		}
 	},
-
 	"sap.ui": {
-		"_version": "1.1.0",
 		"technology": "UI5",
-		"icons": {
-			"icon": "",
-			"favIcon": "",
-			"phone": "",
-			"phone@2": "",
-			"tablet": "",
-			"tablet@2": ""
-		},
 		"deviceTypes": {
 			"desktop": true,
 			"tablet": true,
@@ -43,34 +28,47 @@
 		},
 		"supportedThemes": [
 			"sap_hcb",
-			"sap_bluecrystal"
+			"sap_bluecrystal",
+			"sap_belize"
 		]
 	},
-
 	"sap.ui5": {
-		"_version": "1.1.0",
 		"rootView": {
-			"viewName": "com.penninkhof.odata.view.App",
-			"type": "XML"
+			"viewName": "com.guiper.sollus.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
 		},
+		"handleValidation": true,
 		"dependencies": {
-			"minUI5Version": "1.30.0",
+			"minUI5Version": "1.30",
 			"libs": {
 				"sap.ui.core": {},
 				"sap.m": {},
-				"sap.ui.layout": {}
+				"sap.tnt": {},
+				"sap.ui.layout": {},
+				"sap.uxap": {},
+				"it.designfuture.chartjs": {}
 			}
-		},
-		"contentDensities": {
-			"compact": true,
-			"cozy": true
 		},
 		"models": {
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "com.penninkhof.odata.i18n.i18n"
+					"bundleName": "com.guiper.sollus.i18n.i18n"
 				}
+			},
+			"side": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/sideContent.json"
+			},
+			"alerts": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/alerts.json"
+			},
+			"customer": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/customers.json"
 			},
 			"": {
 				"dataSource": "odata",
@@ -83,39 +81,133 @@
 		"routing": {
 			"config": {
 				"routerClass": "sap.m.routing.Router",
+				"controlId": "mainContents",
 				"viewType": "XML",
-				"viewPath": "com.penninkhof.odata.view",
-				"controlId": "app",
 				"controlAggregation": "pages",
-				"transition": "slide"
+				"viewPath": "com.guiper.sollus.view",
+				"async": true
 			},
 			"routes": [
 				{
 					"pattern": "",
-					"name": "Main",
-					"target": "main"
+					"name": "home",
+					"target": "home"
 				},
 				{
-					"pattern": "AddMember",
-					"name": "AddMember",
-					"target": "addMember"
+					"pattern": "MasterSettings",
+					"name": "masterSettings",
+					"target": [
+						"detailSettings",
+						"masterSettings"
+					]
+				},				
+				{
+					"pattern": "MasterDevice",
+					"name": "masterDevice",
+					"target": [
+						"detailDevice",
+						"masterDevice"
+					]
+				},
+				{
+					"pattern": "SystemSettings",
+					"name": "systemSettings",
+					"target": "detailSettings"
+				},
+				{
+					"pattern": "Statistics",
+					"name": "statistics",
+					"target": "statistics"
+				},				
+				{
+					"pattern": "MasterMeasure",
+					"name": "masterMeasure",
+					"target": [
+						"detailMeasure",
+						"masterMeasure"
+					]
+				},
+                                {
+					"pattern": "detailMeasure/{Id}",
+					"name": "detailMeasure",
+					"target": [
+						"detailMeasure",
+						"masterMeasure"
+					]
+				},
+				{
+					"pattern": "detailDevice/{Id}",
+					"name": "detailDevice",
+					"target": [
+						"detailDevice",
+						"masterDevice"
+					]
 				}
 			],
 			"targets": {
-				"main": {
-					"viewName": "Main",
-					"viewLevel": 0
+				"home": {
+					"viewId": "home",
+					"viewName": "Home"
 				},
-				"addMember": {
-					"viewName": "AddMember",
-					"viewLevel": 0
+				"appSettings": {
+					"viewId": "appSettings",
+					"viewName": "settings.AppSettings"
+				},
+				"masterSettings": {
+					"viewId": "masterSettings",
+					"viewName": "settings.MasterSettings",
+					"controlId": "appSettings",
+					"controlAggregation": "masterPages",
+					"parent": "appSettings"
+				},
+				"detailSettings": {
+					"viewId": "detailSettings",
+					"viewName": "settings.DetailSettings",
+					"controlId": "appSettings",
+					"controlAggregation": "detailPages",
+					"parent": "appSettings"
+				},
+				"appDevice": {
+					"viewId": "appDevice",
+					"viewName": "device.AppDevice"
+				},
+				"masterDevice": {
+					"viewId": "masterDevice",
+					"viewName": "device.MasterDevice",
+					"controlId": "appDevice",
+					"controlAggregation": "masterPages",
+					"parent": "appDevice"
+				},
+				"detailDevice": {
+					"viewId": "detailDevice",
+					"viewName": "device.DetailDevice",
+					"controlId": "appDevice",
+					"controlAggregation": "detailPages",
+					"parent": "appDevice"
+				},
+				"statistics": {
+					"viewId": "statistics",
+					"viewName": "Statistics"
+				},
+                                "appMeasure": {
+					"viewId": "appMeasure",
+					"viewName": "measure.AppMeasure"
+				},
+                               "masterMeasure": {
+					"viewId": "masterMeasure",
+					"viewName": "measure.MasterMeasure",
+					"controlId": "appMeasure",
+					"controlAggregation": "masterPages",
+					"parent": "appMeasure"
+				},
+				"detailMeasure": {
+					"viewId": "detailMeasure",
+					"viewName": "measure.DetailMeasure",
+					"controlId": "appMeasure",
+					"controlAggregation": "detailPages",
+					"parent": "appMeasure"
 				}
 			}
-		},
-		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
 		}
 	}
 }

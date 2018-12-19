@@ -1,0 +1,133 @@
+<mvc:View
+    controllerName="com.guiper.sollus.controller.measure.DetailMeasure"   
+    xmlns="sap.uxap"
+    xmlns:t="sap.ui.table"
+    xmlns:m="sap.m"    
+    xmlns:f="sap.ui.layout.form"    
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc">
+    <m:Page
+        id="detailMeasurePage"
+        title="{i18n>detailMeasureTitle}">
+        <ObjectPageLayout
+            id="detailMeasureObjectPageLayout">
+            <headerTitle>
+                <ObjectPageHeader					
+                    objectTitle="{Nome}">
+                </ObjectPageHeader>                
+            </headerTitle>
+            <headerContent>
+                <m:MessageStrip
+                    text="{
+                        parts:[
+                            'i18n>lastSeen',
+                            {path: 'DataHoraUltimaLeitura',
+                            type: 'sap.ui.model.type.Date',
+                            formatOptions: {relative: false}
+                                                    }],
+                        formatter: 'jQuery.sap.formatMessage'
+                        }"
+                    type="Information"
+                    showIcon="true">
+                </m:MessageStrip>
+            </headerContent>
+            <sections>
+                <ObjectPageSection>
+                    <subSections>
+                        <ObjectPageSubSection
+                            id="recentMeasureSubSection"
+                            title="{i18n>recentMeasureTitle}">
+                            <blocks>
+                                <ObjectPageLazyLoader
+                                    id="recentMeasureLazyLoader">
+                                    <f:SimpleForm
+                                        title="{i18n>recentMeasurelTitle}"                                        
+                                        layout="ResponsiveGridLayout">
+                                        <f:content>   
+                                            <m:TextArea
+                                                width="65%"
+                                                maxLenght="244"
+                                                id="testTextAreaI" 
+                                                value="{Descricao}"/>	
+                                        </f:content>
+                                    </f:SimpleForm>
+                                </ObjectPageLazyLoader>
+                            </blocks>
+                        </ObjectPageSubSection>
+                    </subSections>
+                </ObjectPageSection>                
+                <ObjectPageSection>
+                    <subSections>
+                        <ObjectPageSubSection
+                            id="recentMeasureSubSection2"
+                            title="{i18n>recentMeasureTitle2}">
+                            <blocks>
+                                <ObjectPageLazyLoader
+                                    id="recentMeasureLazyLoader2">
+                                    <f:SimpleForm
+                                        title="{i18n>generalSettingsDetailTitle2}"                                        
+                                        layout="ResponsiveGridLayout">
+                                        <f:content>   
+                                            <m:TextArea
+                                                width="65%"
+                                                maxLenght="244"
+                                                id="testTextArea2" 
+                                                value="{someComponentText}"/>	
+                                        </f:content>
+                                    </f:SimpleForm>
+                                </ObjectPageLazyLoader>
+                            </blocks>
+                        </ObjectPageSubSection>
+                    </subSections>
+                </ObjectPageSection>
+                <ObjectPageSection>
+                    <subSections>
+                        <ObjectPageSubSection
+                            id="recentMeasureSubSection3"
+                            title="{i18n>recentMeasureTitle3}">
+                            <blocks>
+                                <ObjectPageLazyLoader
+                                    id="recentMeasureLazyLoader3">                                    
+                                    <t:Table
+                                    id="tableMonthlyMeasures"
+                                    selectionMode="None"                                  
+                                    rows="{HistoricoEaMensalDetails}"
+                                    visibleRowCount="12">                                        
+                                        <t:columns>
+                                            <t:Column
+                                                id="idColumn1"
+                                                width="11rem">                                               
+						<m:Label text="NomePorta" />
+						<t:template>
+							<m:Text text="{NomePorta}" wrapping="false" />
+						</t:template>                                                
+                                            </t:Column>
+                                            <t:Column
+                                                id="idColumn2"
+                                                width="11rem">                                               
+						<m:Label text="ValorPortaDelta" />
+						<t:template>
+							<m:Text text="{ValorPortaDelta}" wrapping="false" />
+						</t:template>                                                
+                                            </t:Column>
+                                            <t:Column
+                                                id="idColumn3"
+                                                width="11rem">                                               
+						<m:Label text="DiaRegistro" />
+						<t:template>
+							<m:Text text="{DiaRegistro}" wrapping="false" />
+						</t:template>                                                
+                                            </t:Column>                                                
+                                        </t:columns>
+                                                
+                                    </t:Table>                                              
+                                                      
+                                </ObjectPageLazyLoader>
+                            </blocks>
+                        </ObjectPageSubSection>
+                    </subSections>
+                </ObjectPageSection>
+            </sections>               
+        </ObjectPageLayout>       
+    </m:Page>
+</mvc:View>
